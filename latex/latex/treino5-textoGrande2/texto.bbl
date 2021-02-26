@@ -1,0 +1,13 @@
+\begin{thebibliography}{1}
+
+\bibitem{meuatalho2}
+Autor do~artigo.
+\newblock Título do artigo.
+\newblock {\em Revista do artigo}, 2010.
+
+\bibitem{meuatalho}
+Autor do~livro.
+\newblock {\em Título do Livro}.
+\newblock Editora do livro, Cidade, 2010.
+
+\end{thebibliography}

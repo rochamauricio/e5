@@ -1,0 +1,43 @@
+\documentclass[a4paper, 12pt]{article} 
+\usepackage[top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx} %pacote para inserir figuras
+\usepackage{float} %força posicionamento da figura - para usar: subtituir [htb] por[H]
+\usepackage[brazil]{babel} %força latex a escrever figura e não figure
+\usepackage{lipsum} %para inserir textos lorem ipsum
+
+\usepackage{hyperref}
+
+%define estilo dos links
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\urlstyle{same}
+
+\begin{document}
+
+Aqui teremos um link: \hyperlink{secao1}{Ir para seção 1}
+
+Aqui teremos um link: \hyperlink{secao2}{Ir para seção 2}
+
+\newpage
+
+\hypertarget{secao1}{ }
+\section{Seção 1} 
+
+\lipsum
+
+\hypertarget{secao2}{ }
+\section{Seção 2} 
+
+\lipsum
+
+
+
+\end{document}

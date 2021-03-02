@@ -1,9 +1,11 @@
 # Compilar um programa em C
+~~~shell
 gcc prog.c -o prog
 cc -pthread programa.c -o programa	#compilar programa C com Threads
-
+~~~
 
 # Atalhos
+~~~shell
 arrasta ícone para prompt para obter seu caminho da pasta atual 
 ctrl + alt + t 				#abre cmd
 ctrl + c 					#cancela uma ação
@@ -15,9 +17,10 @@ ctrl + shift + w			#fechar nova guia
 ctrl + shift + f			#pesquisar na janela do prompt
 ctrl + windows + cima		#maximizar a janela
 ctrl + windows + baixo		#restaurar tamanho da janela
-
+~~~
 
 # Comandos gerais (formato: comando opções parâmetros )
+~~~shell
 algumComando --help 	#exibe ajuda sobre o comando
 man algumComando		#chama página de manual do comando (q to quit)
 info algumComando		#informações sobre o comando
@@ -34,9 +37,10 @@ arch					#mostra a arquitetura da maquina
 lsb_release -r			#desocobrir a versão do ubuntu
 env						#lista variáveis que o shell define por padrão
 sleep 1					#faz sistema ficar parado por segundo
-
+~~~
 
 # Diretórios 
+~~~shell
 ls						#lista arquivos do diretório atual
 ls nomePasta			#lista arquivos do diretório nomePasta
 ls -l					#mostra em forma de lista
@@ -63,38 +67,48 @@ cp nomeArq caminho/nomeArq
 cp -r * ../pasta 			#copia recursivamente (-r) todos os arquivos para a pasta
 mv arquivo.txt ../pasta2/ 	#move para pasta2 (dentro de uma pasta acima)
 mv nomeArq novoNomeArq  	#renomeia arquivo
+~~~
 
-#operador ~ substitui a variável $HOME
+# operador ~ substitui a variável $HOME
+~~~shell
 ls ~/cursos 	#é o mesmo que ls $HOME/cursos
 ls /opt/		#'/' é o diretório raíz != do home
+~~~
 
-#operador ! 
+# operador ! 
+~~~shell
 !c + enter		#executa ultimo comando iniciado com 'c'
+~~~
 
 # Comandos para arquivos
+~~~shell
 xdg-open nomeArquivo 	#abre imagens, vídeos, músicas etc
 eog -f abreImagem.gif	#abre imagens
 find -name nomeArq		#encontra arquivos nos dir e subdir opç: -name, -iname, -type f, -exec
-
+~~~
 
 # Operador pipe ( “|” )
+~~~shell
 ls  | more 	# Saída de ls vira entrada de more (exibe os arquivos lentamente na tela)
 grep "mauricio" /etc/passwd | cut -d ":" -f 1,3,4  #exibe trechos 1,2,3 delimitados por : 
-
+~~~
 
 # Redirecionamento ( < entrada ) e ( > saída)
+~~~shell
 ./etapa1 < entrada.txt > saida.txt 	#programa etapa1 recebe etrada.txt, e escreve saída em saida.txt
 ls > arquivo.txt 					#grava conteúdo do ls no arquivo.txt
 ./script.sh > saida.txt  			#grava saída do script.sh no arquivo saida.txt
 echo "$(comando com uma saída)" > textoTeste1.txt
+~~~
 
-
-#Comandos para compactar arquivos
+# Comandos para compactar arquivos
+~~~shell
 tar cvfz nomeArq.tar.gz [arquivos|diretório]	#para compactar .tar.gz 
 tar cvzf nomeArq.tgz arquivo1 arquivo2			#para compactar .tgz - aprendi em compiladores
+~~~
 
-
-#Comandos para descompactar arquivos
+# Comandos para descompactar arquivos
+~~~shell
 tar -xvf nomedoarquivo.tar 		#para descompactar tar
 tar -vzxf nomedoarquivo.tar.gz	#para descompactar tar.gz
 tar -xvfz nomeArq.tar.gz		#para descompactar tar.gz 
@@ -103,9 +117,10 @@ tar -xvzf nomedoarquivo.tgz		#para descompactar .tgz
 unzip nomedoarquivo.zip 		#para descompactar zip
 unrar x nomedoarquivo.rar 		#para descompactar rar
 bunzip nomedoarquivo.bz2 		#para descompactar bz2
-
+~~~
 
 # Comandos usuários e disco
+~~~shell
 whoami		#retorna usuário logado
 who			#retorna usuários logados no sistema
 su			#muda para root ou outro usuário
@@ -115,31 +130,37 @@ free		#mostra quanto de ram temos disponível
 mount		#monta (ativa) devices
 umount		#desmonta (desativa) devices
 echo $PATH	#diretórios que estão no PATH
-
+~~~
 
 # Comandos de rede - gerais
+~~~shell
 ifconfig	#verificar ip da máquina
 hostname	#retorna nome do computador na rede
+~~~
 
-
-# Comandos de rede - wget - https://www.hostinger.com.br/tutoriais/wget-o-que-e-como-instalar-comandos-wget
+# Comandos de rede 
+> wget - https://www.hostinger.com.br/tutoriais/wget-o-que-e-como-instalar-comandos-wget
+~~~shell
 wget [link]	#downloads via FTP, SFTP, HTML e HTTPS 
-
+~~~
 
 # Comandos de rede - ssh
+~~~shell
 ssh
+~~~
 
-
-#Comandos sobre processos
+# Comandos sobre processos
+~~~shell
 ps 					#mostra processos rodando ex.: ps aux PID é o número do processo
 ps aux | grep bash 	#mostra processos relacionados ao bash
 top 				#mostra processos rodando em tempo real + info (q to quit)
 kill -9 8731		#parar a exec de um programa -9 matar processos, 2315 num processo
+~~~
 
 
-#__________________________________________________________________________________________________
 
 # Arquivos de texto - criar / visualizar arquivos
+~~~shell
 touch nomeArq	#cria rapidamente um arquivo de texto
 gedit nomeArq & #abre arquivo de texto e não trava o prompt
 nano nomeArq 	#Editor de texto 
@@ -149,9 +170,10 @@ head nomeArq	#mostra início arquivo  opções -n -c
 tail nomeArq	#exibe últimas linhas
 more nomeArq 	#exibe na tela e espera enter
 less nomeArq	#mostrar arquivos grandes na tela com rolagem pelas setas - q to quit
- 
+~~~
 
 # Arquivos de texto - geral
+~~~shell
 rev nomeArquivo			#inverter texto do arquivo
 wc texto.txt			#conta letras
 uniq texto.txt			#remove as linhas duplicadas e consecutivas do arquivo
@@ -163,16 +185,17 @@ echo "oi" > texto.txt 	#escreve "oi" no arquivo texto.txt (sobreescreve arquivo)
 echo "oi2" >> texto.txt	#escreve "oi2" no arquivo texto.txt (faz append - adiciona no final do arquivo sem sobrescrevê-lo)
 cat texto.txt >> t2.txt	#escreve texto.txt no final do arquivo t2.txt (faz append)
 
-
 echo $(( RANDOM % 101 ));	#Gerando números aleatórios de 0 a 100 - usando a variável $RANDOM
-
 
 seq 0 10 100; 	#gera números de 10 em 10 até 100. 
 seq 5;			#gera numeros 1 2 3 4 5
 seq -10 10;		#gera do número -10 ao 10
 
-AQUIIIIIIIIIIIII
+~~~
+
+
 # Arquivos de texto - comando tr
+~~~shell
 tr -d ' ' < texto.txt			#(-d == delete) remove espaços do arquivo. outra forma echo "mauricio rocha" | tr -d ' ' 
 tr -d ',-' < texto.txt			#remove todos ',' e todos os '-' juntos e separados
 tr -s a-z A-Z < texto.txt		#(-s == substituir) torna maiúscula, funciona sem o "-s" outra forma: 
@@ -181,7 +204,7 @@ tr [:lower:] [:upper:] < txt	#torna maiúsculo
 tr -s ' ' '\t' < texto.txt		#substitui todos espaços por tabs (funciona com caracteres quaisquer)
 tr -s '\n' ' ' < texto.txt		#substitui quebras de linha por espaços
 tr -s ' ' ' ' < texto.txt		#substitui espaços repetidos por um único espaço
-
+~~~
 
 # Arquivos de texto - comando grep: grep [opções] padrão [ARQUIVO] Opções -n -i -v -qs -w -x (podemos combiná-las)
 grep palavra texto.txt 		#imprime linha do arquivo texto.txt que contém a palavra (pode ser uma string)

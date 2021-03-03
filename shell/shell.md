@@ -207,6 +207,7 @@ tr -s ' ' ' ' < texto.txt		#substitui espaços repetidos por um único espaço
 ~~~
 
 # Arquivos de texto - comando grep: grep [opções] padrão [ARQUIVO] Opções -n -i -v -qs -w -x (podemos combiná-las)
+~~~shell
 grep palavra texto.txt 		#imprime linha do arquivo texto.txt que contém a palavra (pode ser uma string)
 grep -n palavra texto.txt 	#imprime nº da linha e linha do arquivo texto.txt que contém a palavra
 grep -i palavra texto.txt 	#imprime linha do arquivo texto.txt que contém a palavra sem diferenciar maiúsculas de minúsculas
@@ -217,9 +218,10 @@ grep -v palavra texto.txt	#mostra tudo menos a linha do texto que contém a pala
 grep ^a texto.txt			#mostra todas as linhas que iniciam com a
 grep a$ texto.txt			#mostra todas as linhas que terminam com a
 grep -qs alegria texto.txt && echo "contido" || echo "não contido" # -qs == retorna true or false and quit without message
-
+~~~
 
 # Arquivos de texto - comando  cut - opções: -c (caractere) -d (delimitador) -f (intervalo) 
+~~~shell
 cut -c 1 texto.txt   				#imprime somente o caractere 1 de cada linha (começa em 1)
 cut -c 1-5 texto.txt 				#imprime do caractere 1 ao 5 de cada linha
 cut -c 1,3,5 texto.txt				#imprime os caracteres 1, 3, 5 de cada linha
@@ -231,11 +233,12 @@ cut -d "." -f 1 texto.txt  			#imprime o 1º campo delimitado pelo ponto
 cut -d "." -f 1,5 texto.txt			#imprime campos 1 e 5 delimitados pelo ponto
 cut -d "." -f 2- texto.txt  		#imprime do campo 2 em diante
 cut -s -d "." -f 1- texto.txt --output-delimiter="$" 	#substitui na tela o delimitador . pelo $
-
+~~~
 
 
 
 # Arquivos de texto - programa sed
+~~~shell
 #O sed lê um arquivo, linha por linha, e aplica a expressão do parâmetro a cada uma delas.
 #caracteres especiais: espaço (\ ), ponto (\.) Funcionamento: sed 'expressão regular' arquivo
 
@@ -267,67 +270,56 @@ sed '/^aaa/d' texto.txt 				#d=deleta todas linhas que começam com a string "aa
 sed '/aaa/d' texto.txt					#d=deleta todas as linhas que contem a string "aaa"
 sed '/^$/d' texto.txt					#d=deleta linhas em branco
 
+~~~
+
+- - - 
 
 
-
-
-
-
-
-
-#__________________________________________________________________________________________________
-
-
-<< Shell
+# Shell
 
 	Shell é um programa que permite ao usuário interagir com o sistema operacional através de comandos digitados pelo teclado. 
 	O shell mais famoso do linux é o Bash (o bash é um interpretador de comandos do sh). 
 	A Extensão do é arquivo: .sh e a Primeira linha do arquivo precisa ser: #!/bin/bash
 	Cada comando digitado é lido, verificado, interpretado e enviado ao sistema operacional para ser de fato executado.
 	
-Shell
-
-<< Bash
+# Bash
 
 	O nome Bash significa Bourne Again Shell, um produto GNU. 
 	Ele é a interface padrão de linha de comando utilizada praticamente em todas as distribuições GNU/Linux.
 	A aparência do prompt é controlada pela variável PS1.
 
-Bash
+# aprofundar
 
-<< aprofundar
+	como receber um argumento $1 contendo a string --version, por exemplo e exibir um texto ilustrativo sobre a versão e
+	caso nao seja passado nenhum argumento não realizar nenhuma ação. Como fazer isso de maneira "bonita"?
 
-como receber um argumento $1 contendo a string --version, por exemplo e exibir um texto ilustrativo sobre a versão e
-caso nao seja passado nenhum argumento não realizar nenhuma ação. Como fazer isso de maneira "bonita"?
+	***Há várias maneiras de protegermos comandos, que são: 
+	aspas simples (''), aspas duplas ("") e a contra-barra, ou barra inversa (\)
 
-
-***Há várias maneiras de protegermos comandos, que são: 
-aspas simples (''), aspas duplas ("") e a contra-barra, ou barra inversa (\)
-
-
-diretório do $PATH para inserir scripts
-*** criar um link simbólico em /usr/local/bin
+	diretório do $PATH para inserir scripts
+	*** criar um link simbólico em /usr/local/bin
 
 
-***variáveis de ambiente
-https://devcontent.com.br/artigos/windows/o-que-sao-como-alterar-criar-excluir-variaveis-de-ambiente
+	***variáveis de ambiente
+	https://devcontent.com.br/artigos/windows/o-que-sao-como-alterar-criar-excluir-variaveis-de-ambiente
 
-# ver o operador '~'
+	 ver o operador '~'
 
 
 
-colocar um bin no PATH para permitir executá-lo de qualquer lugar
-[OPTIONAL] Add "{installation home}/bin" to your PATH environment
-     variable so that you may start Android Studio from any directory.
-
-aprofundar
-
-
+>	colocar um bin no PATH para permitir executá-lo de qualquer lugar
+>	[OPTIONAL] Add "{installation home}/bin" to your PATH environment
+>		variable so that you may start Android Studio from any directory.
+>
+>	aprofundar
 
 
+- - - 
 
-: 'Comandos a partir de arquivo.sh'
 
+# Comandos a partir de arquivo.sh'
+
+~~~shell
 #!/bin/bash		
 comandos aqui
 
@@ -358,30 +350,36 @@ NomeComentario
 	de várias linhas 
 	(não se esqueça de dar um espaço após o ':' ) 
 '
+~~~
 
-#Escrevendo na tela
+# Escrevendo na tela
+~~~shell
 echo sou um texto;
 echo "eu também sou" $variavel;	#não usa concatenadores 
 echo -n nao quebro a linha;
 echo -e "\n saida \t formatada"; 
 echo					#printa linha em branco
 printf "Obrigado.\n" 	#usando o comando printf 
+~~~
 
-#Lendo do teclado
+# Lendo do teclado
+~~~shell
 read nome;				#pode ler mais de uma variável ao mesmo tempo: read nome sobrenome;
 echo Boa noite $nome;
+~~~
 
-
-#Variáveis
+# Variáveis
+~~~shell
 num=5			#Criação/atribuição - Não é necessário declarar variáveis, sem espaço!
 echo $num		#Uso do ponto e vírgula é facultativo
 unset num		#apaga variável num
 hoje=$(date)  	#armazenar saída do comando em variável: var=$(comando)
 nome="Mauricio"
 echo $nome
+~~~
 
-
-#Constantes e variáveis especiais
+# Constantes e variáveis especiais
+~~~shell
 $PATH
 $HOME		#fazer ls $HOME/nomePasta é o mesmo que fazer ls ~/nomePasta
 $USER
@@ -391,49 +389,61 @@ $1	#primeiro argumento
 $2 	#segundo argumento
 $# 	#número de argumentos
 $* 	#todos argumentos
-
+~~~
 
 # Exemplo salvo em arquivo chamado script.sh. Abrir o arquivo: ./script.sh argumento1 argumento2
+~~~shell
 #!/bin/bash
 echo "nome do script = " $0			#escreve ./script.sh
 echo "argumento 1 = " $1			#escreve argumento1
 echo "argumento 2 = " $2			#escreve argumento2
 echo "numero de argumentos = " $#	#escreve 2
 echo "todos argumentos = " $*		#escreve argumento1 argumento2
+~~~
 
-#Expressões aritméticas
+# Expressões aritméticas
+~~~shell
 x=$(( 1500 + 200 ));	#jeito 1: não pode ter espaço antes nem depois do sinal de igualdade
 x=$[ 1500 + 200 ];		#jeito 2: não pode ter espaço antes nem depois do sinal de igualdade
+~~~
 
-#Operadores aritméticos
+# Operadores aritméticos
+~~~shell
 x=$[2**3]	#faz 2 elevado a 3 == 8
 x=$[5%3]	#resto da divisão, == 2
+~~~
+
+
+# Operadores lógicos: 
+> &&	|| 
+
+
+# Operadores relacionais e de igualdade (para variáveis) - VER USO
+> <	>	<=	>=	==	!=	!(negação), ex.: !$num => retorna true se num=0, senão retorna false
 
 
 
-#Operadores lógicos: &&	|| 
-
-
-#Operadores relacionais e de igualdade (para variáveis) - VER USO
-#<	>	<=	>=	==	!=	!(negação), ex.: !$num => retorna true se num=0, senão retorna false
-
-
-
-#comando test - operadores para NÚMEROS:  -lt		-gt		-le		-ge		-eq		-ne
+# comando test 
+> operadores para NÚMEROS:  -lt		-gt		-le		-ge		-eq		-ne
+~~~shell
 [ $nota -ge 6 ] && echo good || echo bad		# se nota >= 6 imprime good, senão imprime bad
 [ $x -eq 2 ] && echo igual || echo diferente 	# se x == 2 imprime igual, senão imprime diferente
 test $x -eq 2  && echo igual || echo diferente  # comando test é equivalente ao comando [ ] 
+~~~
 
-
-#comando test - operadores para STRINGS:  ==		!=		-z		-n
+# comando test 
+> operadores para STRINGS:  ==		!=		-z		-n
+~~~shell
 test "$nome" == "Mauricio" && echo "é igual" || echo "não é igual"	# == testa se String é igual (funciona com '=' também)
 test "$nome" != "Mauricio" && echo "é diferente" || echo "não é"	# != testa se String é diferent
 test -z "$nome" && echo "String é nula"								# -z testa se String é nula
 test -n "$nome" && echo "String é não nula"							# -n testa se String é não nula
 [ $nome == "Mauricio" ] && echo igual || echo diferente				# outra forma, == testa se String é igual
+~~~
 
-
-#comando test em arquivos obs: aaa ==  nome do arquivo
+# comando test em arquivos 
+> obs: aaa ==  nome do arquivo
+~~~shell
 test -d aaa && echo "é um diretório" 	#-d testa se $aaa é um diretório outra forma: [ -d aaa ] && echo "é" || echo "nao é"
 test -f aaa && echo "é um arquivo" 		#-f testa se $aaa é um arquivo
 test -r aaa && echo "pode ler" 			#-r	o arquivo tem permissão de leitura
@@ -445,15 +455,17 @@ test aaa -ot bbb && echo "é + old"		#-ot	o arquivo é mais antigo
 test aaa -ef bbb && echo "mesmo arq"  	#-ef testa se o arquivo é o mesmo
 test -f aa -a -s aa  && echo "ok"		#-a	E lógico - "aa é arquivo e não está vazio"
 test -d aaa -o -d bbb  && echo "ok"		#-o	OU lógico - "aaa ou bbb são diretórios"
+~~~
 
-
-#Comandos de seleção:	if … else - em Shell Script o if testa um comando e não uma condição!
+# Comandos de seleção:	
+>if … else - em Shell Script o if testa um comando e não uma condição!
+~~~shell
 if test "$media" -ge 6; then   #se colocar o then na outra linha pode-se suprimir o ';' 
 	echo aluno aprovado
 else 
 	echo aluno reprovado	
 fi
-
+~~~
 
 #Comandos de seleção:	if … else
 if [ $media -ge 6 ]; then 	#esses espaços são todos obrigatórios - o comando [ ... ] é um atalho para o comando test

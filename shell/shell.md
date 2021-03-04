@@ -91,15 +91,15 @@ find -name nomeArq      #encontra arquivos nos dir e subdir opç: -name, -iname,
 
 # Operador pipe ( “|” )
 ~~~shell
-ls  | more    # Saída de ls vira entrada de more (exibe os arquivos lentamente na tela)
-grep "mauricio" /etc/passwd | cut -d ":" -f 1,3,4  #exibe trechos 1,2,3 delimitados por : 
+ls  | more                                          # Saída de ls vira entrada de more (exibe os arquivos lentamente na tela)
+grep "mauricio" /etc/passwd | cut -d ":" -f 1,3,4   #exibe trechos 1,2,3 delimitados por : 
 ~~~
 
 # Redirecionamento ( < entrada ) e ( > saída)
 ~~~shell
-./etapa1 < entrada.txt > saida.txt    #programa etapa1 recebe etrada.txt, e escreve saída em saida.txt
-ls > arquivo.txt                #grava conteúdo do ls no arquivo.txt
-./script.sh > saida.txt           #grava saída do script.sh no arquivo saida.txt
+./etapa1 < entrada.txt > saida.txt  #programa etapa1 recebe etrada.txt, e escreve saída em saida.txt
+ls > arquivo.txt                    #grava conteúdo do ls no arquivo.txt
+./script.sh > saida.txt             #grava saída do script.sh no arquivo saida.txt
 echo "$(comando com uma saída)" > textoTeste1.txt
 ~~~
 
@@ -111,13 +111,13 @@ tar cvzf nomeArq.tgz arquivo1 arquivo2         #para compactar .tgz - aprendi em
 
 # Comandos para descompactar arquivos
 ~~~shell
-tar -xvf nomedoarquivo.tar       #para descompactar tar
-tar -vzxf nomedoarquivo.tar.gz   #para descompactar tar.gz
-tar -xvfz nomeArq.tar.gz      #para descompactar tar.gz 
-tar -jxvf nomedoarquivo       #para descompactar tar.bz2
-tar -xvzf nomedoarquivo.tgz      #para descompactar .tgz
-unzip nomedoarquivo.zip       #para descompactar zip
-unrar x nomedoarquivo.rar       #para descompactar rar
+tar -xvf nomedoarquivo.tar     #para descompactar tar
+tar -vzxf nomedoarquivo.tar.gz #para descompactar tar.gz
+tar -xvfz nomeArq.tar.gz       #para descompactar tar.gz 
+tar -jxvf nomedoarquivo        #para descompactar tar.bz2
+tar -xvzf nomedoarquivo.tgz    #para descompactar .tgz
+unzip nomedoarquivo.zip        #para descompactar zip
+unrar x nomedoarquivo.rar      #para descompactar rar
 bunzip nomedoarquivo.bz2       #para descompactar bz2
 ~~~
 
@@ -125,13 +125,13 @@ bunzip nomedoarquivo.bz2       #para descompactar bz2
 ~~~shell
 whoami      #retorna usuário logado
 who         #retorna usuários logados no sistema
-su         #muda para root ou outro usuário
-w         #mostra usuários conectados
-df         #mostra disponibilidade das partições ou df -h 
-free      #mostra quanto de ram temos disponível 
-mount      #monta (ativa) devices
+su          #muda para root ou outro usuário
+w           #mostra usuários conectados
+df          #mostra disponibilidade das partições ou df -h 
+free        #mostra quanto de ram temos disponível 
+mount       #monta (ativa) devices
 umount      #desmonta (desativa) devices
-echo $PATH   #diretórios que estão no PATH
+echo $PATH  #diretórios que estão no PATH
 ~~~
 
 # Comandos de rede - gerais
@@ -153,45 +153,45 @@ ssh
 
 # Comandos sobre processos
 ~~~shell
-ps                #mostra processos rodando ex.: ps aux PID é o número do processo
-ps aux | grep bash    #mostra processos relacionados ao bash
-top             #mostra processos rodando em tempo real + info (q to quit)
-kill -9 8731      #parar a exec de um programa -9 matar processos, 2315 num processo
+ps                  #mostra processos rodando ex.: ps aux PID é o número do processo
+ps aux | grep bash  #mostra processos relacionados ao bash
+top                 #mostra processos rodando em tempo real + info (q to quit)
+kill -9 8731        #parar a exec de um programa -9 matar processos, 2315 num processo
 ~~~
 
 
 
 # Arquivos de texto - criar / visualizar arquivos
 ~~~shell
-touch nomeArq   #cria rapidamente um arquivo de texto
-gedit nomeArq & #abre arquivo de texto e não trava o prompt
-nano nomeArq    #Editor de texto 
+touch nomeArq    #cria rapidamente um arquivo de texto
+gedit nomeArq &  #abre arquivo de texto e não trava o prompt
+nano nomeArq     #Editor de texto 
 cat nomeArq      #imprime arquivos na tela
 cat -n nomeArq   #imprime arquivos na tela com linhas 
-head nomeArq   #mostra início arquivo  opções -n -c
-tail nomeArq   #exibe últimas linhas
-more nomeArq    #exibe na tela e espera enter
-less nomeArq   #mostrar arquivos grandes na tela com rolagem pelas setas - q to quit
+head nomeArq     #mostra início arquivo  opções -n -c
+tail nomeArq     #exibe últimas linhas
+more nomeArq     #exibe na tela e espera enter
+less nomeArq     #mostrar arquivos grandes na tela com rolagem pelas setas - q to quit
 ~~~
 
 # Arquivos de texto - geral
 ~~~shell
-rev nomeArquivo         #inverter texto do arquivo
-wc texto.txt         #conta letras
-uniq texto.txt         #remove as linhas duplicadas e consecutivas do arquivo
-sort texto.txt         #ordena as linhas do arquivo de acordo com o primeiro caractere
-sort -n texto.txt      #ordena as linhas do arquivo de acordo com o o caractere numérico do início da linha
-sort texto.txt | uniq    #ordena arquivo e remove linhas duplicatas
-> texto.txt            #apaga conteúdo do arquivo texto.txt
-echo "oi" > texto.txt    #escreve "oi" no arquivo texto.txt (sobreescreve arquivo)
-echo "oi2" >> texto.txt   #escreve "oi2" no arquivo texto.txt (faz append - adiciona no final do arquivo sem sobrescrevê-lo)
-cat texto.txt >> t2.txt   #escreve texto.txt no final do arquivo t2.txt (faz append)
+rev nomeArquivo            #inverter texto do arquivo
+wc texto.txt               #conta letras
+uniq texto.txt             #remove as linhas duplicadas e consecutivas do arquivo
+sort texto.txt             #ordena as linhas do arquivo de acordo com o primeiro caractere
+sort -n texto.txt          #ordena as linhas do arquivo de acordo com o o caractere numérico do início da linha
+sort texto.txt | uniq      #ordena arquivo e remove linhas duplicatas
+> texto.txt                #apaga conteúdo do arquivo texto.txt
+echo "oi" > texto.txt      #escreve "oi" no arquivo texto.txt (sobreescreve arquivo)
+echo "oi2" >> texto.txt    #escreve "oi2" no arquivo texto.txt (faz append - adiciona no final do arquivo sem sobrescrevê-lo)
+cat texto.txt >> t2.txt    #escreve texto.txt no final do arquivo t2.txt (faz append)
 
-echo $(( RANDOM % 101 ));   #Gerando números aleatórios de 0 a 100 - usando a variável $RANDOM
+echo $(( RANDOM % 101 ));  #Gerando números aleatórios de 0 a 100 - usando a variável $RANDOM
 
-seq 0 10 100;    #gera números de 10 em 10 até 100. 
+seq 0 10 100;  #gera números de 10 em 10 até 100. 
 seq 5;         #gera numeros 1 2 3 4 5
-seq -10 10;      #gera do número -10 ao 10
+seq -10 10;    #gera do número -10 ao 10
 
 ~~~
 
@@ -199,40 +199,40 @@ seq -10 10;      #gera do número -10 ao 10
 # Arquivos de texto - comando tr
 ~~~shell
 tr -d ' ' < texto.txt         #(-d == delete) remove espaços do arquivo. outra forma echo "mauricio rocha" | tr -d ' ' 
-tr -d ',-' < texto.txt         #remove todos ',' e todos os '-' juntos e separados
-tr -s a-z A-Z < texto.txt      #(-s == substituir) torna maiúscula, funciona sem o "-s" outra forma: 
-tr -s A-Z a-z < texto.txt      #torna minúscula, outra forma: tr [:upper:] [:lower:] < texto.txt
-tr [:lower:] [:upper:] < txt   #torna maiúsculo
-tr -s ' ' '\t' < texto.txt      #substitui todos espaços por tabs (funciona com caracteres quaisquer)
-tr -s '\n' ' ' < texto.txt      #substitui quebras de linha por espaços
-tr -s ' ' ' ' < texto.txt      #substitui espaços repetidos por um único espaço
+tr -d ',-' < texto.txt        #remove todos ',' e todos os '-' juntos e separados
+tr -s a-z A-Z < texto.txt     #(-s == substituir) torna maiúscula, funciona sem o "-s" outra forma: 
+tr -s A-Z a-z < texto.txt     #torna minúscula, outra forma: tr [:upper:] [:lower:] < texto.txt
+tr [:lower:] [:upper:] < txt  #torna maiúsculo
+tr -s ' ' '\t' < texto.txt    #substitui todos espaços por tabs (funciona com caracteres quaisquer)
+tr -s '\n' ' ' < texto.txt    #substitui quebras de linha por espaços
+tr -s ' ' ' ' < texto.txt     #substitui espaços repetidos por um único espaço
 ~~~
 
 # Arquivos de texto - comando grep: grep [opções] padrão [ARQUIVO] Opções -n -i -v -qs -w -x (podemos combiná-las)
 ~~~shell
-grep palavra texto.txt       #imprime linha do arquivo texto.txt que contém a palavra (pode ser uma string)
-grep -n palavra texto.txt    #imprime nº da linha e linha do arquivo texto.txt que contém a palavra
-grep -i palavra texto.txt    #imprime linha do arquivo texto.txt que contém a palavra sem diferenciar maiúsculas de minúsculas
+grep palavra texto.txt      #imprime linha do arquivo texto.txt que contém a palavra (pode ser uma string)
+grep -n palavra texto.txt   #imprime nº da linha e linha do arquivo texto.txt que contém a palavra
+grep -i palavra texto.txt   #imprime linha do arquivo texto.txt que contém a palavra sem diferenciar maiúsculas de minúsculas
 grep -c palavra texto.txt   #mostra a quantidade de linhas que contém a palavra procurada
 grep -r -n mauricio         #mostra nº de linha e linha de todos arquivos do diretório que contém a palavra "maurício". -r habilita pesquisa recursiva no diretório atual. 
 grep -r -c palavra          #mostra a quantidade de linhas que contém a palavra procurada em cada arquivo do diretório corrente. 
 grep -v palavra texto.txt   #mostra tudo menos a linha do texto que contém a palavra
-grep ^a texto.txt         #mostra todas as linhas que iniciam com a
-grep a$ texto.txt         #mostra todas as linhas que terminam com a
+grep ^a texto.txt           #mostra todas as linhas que iniciam com a
+grep a$ texto.txt           #mostra todas as linhas que terminam com a
 grep -qs alegria texto.txt && echo "contido" || echo "não contido" # -qs == retorna true or false and quit without message
 ~~~
 
 # Arquivos de texto - comando  cut - opções: -c (caractere) -d (delimitador) -f (intervalo) 
 ~~~shell
-cut -c 1 texto.txt               #imprime somente o caractere 1 de cada linha (começa em 1)
-cut -c 1-5 texto.txt             #imprime do caractere 1 ao 5 de cada linha
+cut -c 1 texto.txt                #imprime somente o caractere 1 de cada linha (começa em 1)
+cut -c 1-5 texto.txt              #imprime do caractere 1 ao 5 de cada linha
 cut -c 1,3,5 texto.txt            #imprime os caracteres 1, 3, 5 de cada linha
 cut -c 1-3,5-10 texto.txt         #imprime os caracteres nos intervalos especificados
 cut -c 2- texto.txt               #imprime do caractere 2 até o fim da linha 
 cut -c -7 texto.txt               #imprime do caractere até o caractere 7
-cut -c 1-3 texto.txt --complement   #imprime tudo menos do caract 1 ao 3
-cut -d "." -f 1 texto.txt           #imprime o 1º campo delimitado pelo ponto
-cut -d "." -f 1,5 texto.txt         #imprime campos 1 e 5 delimitados pelo ponto
+cut -c 1-3 texto.txt --complement #imprime tudo menos do caract 1 ao 3
+cut -d "." -f 1 texto.txt         #imprime o 1º campo delimitado pelo ponto
+cut -d "." -f 1,5 texto.txt       #imprime campos 1 e 5 delimitados pelo ponto
 cut -d "." -f 2- texto.txt        #imprime do campo 2 em diante
 cut -s -d "." -f 1- texto.txt --output-delimiter="$"    #substitui na tela o delimitador . pelo $
 ~~~
@@ -244,33 +244,33 @@ cut -s -d "." -f 1- texto.txt --output-delimiter="$"    #substitui na tela o del
 #O sed lê um arquivo, linha por linha, e aplica a expressão do parâmetro a cada uma delas.
 #caracteres especiais: espaço (\ ), ponto (\.) Funcionamento: sed 'expressão regular' arquivo
 
-sed 's/tristeza/alegria/' texto.txt     #s=substitui 1º "tristeza" de cada linha por "alegria"
-sed 's/tristeza/alegria/g' texto.txt     #g=substitui todas ocorrências de tristeza por alegria
-sed '1s/aaa/ccc/' texto.txt             #substitui "aaa" por "ccc" na linha 1
-sed '1,3s/aaa/ccc/g' texto.txt          #substitui todos "aaa" por "ccc" entre as linhas 1 e 3
-sed 's/^/biscoito /' texto.txt         #coloca "biscoito" no inicio de cada linha
+sed 's/tristeza/alegria/' texto.txt   #s=substitui 1º "tristeza" de cada linha por "alegria"
+sed 's/tristeza/alegria/g' texto.txt  #g=substitui todas ocorrências de tristeza por alegria
+sed '1s/aaa/ccc/' texto.txt           #substitui "aaa" por "ccc" na linha 1
+sed '1,3s/aaa/ccc/g' texto.txt        #substitui todos "aaa" por "ccc" entre as linhas 1 e 3
+sed 's/^/biscoito /' texto.txt        #coloca "biscoito" no inicio de cada linha
 sed 's/$/ bolacha/' texto.txt         #coloca "bolacha" no fim de cada linha
-sed 's/aaa\|bbb/ccc/g' texto.txt       #substitui todos "aaa" e "bbb" por "ccc"
-sed 's/aaa.*bbb/ccc/' texto.txt         #substitui aaa, bbb e tudo entre aaa e bbb por ccc
-sed -i 's/aaa/bbb/g' texto.txt         #troca aaa por bbb DIRETAMENTE no arquivo (-i)
-sed '/aaa/ s/bbb/ccc/g'  texto.txt       #nas linhas que contem "aaa" subst "bbb" por "ccc" 
-sed '/aaa/! s/bbb/ccc/g' texto.txt       #nas linhas que não contem "aaa" substitui "bbb" por "ccc"
+sed 's/aaa\|bbb/ccc/g' texto.txt      #substitui todos "aaa" e "bbb" por "ccc"
+sed 's/aaa.*bbb/ccc/' texto.txt       #substitui aaa, bbb e tudo entre aaa e bbb por ccc
+sed -i 's/aaa/bbb/g' texto.txt        #troca aaa por bbb DIRETAMENTE no arquivo (-i)
+sed '/aaa/ s/bbb/ccc/g'  texto.txt    #nas linhas que contem "aaa" subst "bbb" por "ccc" 
+sed '/aaa/! s/bbb/ccc/g' texto.txt    #nas linhas que não contem "aaa" substitui "bbb" por "ccc"
 sed 's/[aeiou]/X/g' texto.txt         #substitui todas vogais por X 
 
-sed '5q' texto1.txt                #Imprime 5 primeiras linhas e q=quit
-sed -n '44p' texto.txt               #p=print, imprime SÓ linha 44
-sed -n '6,9p' arquivo.txt            #imprime da sexta até a nona
-sed -n '/^aaa/p' texto.txt              #imprime todas as linhas que começam com "aaa"
-sed -n '/^aaa\|^bbb/p' texto.txt      #imprime todas as linhas que começam com "aaa" ou com "bbb"
-sed -n '/aaa$/p' texto.txt              #imprime todas as linhas que terminam com "aaa"
-sed -n '/aaa/p' texto.txt              #imprime todas as linhas que contém "aaa"
-sed -n '/aaa/!p' texto.txt              #imprime todas as linhas que NÃO contém "aaa"
-sed -n '/aaa/{p;q;}' arquivo.txt        #imprime somente primeira linha que contém a string "aaa"
+sed '5q' texto1.txt               #Imprime 5 primeiras linhas e q=quit
+sed -n '44p' texto.txt            #p=print, imprime SÓ linha 44
+sed -n '6,9p' arquivo.txt         #imprime da sexta até a nona
+sed -n '/^aaa/p' texto.txt        #imprime todas as linhas que começam com "aaa"
+sed -n '/^aaa\|^bbb/p' texto.txt  #imprime todas as linhas que começam com "aaa" ou com "bbb"
+sed -n '/aaa$/p' texto.txt        #imprime todas as linhas que terminam com "aaa"
+sed -n '/aaa/p' texto.txt         #imprime todas as linhas que contém "aaa"
+sed -n '/aaa/!p' texto.txt        #imprime todas as linhas que NÃO contém "aaa"
+sed -n '/aaa/{p;q;}' arquivo.txt  #imprime somente primeira linha que contém a string "aaa"
 
-sed '1,5d' texto.txt               #d=deleta as linhas 1 até a 5
-sed '/^aaa/d' texto.txt             #d=deleta todas linhas que começam com a string "aaa"
-sed '/aaa/d' texto.txt               #d=deleta todas as linhas que contem a string "aaa"
-sed '/^$/d' texto.txt               #d=deleta linhas em branco
+sed '1,5d' texto.txt              #d=deleta as linhas 1 até a 5
+sed '/^aaa/d' texto.txt           #d=deleta todas linhas que começam com a string "aaa"
+sed '/aaa/d' texto.txt            #d=deleta todas as linhas que contem a string "aaa"
+sed '/^$/d' texto.txt             #d=deleta linhas em branco
 
 ~~~
 
@@ -360,7 +360,7 @@ echo sou um texto;
 echo "eu também sou" $variavel;   #não usa concatenadores 
 echo -n nao quebro a linha;
 echo -e "\n saida \t formatada"; 
-echo               #printa linha em branco
+echo                    #printa linha em branco
 printf "Obrigado.\n"    #usando o comando printf 
 ~~~
 
@@ -372,10 +372,10 @@ echo Boa noite $nome;
 
 # Variáveis
 ~~~shell
-num=5         #Criação/atribuição - Não é necessário declarar variáveis, sem espaço!
+num=5          #Criação/atribuição - Não é necessário declarar variáveis, sem espaço!
 echo $num      #Uso do ponto e vírgula é facultativo
 unset num      #apaga variável num
-hoje=$(date)     #armazenar saída do comando em variável: var=$(comando)
+hoje=$(date)   #armazenar saída do comando em variável: var=$(comando)
 nome="Mauricio"
 echo $nome
 ~~~
@@ -387,7 +387,7 @@ $HOME      #fazer ls $HOME/nomePasta é o mesmo que fazer ls ~/nomePasta
 $USER
 
 $0    #nome do script
-$1   #primeiro argumento
+$1    #primeiro argumento
 $2    #segundo argumento
 $#    #número de argumentos
 $*    #todos argumentos
@@ -397,22 +397,22 @@ $*    #todos argumentos
 ~~~shell
 #!/bin/bash
 echo "nome do script = " $0         #escreve ./script.sh
-echo "argumento 1 = " $1         #escreve argumento1
-echo "argumento 2 = " $2         #escreve argumento2
+echo "argumento 1 = " $1            #escreve argumento1
+echo "argumento 2 = " $2            #escreve argumento2
 echo "numero de argumentos = " $#   #escreve 2
-echo "todos argumentos = " $*      #escreve argumento1 argumento2
+echo "todos argumentos = " $*       #escreve argumento1 argumento2
 ~~~
 
 # Expressões aritméticas
 ~~~shell
-x=$(( 1500 + 200 ));   #jeito 1: não pode ter espaço antes nem depois do sinal de igualdade
+x=$(( 1500 + 200 ));    #jeito 1: não pode ter espaço antes nem depois do sinal de igualdade
 x=$[ 1500 + 200 ];      #jeito 2: não pode ter espaço antes nem depois do sinal de igualdade
 ~~~
 
 # Operadores aritméticos
 ~~~shell
 x=$[2**3]   #faz 2 elevado a 3 == 8
-x=$[5%3]   #resto da divisão, == 2
+x=$[5%3]    #resto da divisão, == 2
 ~~~
 
 
@@ -428,7 +428,7 @@ x=$[5%3]   #resto da divisão, == 2
 # comando test 
 > operadores para NÚMEROS:  -lt      -gt      -le      -ge      -eq      -ne
 ~~~shell
-[ $nota -ge 6 ] && echo good || echo bad      # se nota >= 6 imprime good, senão imprime bad
+[ $nota -ge 6 ] && echo good || echo bad        # se nota >= 6 imprime good, senão imprime bad
 [ $x -eq 2 ] && echo igual || echo diferente    # se x == 2 imprime igual, senão imprime diferente
 test $x -eq 2  && echo igual || echo diferente  # comando test é equivalente ao comando [ ] 
 ~~~
@@ -437,32 +437,32 @@ test $x -eq 2  && echo igual || echo diferente  # comando test é equivalente ao
 > operadores para STRINGS:  ==      !=      -z      -n
 ~~~shell
 test "$nome" == "Mauricio" && echo "é igual" || echo "não é igual"   # == testa se String é igual (funciona com '=' também)
-test "$nome" != "Mauricio" && echo "é diferente" || echo "não é"   # != testa se String é diferent
-test -z "$nome" && echo "String é nula"                        # -z testa se String é nula
-test -n "$nome" && echo "String é não nula"                     # -n testa se String é não nula
-[ $nome == "Mauricio" ] && echo igual || echo diferente            # outra forma, == testa se String é igual
+test "$nome" != "Mauricio" && echo "é diferente" || echo "não é"     # != testa se String é diferent
+test -z "$nome" && echo "String é nula"                              # -z testa se String é nula
+test -n "$nome" && echo "String é não nula"                          # -n testa se String é não nula
+[ $nome == "Mauricio" ] && echo igual || echo diferente              # outra forma, == testa se String é igual
 ~~~
 
 # comando test em arquivos 
 > obs: aaa ==  nome do arquivo
 ~~~shell
-test -d aaa && echo "é um diretório"    #-d testa se $aaa é um diretório outra forma: [ -d aaa ] && echo "é" || echo "nao é"
-test -f aaa && echo "é um arquivo"       #-f testa se $aaa é um arquivo
-test -r aaa && echo "pode ler"          #-r   o arquivo tem permissão de leitura
-test -s aaa && echo "tam > 0"         #-s   o tam do arquivo maior que zero
-test -w aaa && echo "pode w"         #-w   o arq tem permissão de escrita
-test -x aaa && echo "pode x"         #-x o arq tem permissão de execução
-test aaa -nt bbb && echo "é + novo"      #-nt testa se o arquivo em $aaa é mais recente que o em $bbb
-test aaa -ot bbb && echo "é + old"      #-ot   o arquivo é mais antigo
-test aaa -ef bbb && echo "mesmo arq"     #-ef testa se o arquivo é o mesmo
+test -d aaa && echo "é um diretório"   #-d testa se $aaa é um diretório outra forma: [ -d aaa ] && echo "é" || echo "nao é"
+test -f aaa && echo "é um arquivo"     #-f testa se $aaa é um arquivo
+test -r aaa && echo "pode ler"         #-r   o arquivo tem permissão de leitura
+test -s aaa && echo "tam > 0"          #-s   o tam do arquivo maior que zero
+test -w aaa && echo "pode w"           #-w   o arq tem permissão de escrita
+test -x aaa && echo "pode x"           #-x o arq tem permissão de execução
+test aaa -nt bbb && echo "é + novo"    #-nt testa se o arquivo em $aaa é mais recente que o em $bbb
+test aaa -ot bbb && echo "é + old"     #-ot   o arquivo é mais antigo
+test aaa -ef bbb && echo "mesmo arq"   #-ef testa se o arquivo é o mesmo
 test -f aa -a -s aa  && echo "ok"      #-a   E lógico - "aa é arquivo e não está vazio"
-test -d aaa -o -d bbb  && echo "ok"      #-o   OU lógico - "aaa ou bbb são diretórios"
+test -d aaa -o -d bbb  && echo "ok"    #-o   OU lógico - "aaa ou bbb são diretórios"
 ~~~
 
 # Comandos de seleção:   
 >if … else - em Shell Script o if testa um comando e não uma condição!
 ~~~shell
-if test "$media" -ge 6; then   #se colocar o then na outra linha pode-se suprimir o ';' 
+if test "$media" -ge 6; then  #se colocar o then na outra linha pode-se suprimir o ';' 
     echo aluno aprovado
 else 
     echo aluno reprovado   

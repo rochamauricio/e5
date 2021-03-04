@@ -23,57 +23,57 @@ ctrl + windows + baixo #restaurar tamanho da janela
 
 # Comandos gerais (formato: comando opções parâmetros )
 ~~~shell
-algumComando --help    #exibe ajuda sobre o comando
-man algumComando      #chama página de manual do comando (q to quit)
-info algumComando      #informações sobre o comando
-nomePrograma --version   #obter versão do programa ou
-clear               #limpa a tela (ctrl L)
-exit               #fecha shell
-reboot               #reinicia ou shutdown -r
-shutdown -h 20:30      #(cancelar: ctrl C ou fechando o terminal)
-shutdown now          #ou -h now 
-date               #exibe a data
-cal                  #mostra calendário do mês cal -m 12 == mostra dezembro
-uptime               #mostra há quanto tempo o sistema está ativo
-arch               #mostra a arquitetura da maquina
-lsb_release -r         #desocobrir a versão do ubuntu
-env                  #lista variáveis que o shell define por padrão
-sleep 1               #faz sistema ficar parado por segundo
+algumComando --help     #exibe ajuda sobre o comando
+man algumComando        #chama página de manual do comando (q to quit)
+info algumComando       #informações sobre o comando
+nomePrograma --version  #obter versão do programa ou
+clear                   #limpa a tela (ctrl L)
+exit                    #fecha shell
+reboot                  #reinicia ou shutdown -r
+shutdown -h 20:30       #(cancelar: ctrl C ou fechando o terminal)
+shutdown now            #ou -h now 
+date                    #exibe a data
+cal                     #mostra calendário do mês cal -m 12 == mostra dezembro
+uptime                  #mostra há quanto tempo o sistema está ativo
+arch                    #mostra a arquitetura da maquina
+lsb_release -r          #desocobrir a versão do ubuntu
+env                     #lista variáveis que o shell define por padrão
+sleep 1                 #faz sistema ficar parado por segundo
 ~~~
 
 # Diretórios 
 ~~~shell
-ls                  #lista arquivos do diretório atual
-ls nomePasta         #lista arquivos do diretório nomePasta
-ls -l               #mostra em forma de lista
-ls -a               #lista tudo (all) - arquivos que começam com '. e  mostra ocultos
-ls -t               #lista na ordem de modificação
-ls -r               #lista arquivos na ordem reversa
-ls -la               #combina -l e -a
-ls -ltr               #combina -l -t e -r
+ls            #lista arquivos do diretório atual
+ls nomePasta  #lista arquivos do diretório nomePasta
+ls -l         #mostra em forma de lista
+ls -a         #lista tudo (all) - arquivos que começam com '. e  mostra ocultos
+ls -t         #lista na ordem de modificação
+ls -r         #lista arquivos na ordem reversa
+ls -la        #combina -l e -a
+ls -ltr       #combina -l -t e -r
 
-cd ..               #volta um diretório
-cd .. /..             #volta dois diretórios
+cd ..                   #volta um diretório
+cd .. /..               #volta dois diretórios
 cd /home/mauricio/pasta #vai de qualquer lugar para o diretório chamado pasta :D
 
-mkdir nomeDiretorio                            #cria pasta
+mkdir nomeDiretorio                              #cria pasta
 mkdir -pv pastaMae/{filha1,filha2}               #cria árvore de diretórios (não pode ter espaços) 
-mkdir -pv pastaMae/{filha1/{neta1,neta2},filha2}   #cria árvore de diretórios (não pode ter espaços)
+mkdir -pv pastaMae/{filha1/{neta1,neta2},filha2} #cria árvore de diretórios (não pode ter espaços)
 
-rmdir         #apaga pasta vazia
-rm -r          #remove arquivo ou pasta e seu conteúdo
+rmdir    #apaga pasta vazia
+rm -r    #remove arquivo ou pasta e seu conteúdo
 
-pwd            #mostra diretório atual
-du            #verifica tamanho dos arquivos do diretório e dos subdiretórios
+pwd                          #mostra diretório atual
+du                           #verifica tamanho dos arquivos do diretório e dos subdiretórios
 cp nomeArq caminho/nomeArq
-cp -r * ../pasta          #copia recursivamente (-r) todos os arquivos para a pasta
+cp -r * ../pasta             #copia recursivamente (-r) todos os arquivos para a pasta
 mv arquivo.txt ../pasta2/    #move para pasta2 (dentro de uma pasta acima)
-mv nomeArq novoNomeArq     #renomeia arquivo
+mv nomeArq novoNomeArq       #renomeia arquivo
 ~~~
 
 # operador ~ substitui a variável $HOME
 ~~~shell
-ls ~/cursos    #é o mesmo que ls $HOME/cursos
+ls ~/cursos   #é o mesmo que ls $HOME/cursos
 ls /opt/      #'/' é o diretório raíz != do home
 ~~~
 

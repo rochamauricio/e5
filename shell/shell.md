@@ -7,16 +7,16 @@ cc -pthread programa.c -o programa	#compilar programa C com Threads
 # Atalhos
 ~~~shell
 arrasta ícone para prompt para obter seu caminho da pasta atual 
-ctrl + alt + t 				#abre cmd
-ctrl + c 					#cancela uma ação
-ctrl + l 					#limpa a tela
-ctrl + shift + v 			#colar		
-ctrl + shift + c			#copiar
-ctrl + shift + t			#abrir nova guia 
-ctrl + shift + w			#fechar nova guia 
-ctrl + shift + f			#pesquisar na janela do prompt
-ctrl + windows + cima		#maximizar a janela
-ctrl + windows + baixo		#restaurar tamanho da janela
+ctrl + alt + t 			#abre cmd
+ctrl + c 				#cancela uma ação
+ctrl + l 				#limpa a tela
+ctrl + shift + v 		#colar		
+ctrl + shift + c		#copiar
+ctrl + shift + t		#abrir nova guia 
+ctrl + shift + w		#fechar nova guia 
+ctrl + shift + f		#pesquisar na janela do prompt
+ctrl + windows + cima	#maximizar a janela
+ctrl + windows + baixo	#restaurar tamanho da janela
 ~~~
 
 # Comandos gerais (formato: comando opções parâmetros )
@@ -277,33 +277,33 @@ sed '/^$/d' texto.txt					#d=deleta linhas em branco
 
 # Shell
 
-	Shell é um programa que permite ao usuário interagir com o sistema operacional através de comandos digitados pelo teclado. 
-	O shell mais famoso do linux é o Bash (o bash é um interpretador de comandos do sh). 
-	A Extensão do é arquivo: .sh e a Primeira linha do arquivo precisa ser: #!/bin/bash
-	Cada comando digitado é lido, verificado, interpretado e enviado ao sistema operacional para ser de fato executado.
-	
+    Shell é um programa que permite ao usuário interagir com o sistema operacional através de comandos digitados pelo teclado. 
+    O shell mais famoso do linux é o Bash (o bash é um interpretador de comandos do sh). 
+    A Extensão do é arquivo: .sh e a Primeira linha do arquivo precisa ser: #!/bin/bash
+    Cada comando digitado é lido, verificado, interpretado e enviado ao sistema operacional para ser de fato executado.
+    
 # Bash
 
-	O nome Bash significa Bourne Again Shell, um produto GNU. 
-	Ele é a interface padrão de linha de comando utilizada praticamente em todas as distribuições GNU/Linux.
-	A aparência do prompt é controlada pela variável PS1.
+    O nome Bash significa Bourne Again Shell, um produto GNU. 
+    Ele é a interface padrão de linha de comando utilizada praticamente em todas as distribuições GNU/Linux.
+    A aparência do prompt é controlada pela variável PS1.
 
 # aprofundar
 
-	como receber um argumento $1 contendo a string --version, por exemplo e exibir um texto ilustrativo sobre a versão e
-	caso nao seja passado nenhum argumento não realizar nenhuma ação. Como fazer isso de maneira "bonita"?
+    como receber um argumento $1 contendo a string --version, por exemplo e exibir um texto ilustrativo sobre a versão e
+    caso nao seja passado nenhum argumento não realizar nenhuma ação. Como fazer isso de maneira "bonita"?
 
-	***Há várias maneiras de protegermos comandos, que são: 
-	aspas simples (''), aspas duplas ("") e a contra-barra, ou barra inversa (\)
+    ***Há várias maneiras de protegermos comandos, que são: 
+    aspas simples (''), aspas duplas ("") e a contra-barra, ou barra inversa (\)
 
-	diretório do $PATH para inserir scripts
-	*** criar um link simbólico em /usr/local/bin
+    diretório do $PATH para inserir scripts
+    *** criar um link simbólico em /usr/local/bin
 
 
-	***variáveis de ambiente
-	https://devcontent.com.br/artigos/windows/o-que-sao-como-alterar-criar-excluir-variaveis-de-ambiente
+    ***variáveis de ambiente
+    https://devcontent.com.br/artigos/windows/o-que-sao-como-alterar-criar-excluir-variaveis-de-ambiente
 
-	 ver o operador '~'
+     ver o operador '~'
 
 
 
@@ -336,19 +336,19 @@ chmod +x arquivo
 # Sou um comentário de uma linha
 
 <<NomeComentario
-	sou um comentario
-	de varias linhas 
+    sou um comentario
+    de varias linhas 
 NomeComentario
 
 :<<'NomeComentario'
-	Sou um Comentário 
-	de várias linhas 
+    Sou um Comentário 
+    de várias linhas 
 NomeComentario
 
 : '
-	Sou um Comentário 
-	de várias linhas 
-	(não se esqueça de dar um espaço após o ':' ) 
+    Sou um Comentário 
+    de várias linhas 
+    (não se esqueça de dar um espaço após o ':' ) 
 '
 ~~~
 
@@ -461,17 +461,17 @@ test -d aaa -o -d bbb  && echo "ok"		#-o	OU lógico - "aaa ou bbb são diretóri
 >if … else - em Shell Script o if testa um comando e não uma condição!
 ~~~shell
 if test "$media" -ge 6; then   #se colocar o then na outra linha pode-se suprimir o ';' 
-	echo aluno aprovado
+    echo aluno aprovado
 else 
-	echo aluno reprovado	
+    echo aluno reprovado	
 fi
 ~~~
 
 #Comandos de seleção:	if … else
 if [ $media -ge 6 ]; then 	#esses espaços são todos obrigatórios - o comando [ ... ] é um atalho para o comando test
-	echo aluno aprovado; 
+    echo aluno aprovado; 
 else	
-	echo aluno reprovado;
+    echo aluno reprovado;
 fi
 
 
@@ -479,49 +479,49 @@ fi
 if(( $media >= 6 )); then 			#dois parênteses são obrigatórios e não pode ter espaços entre o if e o (( 
     echo aluno aprovado;
 else
-	echo aluno reprovado;
+    echo aluno reprovado;
 fi;
 
 
 #Comandos de repetição:	while  	
 x=0
 while test "$x" -le 10; do #se colocar o do na outra linha pode-se suprimir o ';' 
-	echo -n "$x "	#printa na mesma linha
-	x=$((x+1))
+    echo -n "$x "	#printa na mesma linha
+    x=$((x+1))
 done
 
 
 #Comandos de repetição:	while  	
 i=0
 while [ $i -lt 10 ]; do
-	echo $(( i * 5 ))
-	i=$(( i + 1 ))			#outra forma: x=$[ x + 1 ]
+    echo $(( i * 5 ))
+    i=$(( i + 1 ))			#outra forma: x=$[ x + 1 ]
 done
 
 
 #Comandos de repetição:	while - versão que suporta somente os operadores: <	>	<=	>=	! 	==	!= 
 i=0;
 while(( $i <= 10 )); do
-	echo $i;
-	i=$(( $i + 1 ));
+    echo $i;
+    i=$(( $i + 1 ));
 done;
 
 
 #Comandos de repetição:	for
 for i in 0 1 2 3 4; do
-	echo $i
+    echo $i
 done
 
 
 #Comandos de repetição:	for
 for i in $(seq 0 10); do
-	echo $i
+    echo $i
 done
 
 
 #Comandos de repetição:	for
 for i in {0..20}; do			#nao pode ter espaços
-	echo $i
+    echo $i
 done
 
 
@@ -533,7 +533,7 @@ done
 
 #Comandos de repetição:	for
 for(( i=1; i<=10; i++ )); do
-	echo -n " " $i	
+    echo -n " " $i	
 done
 
 
@@ -548,7 +548,7 @@ funcao1		#chama a função - interessante: echo "ola amigos" $(funcao1)
 #Função "com parâmetros" - por valor
 #!/bin/bash
 function funcao2() {
-	echo "bom dia" $1 e bom dia $2;
+    echo "bom dia" $1 e bom dia $2;
 }
 funcao2 "Mauricio" "Joana";	
 
@@ -556,7 +556,7 @@ funcao2 "Mauricio" "Joana";
 #Função com variávels como parâmetro
 #!/bin/bash
 function funcao3() {
-	echo $1
+    echo $1
 }
 x=2
 f1 $x
@@ -565,7 +565,7 @@ f1 $x
 #Função com variávels como parâmetro - por referência
 #!/bin/bash
 function funcao4() {
-	echo $(( $1 + 200 ))  
+    echo $(( $1 + 200 ))  
 }
 x=3
 soma x
@@ -573,7 +573,7 @@ soma x
 #Função com variávels como parâmetro - por referência
 #!/bin/bash
 function funcao5() {
-	eval echo \$$1 
+    eval echo \$$1 
 }
 nome="Mauricio"
 funcao3 nome	
@@ -582,7 +582,7 @@ funcao3 nome
 #Função que modifica valor de variável recebida como parâmetro
 #!/bin/bash
 function atribuiValor() {
-	eval $1=100
+    eval $1=100
 }
 atribuiValor x
 echo $x
@@ -591,9 +591,9 @@ echo $x
 #Função que realiza swap entre 2 variáveis
 #!/bin/bash
 function swap() {
-	eval temp=\$$1
-	eval $1=\$$2
-	eval $2=$temp
+    eval temp=\$$1
+    eval $1=\$$2
+    eval $2=$temp
 }
 a=2
 b=5
@@ -670,11 +670,11 @@ echo "disse sim"
 #Escreve números de 1 a 10 dizendo se são pares ou ímpares
 #!/bin/bash
 for(( i=1; i<=10; i++ )); do
-	if(( ($i % 2) == 0 )); then
-		echo $i "- par";
-	else
-		echo $i "- impar ";
-	fi;
+    if(( ($i % 2) == 0 )); then
+        echo $i "- par";
+    else
+        echo $i "- impar ";
+    fi;
 done;
 
 #Escreve os parâmetros linha a linha enumerando-os.  
@@ -701,8 +701,8 @@ echo "Recebidos $# argumentos: $*"
 nomes=("mauricio" "maria" "josefa" "betina")
 x=0
 while test $x -lt ${#nomes[*]}; do
-	echo ${nomes[x]}
-	x=$((x+1))
+    echo ${nomes[x]}
+    x=$((x+1))
 done
 
 

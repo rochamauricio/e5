@@ -6,30 +6,30 @@ cc -pthread programa.c -o programa	#compilar programa C com Threads
 
 # Atalhos
 ~~~shell
-arrasta ícone para prompt para obter seu caminho da pasta atual 
-ctrl + alt + t 			#abre cmd
-ctrl + c 				#cancela uma ação
-ctrl + l 				#limpa a tela
-ctrl + shift + v 		#colar		
-ctrl + shift + c		#copiar
-ctrl + shift + t		#abrir nova guia 
-ctrl + shift + w		#fechar nova guia 
-ctrl + shift + f		#pesquisar na janela do prompt
-ctrl + windows + cima	#maximizar a janela
+arrasta ícone para prompt para obter seu caminho da pasta atual
+ctrl + alt + t 					#abre cmd
+ctrl + c								#cancela uma ação
+ctrl + l								#limpa a tela
+ctrl + shift + v 				#colar
+ctrl + shift + c				#copiar
+ctrl + shift + t				#abrir nova guia
+ctrl + shift + w				#fechar nova guia
+ctrl + shift + f				#pesquisar na janela do prompt
+ctrl + windows + cima		#maximizar a janela
 ctrl + windows + baixo	#restaurar tamanho da janela
 ~~~
 
 # Comandos gerais (formato: comando opções parâmetros )
 ~~~shell
-algumComando --help 	#exibe ajuda sobre o comando
-man algumComando		#chama página de manual do comando (q to quit)
-info algumComando		#informações sobre o comando
+algumComando --help 		#exibe ajuda sobre o comando
+man algumComando				#chama página de manual do comando (q to quit)
+info algumComando				#informações sobre o comando
 nomePrograma --version	#obter versão do programa ou
-clear					#limpa a tela (ctrl L)
-exit					#fecha shell
+clear										#limpa a tela (ctrl L)
+exit										#fecha shell
 reboot					#reinicia ou shutdown -r
 shutdown -h 20:30   	#(cancelar: ctrl C ou fechando o terminal)
-shutdown now 			#ou -h now 
+shutdown now 			#ou -h now
 date					#exibe a data
 cal						#mostra calendário do mês cal -m 12 == mostra dezembro
 uptime					#mostra há quanto tempo o sistema está ativo
@@ -39,7 +39,7 @@ env						#lista variáveis que o shell define por padrão
 sleep 1					#faz sistema ficar parado por segundo
 ~~~
 
-# Diretórios 
+# Diretórios
 ~~~shell
 ls						#lista arquivos do diretório atual
 ls nomePasta			#lista arquivos do diretório nomePasta
@@ -55,7 +55,7 @@ cd .. /.. 				#volta dois diretórios
 cd /home/mauricio/pasta #vai de qualquer lugar para o diretório chamado pasta :D
 
 mkdir nomeDiretorio	 								#cria pasta
-mkdir -pv pastaMae/{filha1,filha2}					#cria árvore de diretórios (não pode ter espaços) 
+mkdir -pv pastaMae/{filha1,filha2}					#cria árvore de diretórios (não pode ter espaços)
 mkdir -pv pastaMae/{filha1/{neta1,neta2},filha2}	#cria árvore de diretórios (não pode ter espaços)
 
 rmdir			#apaga pasta vazia
@@ -75,7 +75,7 @@ ls ~/cursos 	#é o mesmo que ls $HOME/cursos
 ls /opt/		#'/' é o diretório raíz != do home
 ~~~
 
-# operador ! 
+# operador !
 ~~~shell
 !c + enter		#executa ultimo comando iniciado com 'c'
 ~~~
@@ -90,7 +90,7 @@ find -name nomeArq		#encontra arquivos nos dir e subdir opç: -name, -iname, -ty
 # Operador pipe ( “|” )
 ~~~shell
 ls  | more 	# Saída de ls vira entrada de more (exibe os arquivos lentamente na tela)
-grep "mauricio" /etc/passwd | cut -d ":" -f 1,3,4  #exibe trechos 1,2,3 delimitados por : 
+grep "mauricio" /etc/passwd | cut -d ":" -f 1,3,4  #exibe trechos 1,2,3 delimitados por :
 ~~~
 
 # Redirecionamento ( < entrada ) e ( > saída)
@@ -103,7 +103,7 @@ echo "$(comando com uma saída)" > textoTeste1.txt
 
 # Comandos para compactar arquivos
 ~~~shell
-tar cvfz nomeArq.tar.gz [arquivos|diretório]	#para compactar .tar.gz 
+tar cvfz nomeArq.tar.gz [arquivos|diretório]	#para compactar .tar.gz
 tar cvzf nomeArq.tgz arquivo1 arquivo2			#para compactar .tgz - aprendi em compiladores
 ~~~
 
@@ -111,7 +111,7 @@ tar cvzf nomeArq.tgz arquivo1 arquivo2			#para compactar .tgz - aprendi em compi
 ~~~shell
 tar -xvf nomedoarquivo.tar 		#para descompactar tar
 tar -vzxf nomedoarquivo.tar.gz	#para descompactar tar.gz
-tar -xvfz nomeArq.tar.gz		#para descompactar tar.gz 
+tar -xvfz nomeArq.tar.gz		#para descompactar tar.gz
 tar -jxvf nomedoarquivo 		#para descompactar tar.bz2
 tar -xvzf nomedoarquivo.tgz		#para descompactar .tgz
 unzip nomedoarquivo.zip 		#para descompactar zip
@@ -125,8 +125,8 @@ whoami		#retorna usuário logado
 who			#retorna usuários logados no sistema
 su			#muda para root ou outro usuário
 w			#mostra usuários conectados
-df			#mostra disponibilidade das partições ou df -h 
-free		#mostra quanto de ram temos disponível 
+df			#mostra disponibilidade das partições ou df -h
+free		#mostra quanto de ram temos disponível
 mount		#monta (ativa) devices
 umount		#desmonta (desativa) devices
 echo $PATH	#diretórios que estão no PATH
@@ -138,10 +138,10 @@ ifconfig	#verificar ip da máquina
 hostname	#retorna nome do computador na rede
 ~~~
 
-# Comandos de rede 
+# Comandos de rede
 > wget - https://www.hostinger.com.br/tutoriais/wget-o-que-e-como-instalar-comandos-wget
 ~~~shell
-wget [link]	#downloads via FTP, SFTP, HTML e HTTPS 
+wget [link]	#downloads via FTP, SFTP, HTML e HTTPS
 ~~~
 
 # Comandos de rede - ssh
@@ -163,9 +163,9 @@ kill -9 8731		#parar a exec de um programa -9 matar processos, 2315 num processo
 ~~~shell
 touch nomeArq	#cria rapidamente um arquivo de texto
 gedit nomeArq & #abre arquivo de texto e não trava o prompt
-nano nomeArq 	#Editor de texto 
+nano nomeArq 	#Editor de texto
 cat nomeArq		#imprime arquivos na tela
-cat -n nomeArq	#imprime arquivos na tela com linhas 
+cat -n nomeArq	#imprime arquivos na tela com linhas
 head nomeArq	#mostra início arquivo  opções -n -c
 tail nomeArq	#exibe últimas linhas
 more nomeArq 	#exibe na tela e espera enter
@@ -187,7 +187,7 @@ cat texto.txt >> t2.txt	#escreve texto.txt no final do arquivo t2.txt (faz appen
 
 echo $(( RANDOM % 101 ));	#Gerando números aleatórios de 0 a 100 - usando a variável $RANDOM
 
-seq 0 10 100; 	#gera números de 10 em 10 até 100. 
+seq 0 10 100; 	#gera números de 10 em 10 até 100.
 seq 5;			#gera numeros 1 2 3 4 5
 seq -10 10;		#gera do número -10 ao 10
 
@@ -196,9 +196,9 @@ seq -10 10;		#gera do número -10 ao 10
 
 # Arquivos de texto - comando tr
 ~~~shell
-tr -d ' ' < texto.txt			#(-d == delete) remove espaços do arquivo. outra forma echo "mauricio rocha" | tr -d ' ' 
+tr -d ' ' < texto.txt			#(-d == delete) remove espaços do arquivo. outra forma echo "mauricio rocha" | tr -d ' '
 tr -d ',-' < texto.txt			#remove todos ',' e todos os '-' juntos e separados
-tr -s a-z A-Z < texto.txt		#(-s == substituir) torna maiúscula, funciona sem o "-s" outra forma: 
+tr -s a-z A-Z < texto.txt		#(-s == substituir) torna maiúscula, funciona sem o "-s" outra forma:
 tr -s A-Z a-z < texto.txt		#torna minúscula, outra forma: tr [:upper:] [:lower:] < texto.txt
 tr [:lower:] [:upper:] < txt	#torna maiúsculo
 tr -s ' ' '\t' < texto.txt		#substitui todos espaços por tabs (funciona com caracteres quaisquer)
@@ -212,21 +212,21 @@ grep palavra texto.txt 		#imprime linha do arquivo texto.txt que contém a palav
 grep -n palavra texto.txt 	#imprime nº da linha e linha do arquivo texto.txt que contém a palavra
 grep -i palavra texto.txt 	#imprime linha do arquivo texto.txt que contém a palavra sem diferenciar maiúsculas de minúsculas
 grep -c palavra texto.txt	#mostra a quantidade de linhas que contém a palavra procurada
-grep -r -n mauricio			#mostra nº de linha e linha de todos arquivos do diretório que contém a palavra "maurício". -r habilita pesquisa recursiva no diretório atual. 
-grep -r -c palavra 			#mostra a quantidade de linhas que contém a palavra procurada em cada arquivo do diretório corrente. 
+grep -r -n mauricio			#mostra nº de linha e linha de todos arquivos do diretório que contém a palavra "maurício". -r habilita pesquisa recursiva no diretório atual.
+grep -r -c palavra 			#mostra a quantidade de linhas que contém a palavra procurada em cada arquivo do diretório corrente.
 grep -v palavra texto.txt	#mostra tudo menos a linha do texto que contém a palavra
 grep ^a texto.txt			#mostra todas as linhas que iniciam com a
 grep a$ texto.txt			#mostra todas as linhas que terminam com a
 grep -qs alegria texto.txt && echo "contido" || echo "não contido" # -qs == retorna true or false and quit without message
 ~~~
 
-# Arquivos de texto - comando  cut - opções: -c (caractere) -d (delimitador) -f (intervalo) 
+# Arquivos de texto - comando  cut - opções: -c (caractere) -d (delimitador) -f (intervalo)
 ~~~shell
 cut -c 1 texto.txt   				#imprime somente o caractere 1 de cada linha (começa em 1)
 cut -c 1-5 texto.txt 				#imprime do caractere 1 ao 5 de cada linha
 cut -c 1,3,5 texto.txt				#imprime os caracteres 1, 3, 5 de cada linha
 cut -c 1-3,5-10 texto.txt			#imprime os caracteres nos intervalos especificados
-cut -c 2- texto.txt					#imprime do caractere 2 até o fim da linha 
+cut -c 2- texto.txt					#imprime do caractere 2 até o fim da linha
 cut -c -7 texto.txt					#imprime do caractere até o caractere 7
 cut -c 1-3 texto.txt --complement	#imprime tudo menos do caract 1 ao 3
 cut -d "." -f 1 texto.txt  			#imprime o 1º campo delimitado pelo ponto
@@ -251,9 +251,9 @@ sed 's/$/ bolacha/' texto.txt			#coloca "bolacha" no fim de cada linha
 sed 's/aaa\|bbb/ccc/g' texto.txt 		#substitui todos "aaa" e "bbb" por "ccc"
 sed 's/aaa.*bbb/ccc/' texto.txt			#substitui aaa, bbb e tudo entre aaa e bbb por ccc
 sed -i 's/aaa/bbb/g' texto.txt			#troca aaa por bbb DIRETAMENTE no arquivo (-i)
-sed '/aaa/ s/bbb/ccc/g'  texto.txt 		#nas linhas que contem "aaa" subst "bbb" por "ccc" 
+sed '/aaa/ s/bbb/ccc/g'  texto.txt 		#nas linhas que contem "aaa" subst "bbb" por "ccc"
 sed '/aaa/! s/bbb/ccc/g' texto.txt 		#nas linhas que não contem "aaa" substitui "bbb" por "ccc"
-sed 's/[aeiou]/X/g' texto.txt			#substitui todas vogais por X 
+sed 's/[aeiou]/X/g' texto.txt			#substitui todas vogais por X
 
 sed '5q' texto1.txt 					#Imprime 5 primeiras linhas e q=quit
 sed -n '44p' texto.txt					#p=print, imprime SÓ linha 44
@@ -272,19 +272,19 @@ sed '/^$/d' texto.txt					#d=deleta linhas em branco
 
 ~~~
 
-- - - 
+- - -
 
 
 # Shell
 
-    Shell é um programa que permite ao usuário interagir com o sistema operacional através de comandos digitados pelo teclado. 
-    O shell mais famoso do linux é o Bash (o bash é um interpretador de comandos do sh). 
+    Shell é um programa que permite ao usuário interagir com o sistema operacional através de comandos digitados pelo teclado.
+    O shell mais famoso do linux é o Bash (o bash é um interpretador de comandos do sh).
     A Extensão do é arquivo: .sh e a Primeira linha do arquivo precisa ser: #!/bin/bash
     Cada comando digitado é lido, verificado, interpretado e enviado ao sistema operacional para ser de fato executado.
-    
+
 # Bash
 
-    O nome Bash significa Bourne Again Shell, um produto GNU. 
+    O nome Bash significa Bourne Again Shell, um produto GNU.
     Ele é a interface padrão de linha de comando utilizada praticamente em todas as distribuições GNU/Linux.
     A aparência do prompt é controlada pela variável PS1.
 
@@ -293,7 +293,7 @@ sed '/^$/d' texto.txt					#d=deleta linhas em branco
     como receber um argumento $1 contendo a string --version, por exemplo e exibir um texto ilustrativo sobre a versão e
     caso nao seja passado nenhum argumento não realizar nenhuma ação. Como fazer isso de maneira "bonita"?
 
-    ***Há várias maneiras de protegermos comandos, que são: 
+    ***Há várias maneiras de protegermos comandos, que são:
     aspas simples (''), aspas duplas ("") e a contra-barra, ou barra inversa (\)
 
     diretório do $PATH para inserir scripts
@@ -314,22 +314,22 @@ sed '/^$/d' texto.txt					#d=deleta linhas em branco
 >	aprofundar
 
 
-- - - 
+- - -
 
 
 # Comandos a partir de arquivo.sh'
 
 ~~~shell
-#!/bin/bash		
+#!/bin/bash
 comandos aqui
 
 
 #Tornar arquivo.sh executável
-chmod +x arquivo 
+chmod +x arquivo
 
 
 #Executar um arquivo.sh
-./arquivo.sh 	
+./arquivo.sh
 
 
 # Comentários
@@ -337,29 +337,29 @@ chmod +x arquivo
 
 <<NomeComentario
     sou um comentario
-    de varias linhas 
+    de varias linhas
 NomeComentario
 
 :<<'NomeComentario'
-    Sou um Comentário 
-    de várias linhas 
+    Sou um Comentário
+    de várias linhas
 NomeComentario
 
 : '
-    Sou um Comentário 
-    de várias linhas 
-    (não se esqueça de dar um espaço após o ':' ) 
+    Sou um Comentário
+    de várias linhas
+    (não se esqueça de dar um espaço após o ':' )
 '
 ~~~
 
 # Escrevendo na tela
 ~~~shell
 echo sou um texto;
-echo "eu também sou" $variavel;	#não usa concatenadores 
+echo "eu também sou" $variavel;	#não usa concatenadores
 echo -n nao quebro a linha;
-echo -e "\n saida \t formatada"; 
+echo -e "\n saida \t formatada";
 echo					#printa linha em branco
-printf "Obrigado.\n" 	#usando o comando printf 
+printf "Obrigado.\n" 	#usando o comando printf
 ~~~
 
 # Lendo do teclado
@@ -414,8 +414,8 @@ x=$[5%3]	#resto da divisão, == 2
 ~~~
 
 
-# Operadores lógicos: 
-> &&	|| 
+# Operadores lógicos:
+> &&	||
 
 
 # Operadores relacionais e de igualdade (para variáveis) - VER USO
@@ -423,15 +423,15 @@ x=$[5%3]	#resto da divisão, == 2
 
 
 
-# comando test 
+# comando test
 > operadores para NÚMEROS:  -lt		-gt		-le		-ge		-eq		-ne
 ~~~shell
 [ $nota -ge 6 ] && echo good || echo bad		# se nota >= 6 imprime good, senão imprime bad
 [ $x -eq 2 ] && echo igual || echo diferente 	# se x == 2 imprime igual, senão imprime diferente
-test $x -eq 2  && echo igual || echo diferente  # comando test é equivalente ao comando [ ] 
+test $x -eq 2  && echo igual || echo diferente  # comando test é equivalente ao comando [ ]
 ~~~
 
-# comando test 
+# comando test
 > operadores para STRINGS:  ==		!=		-z		-n
 ~~~shell
 test "$nome" == "Mauricio" && echo "é igual" || echo "não é igual"	# == testa se String é igual (funciona com '=' também)
@@ -441,7 +441,7 @@ test -n "$nome" && echo "String é não nula"							# -n testa se String é não
 [ $nome == "Mauricio" ] && echo igual || echo diferente				# outra forma, == testa se String é igual
 ~~~
 
-# comando test em arquivos 
+# comando test em arquivos
 > obs: aaa ==  nome do arquivo
 ~~~shell
 test -d aaa && echo "é um diretório" 	#-d testa se $aaa é um diretório outra forma: [ -d aaa ] && echo "é" || echo "nao é"
@@ -457,41 +457,41 @@ test -f aa -a -s aa  && echo "ok"		#-a	E lógico - "aa é arquivo e não está v
 test -d aaa -o -d bbb  && echo "ok"		#-o	OU lógico - "aaa ou bbb são diretórios"
 ~~~
 
-# Comandos de seleção:	
+# Comandos de seleção:
 >if … else - em Shell Script o if testa um comando e não uma condição!
 ~~~shell
-if test "$media" -ge 6; then   #se colocar o then na outra linha pode-se suprimir o ';' 
+if test "$media" -ge 6; then   #se colocar o then na outra linha pode-se suprimir o ';'
     echo aluno aprovado
-else 
-    echo aluno reprovado	
+else
+    echo aluno reprovado
 fi
 ~~~
 
 #Comandos de seleção:	if … else
 if [ $media -ge 6 ]; then 	#esses espaços são todos obrigatórios - o comando [ ... ] é um atalho para o comando test
-    echo aluno aprovado; 
-else	
+    echo aluno aprovado;
+else
     echo aluno reprovado;
 fi
 
 
-#Comandos de seleção:	if … else - versão que suporta somente os operadores: <	>	<=	>=	! 	==	!= 
-if(( $media >= 6 )); then 			#dois parênteses são obrigatórios e não pode ter espaços entre o if e o (( 
+#Comandos de seleção:	if … else - versão que suporta somente os operadores: <	>	<=	>=	! 	==	!=
+if(( $media >= 6 )); then 			#dois parênteses são obrigatórios e não pode ter espaços entre o if e o ((
     echo aluno aprovado;
 else
     echo aluno reprovado;
 fi;
 
 
-#Comandos de repetição:	while  	
+#Comandos de repetição:	while
 x=0
-while test "$x" -le 10; do #se colocar o do na outra linha pode-se suprimir o ';' 
+while test "$x" -le 10; do #se colocar o do na outra linha pode-se suprimir o ';'
     echo -n "$x "	#printa na mesma linha
     x=$((x+1))
 done
 
 
-#Comandos de repetição:	while  	
+#Comandos de repetição:	while
 i=0
 while [ $i -lt 10 ]; do
     echo $(( i * 5 ))
@@ -499,7 +499,7 @@ while [ $i -lt 10 ]; do
 done
 
 
-#Comandos de repetição:	while - versão que suporta somente os operadores: <	>	<=	>=	! 	==	!= 
+#Comandos de repetição:	while - versão que suporta somente os operadores: <	>	<=	>=	! 	==	!=
 i=0;
 while(( $i <= 10 )); do
     echo $i;
@@ -533,7 +533,7 @@ done
 
 #Comandos de repetição:	for
 for(( i=1; i<=10; i++ )); do
-    echo -n " " $i	
+    echo -n " " $i
 done
 
 
@@ -550,7 +550,7 @@ funcao1		#chama a função - interessante: echo "ola amigos" $(funcao1)
 function funcao2() {
     echo "bom dia" $1 e bom dia $2;
 }
-funcao2 "Mauricio" "Joana";	
+funcao2 "Mauricio" "Joana";
 
 
 #Função com variávels como parâmetro
@@ -565,7 +565,7 @@ f1 $x
 #Função com variávels como parâmetro - por referência
 #!/bin/bash
 function funcao4() {
-    echo $(( $1 + 200 ))  
+    echo $(( $1 + 200 ))
 }
 x=3
 soma x
@@ -573,10 +573,10 @@ soma x
 #Função com variávels como parâmetro - por referência
 #!/bin/bash
 function funcao5() {
-    eval echo \$$1 
+    eval echo \$$1
 }
 nome="Mauricio"
-funcao3 nome	
+funcao3 nome
 
 
 #Função que modifica valor de variável recebida como parâmetro
@@ -614,12 +614,12 @@ echo ${#nomes[*]};					#exibe o número de elementos do vetor ou numElementos=${
 echo ${#nomes[2]};					#exibe o tamanho do segundo elemento do vetor
 echo ${!nomes[*]};					#exibe todos os índices dos elementos do vetor, outra forma: echo ${!nomes[@]};
 echo ${nomes[*]:2};					#exibe elementos do vetor somente a partir do índice 2 ou echo ${vetor[@]:$i}
-echo ${nomes[*]:2:3};				#exibe somente os 3 elementos a partir do elemento 2 ou 
+echo ${nomes[*]:2:3};				#exibe somente os 3 elementos a partir do elemento 2 ou
 echo ${nomes[0]:0:1};				#obtem primeira letra do elemento 0 do vetor
 unset nomes;						#apaga vetor
 unset nomes[1];						#apaga somente elemento de índice 1 do vetor
 nomes=("joaquina" ${nomes[*]});		#adiciona elemento no início do vetor. aceita variável: nomes=(${nomes[*]} $novoNome);
-nomes=(${nomes[*]} "joaquina");		#adiciona elemento no fim do vetor. aceita variável: nomes=($novoNome ${nomes[*]}); 
+nomes=(${nomes[*]} "joaquina");		#adiciona elemento no fim do vetor. aceita variável: nomes=($novoNome ${nomes[*]});
 frase=(${frase[*]});				#transforma a string frase em um vetor, usando os espaços como separador de elementos
 
 nomes=${nomes[*]};					#transforma o vetor nomes em uma string. outra forma: com @ no lugar do *;
@@ -677,7 +677,7 @@ for(( i=1; i<=10; i++ )); do
     fi;
 done;
 
-#Escreve os parâmetros linha a linha enumerando-os.  
+#Escreve os parâmetros linha a linha enumerando-os.
 #!/bin/bash
 i=1
 while test "$1"; do
@@ -687,7 +687,7 @@ while test "$1"; do
 done
 
 
-#Usando $0, $#, $1, $2   
+#Usando $0, $#, $1, $2
 #!/bin/bash
 echo "Nome do script $0"
 echo "Primeiro argumento: $1"
@@ -711,9 +711,9 @@ done
 
 
 : ' sed página oficial: https://www.gnu.org/software/sed/ '
-https://aurelio.net/sed/sed-howto/ 
-http://terminalroot.com.br/2015/07/30-exemplos-do-comando-sed-com-regex.html 
-http://rberaldo.com.br/o-comando-sed-do-linux/ 
+https://aurelio.net/sed/sed-howto/
+http://terminalroot.com.br/2015/07/30-exemplos-do-comando-sed-com-regex.html
+http://rberaldo.com.br/o-comando-sed-do-linux/
 
 
 http://www.dltec.com.br/blog/linux/exemplos-de-uso-do-comando-tr-no-linux/
@@ -729,11 +729,11 @@ http://rberaldo.com.br/tutorial-awk/
 #AVANÇAR
 
 https://www.codecademy.com/articles/command-line-commands
-http://rberaldo.com.br/curso-de-shell-script-modulo-1-scripts-shell-estruturas/ 
+http://rberaldo.com.br/curso-de-shell-script-modulo-1-scripts-shell-estruturas/
 https://www.vivaolinux.com.br/topico/Comandos/Como-alterar-o-conteudo-de-um-arquivo-sem-abrilo.
 http://www.linuxpro.com.br/dl/guia_500_comandos_Linux.pdf
-http://computeirodadepressao.com/guia-com-mais-de-500-comandos-do-linux-explicados/ 
-http://aurelio.net/shell/ 
+http://computeirodadepressao.com/guia-com-mais-de-500-comandos-do-linux-explicados/
+http://aurelio.net/shell/
 https://www.vivaolinux.com.br/artigo/Prompt-Bash-avancado/
 
 Buscar sobre ssh (salvar em comandos de rede)

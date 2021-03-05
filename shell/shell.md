@@ -469,128 +469,148 @@ else
 fi
 ~~~
 
-#Comandos de seleção:   if … else
+# Comandos de seleção:   if … else
+~~~shell
 if [ $media -ge 6 ]; then    #esses espaços são todos obrigatórios - o comando [ ... ] é um atalho para o comando test
     echo aluno aprovado; 
 else   
     echo aluno reprovado;
 fi
+~~~
 
-
-#Comandos de seleção:   if … else - versão que suporta somente os operadores: <   >   <=   >=   !    ==   != 
+# Comandos de seleção:   if … else - versão que suporta somente os operadores: <   >   <=   >=   !    ==   != 
+~~~shell
 if(( $media >= 6 )); then          #dois parênteses são obrigatórios e não pode ter espaços entre o if e o (( 
     echo aluno aprovado;
 else
     echo aluno reprovado;
 fi;
+~~~
 
 
-#Comandos de repetição:   while     
+# Comandos de repetição:   while     
+~~~shell
 x=0
 while test "$x" -le 10; do #se colocar o do na outra linha pode-se suprimir o ';' 
     echo -n "$x "   #printa na mesma linha
     x=$((x+1))
 done
+~~~
 
-
-#Comandos de repetição:   while     
+# Comandos de repetição:   while     
+~~~shell
 i=0
 while [ $i -lt 10 ]; do
     echo $(( i * 5 ))
     i=$(( i + 1 ))         #outra forma: x=$[ x + 1 ]
 done
+~~~
 
-
-#Comandos de repetição:   while - versão que suporta somente os operadores: <   >   <=   >=   !    ==   != 
+# Comandos de repetição:   
+> while - versão que suporta somente os operadores: <   >   <=   >=   !    ==   != 
+~~~shell
 i=0;
 while(( $i <= 10 )); do
     echo $i;
     i=$(( $i + 1 ));
 done;
+~~~
 
-
-#Comandos de repetição:   for
+# Comandos de repetição:   for
+~~~shell
 for i in 0 1 2 3 4; do
     echo $i
 done
+~~~
 
-
-#Comandos de repetição:   for
+# Comandos de repetição:   for
+~~~shell
 for i in $(seq 0 10); do
     echo $i
 done
+~~~
 
-
-#Comandos de repetição:   for
+# Comandos de repetição:   for
+~~~shell
 for i in {0..20}; do         #nao pode ter espaços
     echo $i
 done
+~~~
 
-
-#Comandos de repetição:   for
+# Comandos de repetição:   for
+~~~shell
 for i in {0..10..2}; do       #pula de 2 em 2
      echo $i
 done
+~~~
 
-
-#Comandos de repetição:   for
+# Comandos de repetição:   for
+~~~shell
 for(( i=1; i<=10; i++ )); do
     echo -n " " $i   
 done
+~~~
 
-
-#Função sem parâmetros
+# Função sem parâmetros
+~~~shell
 #!/bin/bash
 function funcao1() {
    echo "Sejam bem vindos."
 }
 funcao1      #chama a função - interessante: echo "ola amigos" $(funcao1)
+~~~
 
-
-#Função "com parâmetros" - por valor
+# Função "com parâmetros" - por valor
+~~~shell
 #!/bin/bash
 function funcao2() {
     echo "bom dia" $1 e bom dia $2;
 }
 funcao2 "Mauricio" "Joana";   
+~~~
 
-
-#Função com variávels como parâmetro
+# Função com variávels como parâmetro
+~~~shell
 #!/bin/bash
 function funcao3() {
     echo $1
 }
 x=2
 f1 $x
+~~~
 
-
-#Função com variávels como parâmetro - por referência
+# Função com variávels como parâmetro - por referência
+~~~shell
 #!/bin/bash
 function funcao4() {
     echo $(( $1 + 200 ))  
 }
 x=3
 soma x
+~~~
 
-#Função com variávels como parâmetro - por referência
+# Função com variávels como parâmetro - por referência
+~~~shell
 #!/bin/bash
 function funcao5() {
     eval echo \$$1 
 }
 nome="Mauricio"
 funcao3 nome   
+~~~
 
-
-#Função que modifica valor de variável recebida como parâmetro
+# Função que modifica valor de variável recebida como parâmetro
+~~~shell
 #!/bin/bash
 function atribuiValor() {
     eval $1=100
 }
 atribuiValor x
 echo $x
+~~~
 
-
-#Função que realiza swap entre 2 variáveis
+# Função que realiza swap entre 2 variáveis
+~~~shell
 #!/bin/bash
 function swap() {
     eval temp=\$$1
@@ -602,74 +622,79 @@ b=5
 echo "a = $a b = $b"
 swap a b
 echo "a = $a b = $b"
+~~~
 
 
+# Vetores
+> elementos são separados por espaços e começam com índice zero
+~~~shell
 
-#Vetores
-#elementos são separados por espaços e começam com índice zero
+nomes=("mauricio" "maria" "josé"); #declarando e inicializando um vetor
+echo ${nomes[0]};                  #usando elementos do vetor - sem espaços! não funciona isto: echo nomes[0];
+nomes[1]="joaquina";               #alterando um elemento do vetor
+echo ${nomes[*]};                  #exibe todos os elementos do vetor. outra forma: echo ${nomes[@]};
+echo ${#nomes[*]};                 #exibe o número de elementos do vetor ou numElementos=${#nomes[@]};
+echo ${#nomes[2]};                 #exibe o tamanho do segundo elemento do vetor
+echo ${!nomes[*]};                 #exibe todos os índices dos elementos do vetor, outra forma: echo ${!nomes[@]};
+echo ${nomes[*]:2};                #exibe elementos do vetor somente a partir do índice 2 ou echo ${vetor[@]:$i}
+echo ${nomes[*]:2:3};              #exibe somente os 3 elementos a partir do elemento 2 ou 
+echo ${nomes[0]:0:1};              #obtem primeira letra do elemento 0 do vetor
+unset nomes;                       #apaga vetor
+unset nomes[1];                    #apaga somente elemento de índice 1 do vetor
+nomes=("joaquina" ${nomes[*]});    #adiciona elemento no início do vetor. aceita variável: nomes=(${nomes[*]} $novoNome);
+nomes=(${nomes[*]} "joaquina");    #adiciona elemento no fim do vetor. aceita variável: nomes=($novoNome ${nomes[*]}); 
+frase=(${frase[*]});               #transforma a string frase em um vetor, usando os espaços como separador de elementos
 
-nomes=("mauricio" "maria" "josé");   #declarando e inicializando um vetor
-echo ${nomes[0]};               #usando elementos do vetor - sem espaços! não funciona isto: echo nomes[0];
-nomes[1]="joaquina";            #alterando um elemento do vetor
-echo ${nomes[*]};               #exibe todos os elementos do vetor. outra forma: echo ${nomes[@]};
-echo ${#nomes[*]};               #exibe o número de elementos do vetor ou numElementos=${#nomes[@]};
-echo ${#nomes[2]};               #exibe o tamanho do segundo elemento do vetor
-echo ${!nomes[*]};               #exibe todos os índices dos elementos do vetor, outra forma: echo ${!nomes[@]};
-echo ${nomes[*]:2};               #exibe elementos do vetor somente a partir do índice 2 ou echo ${vetor[@]:$i}
-echo ${nomes[*]:2:3};            #exibe somente os 3 elementos a partir do elemento 2 ou 
-echo ${nomes[0]:0:1};            #obtem primeira letra do elemento 0 do vetor
-unset nomes;                  #apaga vetor
-unset nomes[1];                  #apaga somente elemento de índice 1 do vetor
-nomes=("joaquina" ${nomes[*]});      #adiciona elemento no início do vetor. aceita variável: nomes=(${nomes[*]} $novoNome);
-nomes=(${nomes[*]} "joaquina");      #adiciona elemento no fim do vetor. aceita variável: nomes=($novoNome ${nomes[*]}); 
-frase=(${frase[*]});            #transforma a string frase em um vetor, usando os espaços como separador de elementos
+nomes=${nomes[*]};                 #transforma o vetor nomes em uma string. outra forma: com @ no lugar do *;
+echo ${#nome};                     #exibe o número de caracteres de uma string
+echo ${nome:0:4};                  #exibe 4 letras a partir da posiçao 0
 
-nomes=${nomes[*]};               #transforma o vetor nomes em uma string. outra forma: com @ no lugar do *;
-echo ${#nome};                  #exibe o número de caracteres de uma string
-echo ${nome:0:4};               #exibe 4 letras a partir da posiçao 0
+~~~
 
-
-#IFS é uma variável que modifica o separador de elementos de um vetor (antes era o espaço)
-#exemplo:
-export IFS=: #torna o separador do vetor o caractere ':'
+# IFS é uma variável que modifica o separador de elementos de um vetor (antes era o espaço)
+> exemplo:
+~~~shell
+export IFS=:      #torna o separador do vetor o caractere ':'
 nomes="Mauricio Rocha : Joana Antunes"
 echo $nomes
-nomes=($nomes)   #converte string nomes em um vetor
+nomes=($nomes)    #converte string nomes em um vetor
 echo $nomes
+~~~
 
 
-
-#Comando chmod
-
+# Comando chmod
+~~~shell
 chmod -r a   #arquivo 'a' não pode ser lido
 chmod +r a   #arquivo 'a' pode ser lido
 chmod -w a   #arquivo 'a' não pode ser editado
 chmod -w a   #arquivo 'a' pode ser editado
 chmod +X a   #arquivo 'a' pode ser executado
+~~~
 
 
+- - -
 
 
-#__________________________________________________________________________________________________
+# Exemplos de código:
 
-
-#Exemplos de código:
-
-#testa se string passada como primeiro argumento está contida na string passada como segundo argumento
+> testa se string passada como primeiro argumento está contida na string passada como segundo argumento
+~~~shell
 #!/bin/bash
 test $# -ne 2 && exit   # sai se script não tiver 2 parâmetros
 echo $2 | grep -qs $1 && echo "$1 está contida em $2" || echo "$1 nao esta contida em $2"
+~~~
 
-
-#Usando comandos read, test
+> Usando comandos read, test
+~~~shell
 #!/bin/bash
 echo "quer continuar? s ou n?"
 read resposta
 test "$resposta" = "n" && exit # se digitar n -> exit interrompe o script. O inverso de && é ||
 echo "disse sim"
+~~~
 
-
-#Escreve números de 1 a 10 dizendo se são pares ou ímpares
+> Escreve números de 1 a 10 dizendo se são pares ou ímpares
+~~~shell
 #!/bin/bash
 for(( i=1; i<=10; i++ )); do
     if(( ($i % 2) == 0 )); then
@@ -678,8 +703,10 @@ for(( i=1; i<=10; i++ )); do
     echo $i "- impar ";
     fi;
 done;
+~~~
 
-#Escreve os parâmetros linha a linha enumerando-os.  
+> Escreve os parâmetros linha a linha enumerando-os.  
+~~~shell
 #!/bin/bash
 i=1
 while test "$1"; do
@@ -687,18 +714,20 @@ while test "$1"; do
    shift         #elimina argumento $1 fazendo com que o argumento $2 passe a ser o $1 e o $3 o $2
    i=$((i+1))
 done
+~~~
 
-
-#Usando $0, $#, $1, $2   
+> Usando $0, $#, $1, $2   
+~~~shell
 #!/bin/bash
 echo "Nome do script $0"
 echo "Primeiro argumento: $1"
 echo "Segundo argumento $2"
 echo "Recebidos $# argumentos: $*"
 #chamando script: ./nomeScript.sh argumento1 argumento2
+~~~
 
-
-#escreve todos elementos do vetor cada um em uma linha
+> escreve todos elementos do vetor cada um em uma linha
+~~~shell
 #!/bin/bash
 nomes=("mauricio" "maria" "josefa" "betina")
 x=0
@@ -706,50 +735,42 @@ while test $x -lt ${#nomes[*]}; do
     echo ${nomes[x]}
     x=$((x+1))
 done
+~~~
 
 
 
-#__________________________________________________________________________________________________
+# Links
 
+[aurelio](https://aurelio.net/sed/sed-howto/)
 
-: ' sed página oficial: https://www.gnu.org/software/sed/ '
-https://aurelio.net/sed/sed-howto/ 
-http://terminalroot.com.br/2015/07/30-exemplos-do-comando-sed-com-regex.html 
-http://rberaldo.com.br/o-comando-sed-do-linux/ 
+[diolinux](https://www.diolinux.com.br/)
 
+[dicas](https://pt.wikipedia.org/wiki/Utilit%C3%A1rios_Unix )
 
-http://www.dltec.com.br/blog/linux/exemplos-de-uso-do-comando-tr-no-linux/
-http://cleitonbueno.com/linux-o-comando-cut/
+[guia comandos](https://pt.wikipedia.org/wiki/Uniq )
 
+[diolinux - diretorios](http://www.diolinux.com.br/2011/05/os-diretotios-do-linux.html)
 
-# Arquivos de texto - programa awk
-http://rberaldo.com.br/tutorial-awk/
+[sed página oficial](https://www.gnu.org/software/sed/)
 
+[regex](http://terminalroot.com.br/2015/07/30-exemplos-do-comando-sed-com-regex.html )
 
+[sed](http://rberaldo.com.br/o-comando-sed-do-linux/ )
 
+[tr](http://www.dltec.com.br/blog/linux/exemplos-de-uso-do-comando-tr-no-linux/)
 
-#AVANÇAR
+[cut](http://cleitonbueno.com/linux-o-comando-cut/)
+
+[awk](http://rberaldo.com.br/tutorial-awk/)
 
 https://www.codecademy.com/articles/command-line-commands
+
 http://rberaldo.com.br/curso-de-shell-script-modulo-1-scripts-shell-estruturas/ 
+
 https://www.vivaolinux.com.br/topico/Comandos/Como-alterar-o-conteudo-de-um-arquivo-sem-abrilo.
+
 http://www.linuxpro.com.br/dl/guia_500_comandos_Linux.pdf
+
 http://computeirodadepressao.com/guia-com-mais-de-500-comandos-do-linux-explicados/ 
-http://aurelio.net/shell/ 
+
 https://www.vivaolinux.com.br/artigo/Prompt-Bash-avancado/
-
-Buscar sobre ssh (salvar em comandos de rede)
-
-#__________________________________________________________________________________________________
-
-#   Links legais
-
-https://www.diolinux.com.br/ #muito conteudo legal publicações diárias
-https://pt.wikipedia.org/wiki/Utilit%C3%A1rios_Unix #dicas bem legais de linux
-https://pt.wikipedia.org/wiki/Uniq # tem um guia de comandos legal
-http://www.diolinux.com.br/2011/05/os-diretotios-do-linux.html
-
-
-
-
-

@@ -1,10 +1,12 @@
 # Compilar um programa em C
+
 ~~~shell
 gcc prog.c -o prog
 cc -pthread programa.c -o programa   #compilar programa C com Threads
 ~~~
 
 # Atalhos
+
 ~~~shell
 arrasta ícone para prompt para obter seu caminho da pasta atual 
 ctrl + alt + t         #abre cmd
@@ -17,11 +19,13 @@ ctrl + shift + w       #fechar nova guia
 ctrl + shift + f       #pesquisar na janela do prompt
 ctrl + windows + cima  #maximizar a janela
 ctrl + windows + baixo #restaurar tamanho da janela
+ctrl alt F1            #login via tty1
 ~~~
 
     
 
 # Comandos gerais (formato: comando opções parâmetros )
+
 ~~~shell
 algumComando --help     #exibe ajuda sobre o comando
 man algumComando        #chama página de manual do comando (q to quit)
@@ -42,6 +46,7 @@ sleep 1                 #faz sistema ficar parado por segundo
 ~~~
 
 # Diretórios 
+
 ~~~shell
 ls            #lista arquivos do diretório atual
 ls nomePasta  #lista arquivos do diretório nomePasta
@@ -71,31 +76,39 @@ mv arquivo.txt ../pasta2/    #move para pasta2 (dentro de uma pasta acima)
 mv nomeArq novoNomeArq       #renomeia arquivo
 ~~~
 
-# operador ~ substitui a variável $HOME
+# operadores ~ e /
+
+> ~ substitui a variável $HOME
+> / é o diretório raiz
+
 ~~~shell
 ls ~/cursos   #é o mesmo que ls $HOME/cursos
-ls /opt/      #'/' é o diretório raíz != do home
+ls /opt/      #'/' é o diretório raíz
 ~~~
 
 # operador ! 
+
 ~~~shell
-!c + enter      #executa ultimo comando iniciado com 'c'
+!c + enter   #executa ultimo comando iniciado com 'c'
 ~~~
 
 # Comandos para arquivos
+
 ~~~shell
 xdg-open nomeArquivo    #abre imagens, vídeos, músicas etc
 eog -f abreImagem.gif   #abre imagens
 find -name nomeArq      #encontra arquivos nos dir e subdir opç: -name, -iname, -type f, -exec
 ~~~
 
-# Operador pipe ( “|” )
+# Operador pipe ( "|" )
+
 ~~~shell
 ls  | more                                          # Saída de ls vira entrada de more (exibe os arquivos lentamente na tela)
 grep "mauricio" /etc/passwd | cut -d ":" -f 1,3,4   #exibe trechos 1,2,3 delimitados por : 
 ~~~
 
 # Redirecionamento ( < entrada ) e ( > saída)
+
 ~~~shell
 ./etapa1 < entrada.txt > saida.txt  #programa etapa1 recebe etrada.txt, e escreve saída em saida.txt
 ls > arquivo.txt                    #grava conteúdo do ls no arquivo.txt
@@ -104,12 +117,14 @@ echo "$(comando com uma saída)" > textoTeste1.txt
 ~~~
 
 # Comandos para compactar arquivos
+
 ~~~shell
 tar cvfz nomeArq.tar.gz [arquivos|diretório]   #para compactar .tar.gz 
 tar cvzf nomeArq.tgz arquivo1 arquivo2         #para compactar .tgz - aprendi em compiladores
 ~~~
 
 # Comandos para descompactar arquivos
+
 ~~~shell
 tar -xvf nomedoarquivo.tar     #para descompactar tar
 tar -vzxf nomedoarquivo.tar.gz #para descompactar tar.gz
@@ -122,6 +137,7 @@ bunzip nomedoarquivo.bz2       #para descompactar bz2
 ~~~
 
 # Comandos usuários e disco
+
 ~~~shell
 whoami      #retorna usuário logado
 who         #retorna usuários logados no sistema
@@ -135,23 +151,27 @@ echo $PATH  #diretórios que estão no PATH
 ~~~
 
 # Comandos de rede - gerais
+
 ~~~shell
 ifconfig   #verificar ip da máquina
 hostname   #retorna nome do computador na rede
 ~~~
 
 # Comandos de rede 
+
 > wget - https://www.hostinger.com.br/tutoriais/wget-o-que-e-como-instalar-comandos-wget
 ~~~shell
 wget [link]   #downloads via FTP, SFTP, HTML e HTTPS 
 ~~~
 
 # Comandos de rede - ssh
+
 ~~~shell
 ssh
 ~~~
 
 # Comandos sobre processos
+
 ~~~shell
 ps                  #mostra processos rodando ex.: ps aux PID é o número do processo
 ps aux | grep bash  #mostra processos relacionados ao bash
@@ -162,6 +182,7 @@ kill -9 8731        #parar a exec de um programa -9 matar processos, 2315 num pr
 
 
 # Arquivos de texto - criar / visualizar arquivos
+
 ~~~shell
 touch nomeArq    #cria rapidamente um arquivo de texto
 gedit nomeArq &  #abre arquivo de texto e não trava o prompt
@@ -175,6 +196,7 @@ less nomeArq     #mostrar arquivos grandes na tela com rolagem pelas setas - q t
 ~~~
 
 # Arquivos de texto - geral
+
 ~~~shell
 rev nomeArquivo            #inverter texto do arquivo
 wc texto.txt               #conta letras
@@ -197,6 +219,7 @@ seq -10 10;    #gera do número -10 ao 10
 
 
 # Arquivos de texto - comando tr
+
 ~~~shell
 tr -d ' ' < texto.txt         #(-d == delete) remove espaços do arquivo. outra forma echo "mauricio rocha" | tr -d ' ' 
 tr -d ',-' < texto.txt        #remove todos ',' e todos os '-' juntos e separados
@@ -208,7 +231,10 @@ tr -s '\n' ' ' < texto.txt    #substitui quebras de linha por espaços
 tr -s ' ' ' ' < texto.txt     #substitui espaços repetidos por um único espaço
 ~~~
 
-# Arquivos de texto - comando grep: grep [opções] padrão [ARQUIVO] Opções -n -i -v -qs -w -x (podemos combiná-las)
+# Arquivos de texto - comando grep
+
+> grep [opções] padrão [ARQUIVO] Opções -n -i -v -qs -w -x (podemos combiná-las)
+
 ~~~shell
 grep palavra texto.txt      #imprime linha do arquivo texto.txt que contém a palavra (pode ser uma string)
 grep -n palavra texto.txt   #imprime nº da linha e linha do arquivo texto.txt que contém a palavra
@@ -222,7 +248,10 @@ grep a$ texto.txt           #mostra todas as linhas que terminam com a
 grep -qs alegria texto.txt && echo "contido" || echo "não contido" # -qs == retorna true or false and quit without message
 ~~~
 
-# Arquivos de texto - comando  cut - opções: -c (caractere) -d (delimitador) -f (intervalo) 
+# Arquivos de texto - comando  cut 
+
+> opções: -c (caractere) -d (delimitador) -f (intervalo) 
+
 ~~~shell
 cut -c 1 texto.txt                #imprime somente o caractere 1 de cada linha (começa em 1)
 cut -c 1-5 texto.txt              #imprime do caractere 1 ao 5 de cada linha
@@ -240,10 +269,11 @@ cut -s -d "." -f 1- texto.txt --output-delimiter="$"    #substitui na tela o del
 
 
 # Arquivos de texto - programa sed
-~~~shell
-#O sed lê um arquivo, linha por linha, e aplica a expressão do parâmetro a cada uma delas.
-#caracteres especiais: espaço (\ ), ponto (\.) Funcionamento: sed 'expressão regular' arquivo
 
+> O sed lê um arquivo, linha por linha, e aplica a expressão do parâmetro a cada uma delas.
+> caracteres especiais: espaço (\ ), ponto (\.) Funcionamento: sed 'expressão regular' arquivo
+
+~~~shell
 sed 's/tristeza/alegria/' texto.txt   #s=substitui 1º "tristeza" de cada linha por "alegria"
 sed 's/tristeza/alegria/g' texto.txt  #g=substitui todas ocorrências de tristeza por alegria
 sed '1s/aaa/ccc/' texto.txt           #substitui "aaa" por "ccc" na linha 1
@@ -279,35 +309,33 @@ sed '/^$/d' texto.txt             #d=deleta linhas em branco
 
 # Shell
 
-    Shell é um programa que permite ao usuário interagir com o sistema operacional através de comandos digitados pelo teclado. 
-    O shell mais famoso do linux é o Bash (o bash é um interpretador de comandos do sh). 
-    A Extensão do é arquivo: .sh e a Primeira linha do arquivo precisa ser: #!/bin/bash
-    Cada comando digitado é lido, verificado, interpretado e enviado ao sistema operacional para ser de fato executado.
+>    Shell é um programa que permite ao usuário interagir com o sistema operacional através de comandos digitados pelo teclado. 
+>    O shell mais famoso do linux é o Bash (o bash é um interpretador de comandos do sh). 
+>    A Extensão do é arquivo: .sh e a Primeira linha do arquivo precisa ser: #!/bin/bash
+>    Cada comando digitado é lido, verificado, interpretado e enviado ao sistema operacional para ser de fato executado.
     
 # Bash
 
-    O nome Bash significa Bourne Again Shell, um produto GNU. 
-    Ele é a interface padrão de linha de comando utilizada praticamente em todas as distribuições GNU/Linux.
-    A aparência do prompt é controlada pela variável PS1.
-
-# aprofundar
-
-    como receber um argumento $1 contendo a string --version, por exemplo e exibir um texto ilustrativo sobre a versão e
-    caso nao seja passado nenhum argumento não realizar nenhuma ação. Como fazer isso de maneira "bonita"?
-
-    ***Há várias maneiras de protegermos comandos, que são: 
-    aspas simples (''), aspas duplas ("") e a contra-barra, ou barra inversa (\)
-
-    diretório do $PATH para inserir scripts
-    *** criar um link simbólico em /usr/local/bin
-
-
-    ***variáveis de ambiente
-    https://devcontent.com.br/artigos/windows/o-que-sao-como-alterar-criar-excluir-variaveis-de-ambiente
-
-     ver o operador '~'
-
-
+>    O nome Bash significa Bourne Again Shell, um produto GNU. 
+>    Ele é a interface padrão de linha de comando utilizada praticamente em todas as distribuições GNU/Linux.
+>    A aparência do prompt é controlada pela variável PS1.
+>
+># aprofundar
+>
+>    como receber um argumento $1 contendo a string --version, por exemplo e exibir um texto ilustrativo sobre a versão e
+>    caso nao seja passado nenhum argumento não realizar nenhuma ação. Como fazer isso de maneira "bonita"?
+>
+>    ***Há várias maneiras de protegermos comandos, que são: 
+>    aspas simples (''), aspas duplas ("") e a contra-barra, ou barra inversa (\)
+>
+>    diretório do $PATH para inserir scripts
+>    *** criar um link simbólico em /usr/local/bin
+>
+>
+>    ***variáveis de ambiente
+>    https://devcontent.com.br/artigos/windows/o-que-sao-como-alterar-criar-excluir-variaveis-de-ambiente
+>
+>     ver o operador '~'
 
 >   colocar um bin no PATH para permitir executá-lo de qualquer lugar
 >   [OPTIONAL] Add "{installation home}/bin" to your PATH environment
@@ -325,14 +353,11 @@ sed '/^$/d' texto.txt             #d=deleta linhas em branco
 #!/bin/bash      
 comandos aqui
 
-
 #Tornar arquivo.sh executável
 chmod +x arquivo 
 
-
 #Executar um arquivo.sh
 ./arquivo.sh    
-
 
 # Comentários
 # Sou um comentário de uma linha
@@ -355,6 +380,7 @@ NomeComentario
 ~~~
 
 # Escrevendo na tela
+
 ~~~shell
 echo sou um texto;
 echo "eu também sou" $variavel;   #não usa concatenadores 
@@ -365,12 +391,14 @@ printf "Obrigado.\n"    #usando o comando printf
 ~~~
 
 # Lendo do teclado
+
 ~~~shell
 read nome;            #pode ler mais de uma variável ao mesmo tempo: read nome sobrenome;
 echo Boa noite $nome;
 ~~~
 
 # Variáveis
+
 ~~~shell
 num=5          #Criação/atribuição - Não é necessário declarar variáveis, sem espaço!
 echo $num      #Uso do ponto e vírgula é facultativo
@@ -381,6 +409,7 @@ echo $nome
 ~~~
 
 # Constantes e variáveis especiais
+
 ~~~shell
 $PATH
 $HOME      #fazer ls $HOME/nomePasta é o mesmo que fazer ls ~/nomePasta
@@ -393,7 +422,10 @@ $#    #número de argumentos
 $*    #todos argumentos
 ~~~
 
-# Exemplo salvo em arquivo chamado script.sh. Abrir o arquivo: ./script.sh argumento1 argumento2
+# Exemplo 
+
+> salvo em arquivo chamado script.sh. Abrir o arquivo: ./script.sh argumento1 argumento2
+
 ~~~shell
 #!/bin/bash
 echo "nome do script = " $0         #escreve ./script.sh
@@ -404,12 +436,14 @@ echo "todos argumentos = " $*       #escreve argumento1 argumento2
 ~~~
 
 # Expressões aritméticas
+
 ~~~shell
 x=$(( 1500 + 200 ));    #jeito 1: não pode ter espaço antes nem depois do sinal de igualdade
 x=$[ 1500 + 200 ];      #jeito 2: não pode ter espaço antes nem depois do sinal de igualdade
 ~~~
 
 # Operadores aritméticos
+
 ~~~shell
 x=$[2**3]   #faz 2 elevado a 3 == 8
 x=$[5%3]    #resto da divisão, == 2
@@ -417,16 +451,21 @@ x=$[5%3]    #resto da divisão, == 2
 
 
 # Operadores lógicos: 
+
 > &&   || 
 
 
 # Operadores relacionais e de igualdade (para variáveis) - VER USO
-> <   >   <=   >=   ==   !=   !(negação), ex.: !$num => retorna true se num=0, senão retorna false
+
+> <   >   <=   >=   ==   !=   !(negação)
+> ex.: !$num => retorna true se num=0, senão retorna false
 
 
 
 # comando test 
+
 > operadores para NÚMEROS:  -lt      -gt      -le      -ge      -eq      -ne
+
 ~~~shell
 [ $nota -ge 6 ] && echo good || echo bad        # se nota >= 6 imprime good, senão imprime bad
 [ $x -eq 2 ] && echo igual || echo diferente    # se x == 2 imprime igual, senão imprime diferente
@@ -434,7 +473,9 @@ test $x -eq 2  && echo igual || echo diferente  # comando test é equivalente ao
 ~~~
 
 # comando test 
+
 > operadores para STRINGS:  ==      !=      -z      -n
+
 ~~~shell
 test "$nome" == "Mauricio" && echo "é igual" || echo "não é igual"   # == testa se String é igual (funciona com '=' também)
 test "$nome" != "Mauricio" && echo "é diferente" || echo "não é"     # != testa se String é diferent
@@ -444,7 +485,9 @@ test -n "$nome" && echo "String é não nula"                          # -n test
 ~~~
 
 # comando test em arquivos 
+
 > obs: aaa ==  nome do arquivo
+
 ~~~shell
 test -d aaa && echo "é um diretório"   #-d testa se $aaa é um diretório outra forma: [ -d aaa ] && echo "é" || echo "nao é"
 test -f aaa && echo "é um arquivo"     #-f testa se $aaa é um arquivo
@@ -460,7 +503,9 @@ test -d aaa -o -d bbb  && echo "ok"    #-o   OU lógico - "aaa ou bbb são diret
 ~~~
 
 # Comandos de seleção:   
->if … else - em Shell Script o if testa um comando e não uma condição!
+
+> if … else - em Shell Script o if testa um comando e não uma condição!
+
 ~~~shell
 if test "$media" -ge 6; then  #se colocar o then na outra linha pode-se suprimir o ';' 
     echo aluno aprovado
@@ -470,6 +515,7 @@ fi
 ~~~
 
 # Comandos de seleção:   if … else
+
 ~~~shell
 if [ $media -ge 6 ]; then    #esses espaços são todos obrigatórios - o comando [ ... ] é um atalho para o comando test
     echo aluno aprovado; 
@@ -478,7 +524,10 @@ else
 fi
 ~~~
 
-# Comandos de seleção:   if … else - versão que suporta somente os operadores: <   >   <=   >=   !    ==   != 
+# Comandos de seleção:   if … else 
+
+> versão que suporta somente os operadores: <   >   <=   >=   !    ==   != 
+
 ~~~shell
 if(( $media >= 6 )); then          #dois parênteses são obrigatórios e não pode ter espaços entre o if e o (( 
     echo aluno aprovado;
@@ -488,7 +537,8 @@ fi;
 ~~~
 
 
-# Comandos de repetição:   while     
+# Comandos de repetição: while     
+
 ~~~shell
 x=0
 while test "$x" -le 10; do #se colocar o do na outra linha pode-se suprimir o ';' 
@@ -497,7 +547,8 @@ while test "$x" -le 10; do #se colocar o do na outra linha pode-se suprimir o ';
 done
 ~~~
 
-# Comandos de repetição:   while     
+# Comandos de repetição: while     
+
 ~~~shell
 i=0
 while [ $i -lt 10 ]; do
@@ -506,8 +557,10 @@ while [ $i -lt 10 ]; do
 done
 ~~~
 
-# Comandos de repetição:   
+# Comandos de repetição:  
+
 > while - versão que suporta somente os operadores: <   >   <=   >=   !    ==   != 
+
 ~~~shell
 i=0;
 while(( $i <= 10 )); do
@@ -517,6 +570,7 @@ done;
 ~~~
 
 # Comandos de repetição:   for
+
 ~~~shell
 for i in 0 1 2 3 4; do
     echo $i
@@ -524,6 +578,7 @@ done
 ~~~
 
 # Comandos de repetição:   for
+
 ~~~shell
 for i in $(seq 0 10); do
     echo $i
@@ -531,6 +586,7 @@ done
 ~~~
 
 # Comandos de repetição:   for
+
 ~~~shell
 for i in {0..20}; do         #nao pode ter espaços
     echo $i
@@ -538,6 +594,7 @@ done
 ~~~
 
 # Comandos de repetição:   for
+
 ~~~shell
 for i in {0..10..2}; do       #pula de 2 em 2
      echo $i
@@ -545,6 +602,7 @@ done
 ~~~
 
 # Comandos de repetição:   for
+
 ~~~shell
 for(( i=1; i<=10; i++ )); do
     echo -n " " $i   
@@ -552,6 +610,7 @@ done
 ~~~
 
 # Função sem parâmetros
+
 ~~~shell
 #!/bin/bash
 function funcao1() {
@@ -561,6 +620,7 @@ funcao1      #chama a função - interessante: echo "ola amigos" $(funcao1)
 ~~~
 
 # Função "com parâmetros" - por valor
+
 ~~~shell
 #!/bin/bash
 function funcao2() {
@@ -570,6 +630,7 @@ funcao2 "Mauricio" "Joana";
 ~~~
 
 # Função com variávels como parâmetro
+
 ~~~shell
 #!/bin/bash
 function funcao3() {
@@ -580,6 +641,7 @@ f1 $x
 ~~~
 
 # Função com variávels como parâmetro - por referência
+
 ~~~shell
 #!/bin/bash
 function funcao4() {
@@ -590,6 +652,7 @@ soma x
 ~~~
 
 # Função com variávels como parâmetro - por referência
+
 ~~~shell
 #!/bin/bash
 function funcao5() {
@@ -600,6 +663,7 @@ funcao3 nome
 ~~~
 
 # Função que modifica valor de variável recebida como parâmetro
+
 ~~~shell
 #!/bin/bash
 function atribuiValor() {
@@ -610,6 +674,7 @@ echo $x
 ~~~
 
 # Função que realiza swap entre 2 variáveis
+
 ~~~shell
 #!/bin/bash
 function swap() {
@@ -626,7 +691,9 @@ echo "a = $a b = $b"
 
 
 # Vetores
+
 > elementos são separados por espaços e começam com índice zero
+
 ~~~shell
 
 nomes=("mauricio" "maria" "josé"); #declarando e inicializando um vetor
@@ -651,8 +718,10 @@ echo ${nome:0:4};                  #exibe 4 letras a partir da posiçao 0
 
 ~~~
 
-# IFS é uma variável que modifica o separador de elementos de um vetor (antes era o espaço)
-> exemplo:
+# Exemplo variável IFS
+
+> IFS é uma variável que modifica o separador de elementos de um vetor (antes era o espaço)
+
 ~~~shell
 export IFS=:      #torna o separador do vetor o caractere ':'
 nomes="Mauricio Rocha : Joana Antunes"
@@ -663,6 +732,7 @@ echo $nomes
 
 
 # Comando chmod
+
 ~~~shell
 chmod -r a   #arquivo 'a' não pode ser lido
 chmod +r a   #arquivo 'a' pode ser lido
@@ -678,6 +748,7 @@ chmod +X a   #arquivo 'a' pode ser executado
 # Exemplos de código:
 
 > testa se string passada como primeiro argumento está contida na string passada como segundo argumento
+
 ~~~shell
 #!/bin/bash
 test $# -ne 2 && exit   # sai se script não tiver 2 parâmetros
@@ -685,6 +756,7 @@ echo $2 | grep -qs $1 && echo "$1 está contida em $2" || echo "$1 nao esta cont
 ~~~
 
 > Usando comandos read, test
+
 ~~~shell
 #!/bin/bash
 echo "quer continuar? s ou n?"
@@ -694,6 +766,7 @@ echo "disse sim"
 ~~~
 
 > Escreve números de 1 a 10 dizendo se são pares ou ímpares
+
 ~~~shell
 #!/bin/bash
 for(( i=1; i<=10; i++ )); do
@@ -706,6 +779,7 @@ done;
 ~~~
 
 > Escreve os parâmetros linha a linha enumerando-os.  
+
 ~~~shell
 #!/bin/bash
 i=1
@@ -717,6 +791,7 @@ done
 ~~~
 
 > Usando $0, $#, $1, $2   
+
 ~~~shell
 #!/bin/bash
 echo "Nome do script $0"
@@ -727,6 +802,7 @@ echo "Recebidos $# argumentos: $*"
 ~~~
 
 > escreve todos elementos do vetor cada um em uma linha
+
 ~~~shell
 #!/bin/bash
 nomes=("mauricio" "maria" "josefa" "betina")
@@ -736,8 +812,6 @@ while test $x -lt ${#nomes[*]}; do
     x=$((x+1))
 done
 ~~~
-
-
 
 # Links
 

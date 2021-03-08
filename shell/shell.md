@@ -19,7 +19,7 @@ ctrl + shift + w       #fechar nova guia
 ctrl + shift + f       #pesquisar na janela do prompt
 ctrl + windows + cima  #maximizar a janela
 ctrl + windows + baixo #restaurar tamanho da janela
-ctrl + alt + f1            #login via tty1
+ctrl + alt + f1        #login via tty1
 ~~~
 
     

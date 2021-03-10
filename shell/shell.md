@@ -56,6 +56,7 @@ ls -t         #lista na ordem de modificação
 ls -r         #lista arquivos na ordem reversa
 ls -la        #combina -l e -a
 ls -ltr       #combina -l -t e -r
+ls -s         #mostra tamanhos de bloco
 
 cd ..                   #volta um diretório
 cd .. /..               #volta dois diretórios
@@ -72,8 +73,12 @@ pwd                          #mostra diretório atual
 du                           #verifica tamanho dos arquivos do diretório e dos subdiretórios
 cp nomeArq caminho/nomeArq
 cp -r * ../pasta             #copia recursivamente (-r) todos os arquivos para a pasta
+
 mv arquivo.txt ../pasta2/    #move para pasta2 (dentro de uma pasta acima)
 mv nomeArq novoNomeArq       #renomeia arquivo
+mv -i arq  dir               #move arq para dir e pede confirmacao da substituicao, ver -n, -b, -u
+mv -n arq1 arq2              #copia sem substituir 
+
 ~~~
 
 # operadores ~ e /

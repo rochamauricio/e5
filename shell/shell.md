@@ -2,24 +2,24 @@
 
 ~~~shell
 gcc prog.c -o prog
-cc -pthread programa.c -o programa   #compilar programa C com Threads
+cc -pthread programa.c -o programa   # compilar programa C com Threads
 ~~~
 
 # Atalhos
 
 ~~~shell
 arrasta ícone para prompt para obter seu caminho da pasta atual 
-ctrl + alt + t         #abre cmd
-ctrl + c               #cancela uma ação
-ctrl + l               #limpa a tela
-ctrl + shift + v       #colar      
-ctrl + shift + c       #copiar
-ctrl + shift + t       #abrir nova guia 
-ctrl + shift + w       #fechar nova guia 
-ctrl + shift + f       #pesquisar na janela do prompt
-ctrl + windows + cima  #maximizar a janela
-ctrl + windows + baixo #restaurar tamanho da janela
-ctrl + alt + f1        #login via tty1
+ctrl + alt + t         # abre cmd
+ctrl + c               # cancela uma ação
+ctrl + l               # limpa a tela
+ctrl + shift + v       # colar      
+ctrl + shift + c       # copiar
+ctrl + shift + t       # abrir nova guia 
+ctrl + shift + w       # fechar nova guia 
+ctrl + shift + f       # pesquisar na janela do prompt
+ctrl + windows + cima  # maximizar a janela
+ctrl + windows + baixo # restaurar tamanho da janela
+ctrl + alt + f1        # login via tty1
 ~~~
 
     
@@ -27,57 +27,64 @@ ctrl + alt + f1        #login via tty1
 # Comandos gerais (formato: comando opções parâmetros )
 
 ~~~shell
-algumComando --help     #exibe ajuda sobre o comando
-man algumComando        #chama página de manual do comando (q to quit)
-info algumComando       #informações sobre o comando
-nomePrograma --version  #obter versão do programa ou
-clear                   #limpa a tela (ctrl L)
-exit                    #fecha shell
-reboot                  #reinicia ou shutdown -r
-shutdown -h 20:30       #(cancelar: ctrl C ou fechando o terminal)
-shutdown now            #ou -h now 
-date                    #exibe a data
-cal                     #mostra calendário do mês cal -m 12 == mostra dezembro
-uptime                  #mostra há quanto tempo o sistema está ativo
-arch                    #mostra a arquitetura da maquina
-lsb_release -r          #desocobrir a versão do ubuntu
-env                     #lista variáveis que o shell define por padrão
-sleep 1                 #faz sistema ficar parado por segundo
+algumComando --help     # exibe ajuda sobre o comando
+man algumComando        # chama página de manual do comando (q to quit)
+info algumComando       # informações sobre o comando
+nomePrograma --version  # obter versão do programa ou
+clear                   # limpa a tela (ctrl L)
+exit                    # fecha shell
+reboot                  # reinicia ou shutdown -r
+shutdown -h 20:30       # (cancelar: ctrl C ou fechando o terminal)
+shutdown now            # ou -h now 
+date                    # exibe a data
+cal                     # mostra calendário do mês cal -m 12 == mostra dezembro
+uptime                  # mostra há quanto tempo o sistema está ativo
+arch                    # mostra a arquitetura da maquina
+lsb_release -r          # desocobrir a versão do ubuntu
+env                     # lista variáveis que o shell define por padrão
+sleep 1                 # faz sistema ficar parado por segundo
 ~~~
 
 # Diretórios 
 
 ~~~shell
-ls            #lista arquivos do diretório atual
-ls nomePasta  #lista arquivos do diretório nomePasta
-ls -l         #mostra em forma de lista
-ls -a         #lista tudo (all) - arquivos que começam com '. e  mostra ocultos
-ls -t         #lista na ordem de modificação
-ls -r         #lista arquivos na ordem reversa
-ls -la        #combina -l e -a
-ls -ltr       #combina -l -t e -r
-ls -s         #mostra tamanhos de bloco
+ls            # lista arquivos do diretório atual
+ls nomePasta  # lista arquivos do diretório nomePasta
+ls -l         # mostra em forma de lista
+ls -a         # lista tudo (all) - arquivos que começam com '. e  mostra ocultos
+ls -t         # lista na ordem de modificação
+ls -r         # lista arquivos na ordem reversa
+ls -la        # combina -l e -a
+ls -ltr       # combina -l -t e -r
+ls -s         # mostra tamanhos de bloco
 
-cd ..                   #volta um diretório
-cd .. /..               #volta dois diretórios
-cd /home/mauricio/pasta #vai de qualquer lugar para o diretório chamado pasta :D
+cd ..         # volta um diretório
+cd ../..      # volta dois diretórios
+cd /home/dir  # vai de qualquer lugar para o diretório chamado dir :D
 
-mkdir nomeDiretorio                              #cria pasta
-mkdir -pv pastaMae/{filha1,filha2}               #cria árvore de diretórios (não pode ter espaços) 
-mkdir -pv pastaMae/{filha1/{neta1,neta2},filha2} #cria árvore de diretórios (não pode ter espaços)
+cp nomeArq ./dir      # copia
+cp -r dir1 ./dir2     # copia recursivamente (-r) dir1 para dir2
+cp -i nomeArq ./dir   # confirma se arquivo existe
+cp -v nomeArq ./dir   # exibe status da copia (verbose)
+cp -l nomeArq ./dir   # cria hard link
+cp -s nomeArq ./dir   # cria link simbolico
+cp -u nomeArq ./dir   # copia somente se arquivo existir
 
-rmdir    #apaga pasta vazia
-rm -r    #remove arquivo ou pasta e seu conteúdo
+mv nomeArq ./dir            # move para dir
+mv nomeArq novoNome         # renomeia arquivo
+mv -i nomeArq  ./dir        # move arq para dir e pede confirmacao da substituicao, ver -n, -b, -u
+mv -n nomeArq1 nomeArq2     # copia sem substituir 
 
-pwd                          #mostra diretório atual
-du                           #verifica tamanho dos arquivos do diretório e dos subdiretórios
-cp nomeArq caminho/nomeArq
-cp -r * ../pasta             #copia recursivamente (-r) todos os arquivos para a pasta
+mkdir nomeDir                                   # cria diretorio
+mkdir -pv dirPai/{dirFilho1,dirFilho2}          # cria árvore de diretórios (não pode ter espaços) 
+mkdir -pv dirPai/{filho/{neto1,neto2},filho2}   # cria árvore de diretórios (não pode ter espaços)
 
-mv arquivo.txt ../pasta2/    #move para pasta2 (dentro de uma pasta acima)
-mv nomeArq novoNomeArq       #renomeia arquivo
-mv -i arq  dir               #move arq para dir e pede confirmacao da substituicao, ver -n, -b, -u
-mv -n arq1 arq2              #copia sem substituir 
+rmdir    # apaga diretorio vazio
+rm -r    # remove arquivo ou diretorio e seu conteúdo
+rm -f    # remove arquivo sem fazer perguntas
+
+pwd      # mostra diretório atual
+du       # verifica tamanho dos arquivos do diretório e dos subdiretórios
 
 ~~~
 
@@ -87,86 +94,88 @@ mv -n arq1 arq2              #copia sem substituir
 > / é o diretório raiz
 
 ~~~shell
-ls ~/cursos   #é o mesmo que ls $HOME/cursos
-ls /opt/      #'/' é o diretório raíz
+ls ~/cursos   # é o mesmo que ls $HOME/cursos
+ls /opt/      # '/' é o diretório raíz
 ~~~
 
 # operador ! 
 
 ~~~shell
-!c + enter   #executa ultimo comando iniciado com 'c'
+!c + enter   # executa ultimo comando iniciado com 'c'
 ~~~
 
 # Comandos para arquivos
 
 ~~~shell
-xdg-open nomeArquivo    #abre imagens, vídeos, músicas etc
-eog -f abreImagem.gif   #abre imagens
-find -name nomeArq      #encontra arquivos nos dir e subdir opç: -name, -iname, -type f, -exec
+find -name nomeArq      # encontra arquivos nos dir e subdir opç: -name, -iname, -type f, -exec
+
+xdg-open nomeArquivo    # abre imagens, vídeos, músicas etc
+eog -f abreImagem.gif   # abre imagens
+
 ~~~
 
 # Operador pipe ( "|" )
 
 ~~~shell
 ls  | more                                          # Saída de ls vira entrada de more (exibe os arquivos lentamente na tela)
-grep "mauricio" /etc/passwd | cut -d ":" -f 1,3,4   #exibe trechos 1,2,3 delimitados por : 
+grep "mauricio" /etc/passwd | cut -d ":" -f 1,3,4   # exibe trechos 1,2,3 delimitados por : 
 ~~~
 
 # Redirecionamento ( < entrada ) e ( > saída)
 
 ~~~shell
-./etapa1 < entrada.txt > saida.txt  #programa etapa1 recebe etrada.txt, e escreve saída em saida.txt
-ls > arquivo.txt                    #grava conteúdo do ls no arquivo.txt
-./script.sh > saida.txt             #grava saída do script.sh no arquivo saida.txt
+./etapa1 < entrada.txt > saida.txt  # programa etapa1 recebe etrada.txt, e escreve saída em saida.txt
+ls > arquivo.txt                    # grava conteúdo do ls no arquivo.txt
+./script.sh > saida.txt             # grava saída do script.sh no arquivo saida.txt
 echo "$(comando com uma saída)" > textoTeste1.txt
 ~~~
 
 # Comandos para compactar arquivos
 
 ~~~shell
-tar cvfz nomeArq.tar.gz [arquivos|diretório]   #para compactar .tar.gz 
-tar cvzf nomeArq.tgz arquivo1 arquivo2         #para compactar .tgz - aprendi em compiladores
+tar cvfz nomeArq.tar.gz [arquivos|diretório]   # para compactar .tar.gz 
+tar cvzf nomeArq.tgz arquivo1 arquivo2         # para compactar .tgz - aprendi em compiladores
 ~~~
 
 # Comandos para descompactar arquivos
 
 ~~~shell
-tar -xvf nomedoarquivo.tar     #para descompactar tar
-tar -vzxf nomedoarquivo.tar.gz #para descompactar tar.gz
-tar -xvfz nomeArq.tar.gz       #para descompactar tar.gz 
-tar -jxvf nomedoarquivo        #para descompactar tar.bz2
-tar -xvzf nomedoarquivo.tgz    #para descompactar .tgz
-unzip nomedoarquivo.zip        #para descompactar zip
-unrar x nomedoarquivo.rar      #para descompactar rar
-bunzip nomedoarquivo.bz2       #para descompactar bz2
+tar -xvf nomedoarquivo.tar     # para descompactar tar
+tar -vzxf nomedoarquivo.tar.gz # para descompactar tar.gz
+tar -xvfz nomeArq.tar.gz       # para descompactar tar.gz 
+tar -jxvf nomedoarquivo        # para descompactar tar.bz2
+tar -xvzf nomedoarquivo.tgz    # para descompactar .tgz
+unzip nomedoarquivo.zip        # para descompactar zip
+unrar x nomedoarquivo.rar      # para descompactar rar
+bunzip nomedoarquivo.bz2       # para descompactar bz2
 ~~~
 
 # Comandos usuários e disco
 
 ~~~shell
-whoami      #retorna usuário logado
-who         #retorna usuários logados no sistema
-su          #muda para root ou outro usuário
-w           #mostra usuários conectados
-df          #mostra disponibilidade das partições ou df -h 
-free        #mostra quanto de ram temos disponível 
-mount       #monta (ativa) devices
-umount      #desmonta (desativa) devices
-echo $PATH  #diretórios que estão no PATH
+whoami      # retorna usuário logado
+who         # retorna usuários logados no sistema
+su          # muda para root ou outro usuário
+w           # mostra usuários conectados
+df          # mostra disponibilidade das partições ou df -h 
+free        # mostra quanto de ram temos disponível 
+mount       # monta (ativa) devices
+umount      # desmonta (desativa) devices
+echo $PATH  # diretórios que estão no PATH
 ~~~
 
 # Comandos de rede - gerais
 
 ~~~shell
-ifconfig   #verificar ip da máquina
-hostname   #retorna nome do computador na rede
+ifconfig   # verificar ip da máquina
+hostname   # retorna nome do computador na rede
 ~~~
 
 # Comandos de rede 
 
 > wget - https://www.hostinger.com.br/tutoriais/wget-o-que-e-como-instalar-comandos-wget
 ~~~shell
-wget [link]   #downloads via FTP, SFTP, HTML e HTTPS 
+wget [link]   # downloads via FTP, SFTP, HTML e HTTPS 
 ~~~
 
 # Comandos de rede - ssh
@@ -178,10 +187,10 @@ ssh
 # Comandos sobre processos
 
 ~~~shell
-ps                  #mostra processos rodando ex.: ps aux PID é o número do processo
-ps aux | grep bash  #mostra processos relacionados ao bash
-top                 #mostra processos rodando em tempo real + info (q to quit)
-kill -9 8731        #parar a exec de um programa -9 matar processos, 2315 num processo
+ps                  # mostra processos rodando ex.: ps aux PID é o número do processo
+ps aux | grep bash  # mostra processos relacionados ao bash
+top                 # mostra processos rodando em tempo real + info (q to quit)
+kill -9 8731        # parar a exec de um programa -9 matar processos, 2315 num processo
 ~~~
 
 
@@ -189,36 +198,36 @@ kill -9 8731        #parar a exec de um programa -9 matar processos, 2315 num pr
 # Arquivos de texto - criar / visualizar arquivos
 
 ~~~shell
-touch nomeArq    #cria rapidamente um arquivo de texto
-gedit nomeArq &  #abre arquivo de texto e não trava o prompt
-nano nomeArq     #Editor de texto 
-cat nomeArq      #imprime arquivos na tela
-cat -n nomeArq   #imprime arquivos na tela com linhas 
-head nomeArq     #mostra início arquivo  opções -n -c
-tail nomeArq     #exibe últimas linhas
-more nomeArq     #exibe na tela e espera enter
-less nomeArq     #mostrar arquivos grandes na tela com rolagem pelas setas - q to quit
+touch nomeArq    # cria rapidamente um arquivo de texto
+gedit nomeArq &  # abre arquivo de texto e não trava o prompt
+nano nomeArq     # Editor de texto 
+cat nomeArq      # imprime arquivos na tela
+cat -n nomeArq   # imprime arquivos na tela com linhas 
+head nomeArq     # mostra início arquivo  opções -n -c
+tail nomeArq     # exibe últimas linhas
+more nomeArq     # exibe na tela e espera enter
+less nomeArq     # mostrar arquivos grandes na tela com rolagem pelas setas - q to quit
 ~~~
 
 # Arquivos de texto - geral
 
 ~~~shell
-rev nomeArquivo            #inverter texto do arquivo
-wc texto.txt               #conta letras
-uniq texto.txt             #remove as linhas duplicadas e consecutivas do arquivo
-sort texto.txt             #ordena as linhas do arquivo de acordo com o primeiro caractere
-sort -n texto.txt          #ordena as linhas do arquivo de acordo com o o caractere numérico do início da linha
-sort texto.txt | uniq      #ordena arquivo e remove linhas duplicatas
-> texto.txt                #apaga conteúdo do arquivo texto.txt
-echo "oi" > texto.txt      #escreve "oi" no arquivo texto.txt (sobreescreve arquivo)
-echo "oi2" >> texto.txt    #escreve "oi2" no arquivo texto.txt (faz append - adiciona no final do arquivo sem sobrescrevê-lo)
-cat texto.txt >> t2.txt    #escreve texto.txt no final do arquivo t2.txt (faz append)
+rev nomeArquivo            # inverter texto do arquivo
+wc texto.txt               # conta letras
+uniq texto.txt             # remove as linhas duplicadas e consecutivas do arquivo
+sort texto.txt             # ordena as linhas do arquivo de acordo com o primeiro caractere
+sort -n texto.txt          # ordena as linhas do arquivo de acordo com o o caractere numérico do início da linha
+sort texto.txt | uniq      # ordena arquivo e remove linhas duplicatas
+> texto.txt                # apaga conteúdo do arquivo texto.txt
+echo "oi" > texto.txt      # escreve "oi" no arquivo texto.txt (sobreescreve arquivo)
+echo "oi2" >> texto.txt    # escreve "oi2" no arquivo texto.txt (faz append - adiciona no final do arquivo sem sobrescrevê-lo)
+cat texto.txt >> t2.txt    # escreve texto.txt no final do arquivo t2.txt (faz append)
 
-echo $(( RANDOM % 101 ));  #Gerando números aleatórios de 0 a 100 - usando a variável $RANDOM
+echo $(( RANDOM % 101 ));  # Gerando números aleatórios de 0 a 100 - usando a variável $RANDOM
 
-seq 0 10 100;  #gera números de 10 em 10 até 100. 
-seq 5;         #gera numeros 1 2 3 4 5
-seq -10 10;    #gera do número -10 ao 10
+seq 0 10 100;  # gera números de 10 em 10 até 100. 
+seq 5;         # gera numeros 1 2 3 4 5
+seq -10 10;    # gera do número -10 ao 10
 
 ~~~
 
@@ -226,14 +235,14 @@ seq -10 10;    #gera do número -10 ao 10
 # Arquivos de texto - comando tr
 
 ~~~shell
-tr -d ' ' < texto.txt         #(-d == delete) remove espaços do arquivo. outra forma echo "mauricio rocha" | tr -d ' ' 
-tr -d ',-' < texto.txt        #remove todos ',' e todos os '-' juntos e separados
-tr -s a-z A-Z < texto.txt     #(-s == substituir) torna maiúscula, funciona sem o "-s" outra forma: 
-tr -s A-Z a-z < texto.txt     #torna minúscula, outra forma: tr [:upper:] [:lower:] < texto.txt
-tr [:lower:] [:upper:] < txt  #torna maiúsculo
-tr -s ' ' '\t' < texto.txt    #substitui todos espaços por tabs (funciona com caracteres quaisquer)
-tr -s '\n' ' ' < texto.txt    #substitui quebras de linha por espaços
-tr -s ' ' ' ' < texto.txt     #substitui espaços repetidos por um único espaço
+tr -d ' ' < texto.txt         # (-d == delete) remove espaços do arquivo. outra forma echo "mauricio rocha" | tr -d ' ' 
+tr -d ',-' < texto.txt        # remove todos ',' e todos os '-' juntos e separados
+tr -s a-z A-Z < texto.txt     # (-s == substituir) torna maiúscula, funciona sem o "-s" outra forma: 
+tr -s A-Z a-z < texto.txt     # torna minúscula, outra forma: tr [:upper:] [:lower:] < texto.txt
+tr [:lower:] [:upper:] < txt  # torna maiúsculo
+tr -s ' ' '\t' < texto.txt    # substitui todos espaços por tabs (funciona com caracteres quaisquer)
+tr -s '\n' ' ' < texto.txt    # substitui quebras de linha por espaços
+tr -s ' ' ' ' < texto.txt     # substitui espaços repetidos por um único espaço
 ~~~
 
 # Arquivos de texto - comando grep
@@ -241,15 +250,15 @@ tr -s ' ' ' ' < texto.txt     #substitui espaços repetidos por um único espaç
 > grep [opções] padrão [ARQUIVO] Opções -n -i -v -qs -w -x (podemos combiná-las)
 
 ~~~shell
-grep palavra texto.txt      #imprime linha do arquivo texto.txt que contém a palavra (pode ser uma string)
-grep -n palavra texto.txt   #imprime nº da linha e linha do arquivo texto.txt que contém a palavra
-grep -i palavra texto.txt   #imprime linha do arquivo texto.txt que contém a palavra sem diferenciar maiúsculas de minúsculas
-grep -c palavra texto.txt   #mostra a quantidade de linhas que contém a palavra procurada
-grep -r -n mauricio         #mostra nº de linha e linha de todos arquivos do diretório que contém a palavra "maurício". -r habilita pesquisa recursiva no diretório atual. 
-grep -r -c palavra          #mostra a quantidade de linhas que contém a palavra procurada em cada arquivo do diretório corrente. 
-grep -v palavra texto.txt   #mostra tudo menos a linha do texto que contém a palavra
-grep ^a texto.txt           #mostra todas as linhas que iniciam com a
-grep a$ texto.txt           #mostra todas as linhas que terminam com a
+grep palavra texto.txt      # imprime linha do arquivo texto.txt que contém a palavra (pode ser uma string)
+grep -n palavra texto.txt   # imprime nº da linha e linha do arquivo texto.txt que contém a palavra
+grep -i palavra texto.txt   # imprime linha do arquivo texto.txt que contém a palavra sem diferenciar maiúsculas de minúsculas
+grep -c palavra texto.txt   # mostra a quantidade de linhas que contém a palavra procurada
+grep -r -n mauricio         # mostra nº de linha e linha de todos arquivos do diretório que contém a palavra "maurício". -r habilita pesquisa recursiva no diretório atual. 
+grep -r -c palavra          # mostra a quantidade de linhas que contém a palavra procurada em cada arquivo do diretório corrente. 
+grep -v palavra texto.txt   # mostra tudo menos a linha do texto que contém a palavra
+grep ^a texto.txt           # mostra todas as linhas que iniciam com a
+grep a$ texto.txt           # mostra todas as linhas que terminam com a
 grep -qs alegria texto.txt && echo "contido" || echo "não contido" # -qs == retorna true or false and quit without message
 ~~~
 
@@ -258,17 +267,17 @@ grep -qs alegria texto.txt && echo "contido" || echo "não contido" # -qs == ret
 > opções: -c (caractere) -d (delimitador) -f (intervalo) 
 
 ~~~shell
-cut -c 1 texto.txt                #imprime somente o caractere 1 de cada linha (começa em 1)
-cut -c 1-5 texto.txt              #imprime do caractere 1 ao 5 de cada linha
-cut -c 1,3,5 texto.txt            #imprime os caracteres 1, 3, 5 de cada linha
-cut -c 1-3,5-10 texto.txt         #imprime os caracteres nos intervalos especificados
-cut -c 2- texto.txt               #imprime do caractere 2 até o fim da linha 
-cut -c -7 texto.txt               #imprime do caractere até o caractere 7
-cut -c 1-3 texto.txt --complement #imprime tudo menos do caract 1 ao 3
-cut -d "." -f 1 texto.txt         #imprime o 1º campo delimitado pelo ponto
-cut -d "." -f 1,5 texto.txt       #imprime campos 1 e 5 delimitados pelo ponto
-cut -d "." -f 2- texto.txt        #imprime do campo 2 em diante
-cut -s -d "." -f 1- texto.txt --output-delimiter="$"    #substitui na tela o delimitador . pelo $
+cut -c 1 texto.txt                # imprime somente o caractere 1 de cada linha (começa em 1)
+cut -c 1-5 texto.txt              # imprime do caractere 1 ao 5 de cada linha
+cut -c 1,3,5 texto.txt            # imprime os caracteres 1, 3, 5 de cada linha
+cut -c 1-3,5-10 texto.txt         # imprime os caracteres nos intervalos especificados
+cut -c 2- texto.txt               # imprime do caractere 2 até o fim da linha 
+cut -c -7 texto.txt               # imprime do caractere até o caractere 7
+cut -c 1-3 texto.txt --complement # imprime tudo menos do caract 1 ao 3
+cut -d "." -f 1 texto.txt         # imprime o 1º campo delimitado pelo ponto
+cut -d "." -f 1,5 texto.txt       # imprime campos 1 e 5 delimitados pelo ponto
+cut -d "." -f 2- texto.txt        # imprime do campo 2 em diante
+cut -s -d "." -f 1- texto.txt --output-delimiter="$"    # substitui na tela o delimitador . pelo $
 ~~~
 
 
@@ -279,33 +288,33 @@ cut -s -d "." -f 1- texto.txt --output-delimiter="$"    #substitui na tela o del
 > caracteres especiais: espaço (\ ), ponto (\.) Funcionamento: sed 'expressão regular' arquivo
 
 ~~~shell
-sed 's/tristeza/alegria/' texto.txt   #s=substitui 1º "tristeza" de cada linha por "alegria"
-sed 's/tristeza/alegria/g' texto.txt  #g=substitui todas ocorrências de tristeza por alegria
-sed '1s/aaa/ccc/' texto.txt           #substitui "aaa" por "ccc" na linha 1
-sed '1,3s/aaa/ccc/g' texto.txt        #substitui todos "aaa" por "ccc" entre as linhas 1 e 3
-sed 's/^/biscoito /' texto.txt        #coloca "biscoito" no inicio de cada linha
-sed 's/$/ bolacha/' texto.txt         #coloca "bolacha" no fim de cada linha
-sed 's/aaa\|bbb/ccc/g' texto.txt      #substitui todos "aaa" e "bbb" por "ccc"
-sed 's/aaa.*bbb/ccc/' texto.txt       #substitui aaa, bbb e tudo entre aaa e bbb por ccc
-sed -i 's/aaa/bbb/g' texto.txt        #troca aaa por bbb DIRETAMENTE no arquivo (-i)
-sed '/aaa/ s/bbb/ccc/g'  texto.txt    #nas linhas que contem "aaa" subst "bbb" por "ccc" 
-sed '/aaa/! s/bbb/ccc/g' texto.txt    #nas linhas que não contem "aaa" substitui "bbb" por "ccc"
-sed 's/[aeiou]/X/g' texto.txt         #substitui todas vogais por X 
+sed 's/tristeza/alegria/' texto.txt   # s=substitui 1º "tristeza" de cada linha por "alegria"
+sed 's/tristeza/alegria/g' texto.txt  # g=substitui todas ocorrências de tristeza por alegria
+sed '1s/aaa/ccc/' texto.txt           # substitui "aaa" por "ccc" na linha 1
+sed '1,3s/aaa/ccc/g' texto.txt        # substitui todos "aaa" por "ccc" entre as linhas 1 e 3
+sed 's/^/biscoito /' texto.txt        # coloca "biscoito" no inicio de cada linha
+sed 's/$/ bolacha/' texto.txt         # coloca "bolacha" no fim de cada linha
+sed 's/aaa\|bbb/ccc/g' texto.txt      # substitui todos "aaa" e "bbb" por "ccc"
+sed 's/aaa.*bbb/ccc/' texto.txt       # substitui aaa, bbb e tudo entre aaa e bbb por ccc
+sed -i 's/aaa/bbb/g' texto.txt        # troca aaa por bbb DIRETAMENTE no arquivo (-i)
+sed '/aaa/ s/bbb/ccc/g'  texto.txt    # nas linhas que contem "aaa" subst "bbb" por "ccc" 
+sed '/aaa/! s/bbb/ccc/g' texto.txt    # nas linhas que não contem "aaa" substitui "bbb" por "ccc"
+sed 's/[aeiou]/X/g' texto.txt         # substitui todas vogais por X 
 
-sed '5q' texto1.txt               #Imprime 5 primeiras linhas e q=quit
-sed -n '44p' texto.txt            #p=print, imprime SÓ linha 44
-sed -n '6,9p' arquivo.txt         #imprime da sexta até a nona
-sed -n '/^aaa/p' texto.txt        #imprime todas as linhas que começam com "aaa"
-sed -n '/^aaa\|^bbb/p' texto.txt  #imprime todas as linhas que começam com "aaa" ou com "bbb"
-sed -n '/aaa$/p' texto.txt        #imprime todas as linhas que terminam com "aaa"
-sed -n '/aaa/p' texto.txt         #imprime todas as linhas que contém "aaa"
-sed -n '/aaa/!p' texto.txt        #imprime todas as linhas que NÃO contém "aaa"
-sed -n '/aaa/{p;q;}' arquivo.txt  #imprime somente primeira linha que contém a string "aaa"
+sed '5q' texto1.txt               # Imprime 5 primeiras linhas e q=quit
+sed -n '44p' texto.txt            # p=print, imprime SÓ linha 44
+sed -n '6,9p' arquivo.txt         # imprime da sexta até a nona
+sed -n '/^aaa/p' texto.txt        # imprime todas as linhas que começam com "aaa"
+sed -n '/^aaa\|^bbb/p' texto.txt  # imprime todas as linhas que começam com "aaa" ou com "bbb"
+sed -n '/aaa$/p' texto.txt        # imprime todas as linhas que terminam com "aaa"
+sed -n '/aaa/p' texto.txt         # imprime todas as linhas que contém "aaa"
+sed -n '/aaa/!p' texto.txt        # imprime todas as linhas que NÃO contém "aaa"
+sed -n '/aaa/{p;q;}' arquivo.txt  # imprime somente primeira linha que contém a string "aaa"
 
-sed '1,5d' texto.txt              #d=deleta as linhas 1 até a 5
-sed '/^aaa/d' texto.txt           #d=deleta todas linhas que começam com a string "aaa"
-sed '/aaa/d' texto.txt            #d=deleta todas as linhas que contem a string "aaa"
-sed '/^$/d' texto.txt             #d=deleta linhas em branco
+sed '1,5d' texto.txt              # d=deleta as linhas 1 até a 5
+sed '/^aaa/d' texto.txt           # d=deleta todas linhas que começam com a string "aaa"
+sed '/aaa/d' texto.txt            # d=deleta todas as linhas que contem a string "aaa"
+sed '/^$/d' texto.txt             # d=deleta linhas em branco
 
 ~~~
 
@@ -358,10 +367,10 @@ sed '/^$/d' texto.txt             #d=deleta linhas em branco
 #!/bin/bash      
 comandos aqui
 
-#Tornar arquivo.sh executável
+# Tornar arquivo.sh executável
 chmod +x arquivo 
 
-#Executar um arquivo.sh
+# Executar um arquivo.sh
 ./arquivo.sh    
 
 # Comentários
@@ -388,27 +397,27 @@ NomeComentario
 
 ~~~shell
 echo sou um texto;
-echo "eu também sou" $variavel;   #não usa concatenadores 
+echo "eu também sou" $variavel;   # não usa concatenadores 
 echo -n nao quebro a linha;
 echo -e "\n saida \t formatada"; 
-echo                    #printa linha em branco
-printf "Obrigado.\n"    #usando o comando printf 
+echo                    # printa linha em branco
+printf "Obrigado.\n"    # usando o comando printf 
 ~~~
 
 # Lendo do teclado
 
 ~~~shell
-read nome;            #pode ler mais de uma variável ao mesmo tempo: read nome sobrenome;
+read nome;            # pode ler mais de uma variável ao mesmo tempo: read nome sobrenome;
 echo Boa noite $nome;
 ~~~
 
 # Variáveis
 
 ~~~shell
-num=5          #Criação/atribuição - Não é necessário declarar variáveis, sem espaço!
-echo $num      #Uso do ponto e vírgula é facultativo
-unset num      #apaga variável num
-hoje=$(date)   #armazenar saída do comando em variável: var=$(comando)
+num=5          # Criação/atribuição - Não é necessário declarar variáveis, sem espaço!
+echo $num      # Uso do ponto e vírgula é facultativo
+unset num      # apaga variável num
+hoje=$(date)   # armazenar saída do comando em variável: var=$(comando)
 nome="Mauricio"
 echo $nome
 ~~~
@@ -417,14 +426,14 @@ echo $nome
 
 ~~~shell
 $PATH
-$HOME      #fazer ls $HOME/nomePasta é o mesmo que fazer ls ~/nomePasta
+$HOME      # fazer ls $HOME/nomePasta é o mesmo que fazer ls ~/nomePasta
 $USER
 
-$0    #nome do script
-$1    #primeiro argumento
-$2    #segundo argumento
-$#    #número de argumentos
-$*    #todos argumentos
+$0    # nome do script
+$1    # primeiro argumento
+$2    # segundo argumento
+$#    # número de argumentos
+$*    # todos argumentos
 ~~~
 
 # Exemplo 
@@ -433,25 +442,25 @@ $*    #todos argumentos
 
 ~~~shell
 #!/bin/bash
-echo "nome do script = " $0         #escreve ./script.sh
-echo "argumento 1 = " $1            #escreve argumento1
-echo "argumento 2 = " $2            #escreve argumento2
-echo "numero de argumentos = " $#   #escreve 2
-echo "todos argumentos = " $*       #escreve argumento1 argumento2
+echo "nome do script = " $0         # escreve ./script.sh
+echo "argumento 1 = " $1            # escreve argumento1
+echo "argumento 2 = " $2            # escreve argumento2
+echo "numero de argumentos = " $#   # escreve 2
+echo "todos argumentos = " $*       # escreve argumento1 argumento2
 ~~~
 
 # Expressões aritméticas
 
 ~~~shell
-x=$(( 1500 + 200 ));    #jeito 1: não pode ter espaço antes nem depois do sinal de igualdade
-x=$[ 1500 + 200 ];      #jeito 2: não pode ter espaço antes nem depois do sinal de igualdade
+x=$(( 1500 + 200 ));    # jeito 1: não pode ter espaço antes nem depois do sinal de igualdade
+x=$[ 1500 + 200 ];      # jeito 2: não pode ter espaço antes nem depois do sinal de igualdade
 ~~~
 
 # Operadores aritméticos
 
 ~~~shell
-x=$[2**3]   #faz 2 elevado a 3 == 8
-x=$[5%3]    #resto da divisão, == 2
+x=$[2**3]   # faz 2 elevado a 3 == 8
+x=$[5%3]    # resto da divisão, == 2
 ~~~
 
 
@@ -483,7 +492,7 @@ test $x -eq 2  && echo igual || echo diferente  # comando test é equivalente ao
 
 ~~~shell
 test "$nome" == "Mauricio" && echo "é igual" || echo "não é igual"   # == testa se String é igual (funciona com '=' também)
-test "$nome" != "Mauricio" && echo "é diferente" || echo "não é"     # != testa se String é diferent
+test "$nome" != "Mauricio" && echo "é diferente" || echo "não é"     #!= testa se String é diferent
 test -z "$nome" && echo "String é nula"                              # -z testa se String é nula
 test -n "$nome" && echo "String é não nula"                          # -n testa se String é não nula
 [ $nome == "Mauricio" ] && echo igual || echo diferente              # outra forma, == testa se String é igual
@@ -494,17 +503,17 @@ test -n "$nome" && echo "String é não nula"                          # -n test
 > obs: aaa ==  nome do arquivo
 
 ~~~shell
-test -d aaa && echo "é um diretório"   #-d testa se $aaa é um diretório outra forma: [ -d aaa ] && echo "é" || echo "nao é"
-test -f aaa && echo "é um arquivo"     #-f testa se $aaa é um arquivo
-test -r aaa && echo "pode ler"         #-r   o arquivo tem permissão de leitura
-test -s aaa && echo "tam > 0"          #-s   o tam do arquivo maior que zero
-test -w aaa && echo "pode w"           #-w   o arq tem permissão de escrita
-test -x aaa && echo "pode x"           #-x o arq tem permissão de execução
-test aaa -nt bbb && echo "é + novo"    #-nt testa se o arquivo em $aaa é mais recente que o em $bbb
-test aaa -ot bbb && echo "é + old"     #-ot   o arquivo é mais antigo
-test aaa -ef bbb && echo "mesmo arq"   #-ef testa se o arquivo é o mesmo
-test -f aa -a -s aa  && echo "ok"      #-a   E lógico - "aa é arquivo e não está vazio"
-test -d aaa -o -d bbb  && echo "ok"    #-o   OU lógico - "aaa ou bbb são diretórios"
+test -d aaa && echo "é um diretório"   # -d testa se $aaa é um diretório outra forma: [ -d aaa ] && echo "é" || echo "nao é"
+test -f aaa && echo "é um arquivo"     # -f testa se $aaa é um arquivo
+test -r aaa && echo "pode ler"         # -r   o arquivo tem permissão de leitura
+test -s aaa && echo "tam > 0"          # -s   o tam do arquivo maior que zero
+test -w aaa && echo "pode w"           # -w   o arq tem permissão de escrita
+test -x aaa && echo "pode x"           # -x o arq tem permissão de execução
+test aaa -nt bbb && echo "é + novo"    # -nt testa se o arquivo em $aaa é mais recente que o em $bbb
+test aaa -ot bbb && echo "é + old"     # -ot   o arquivo é mais antigo
+test aaa -ef bbb && echo "mesmo arq"   # -ef testa se o arquivo é o mesmo
+test -f aa -a -s aa  && echo "ok"      # -a   E lógico - "aa é arquivo e não está vazio"
+test -d aaa -o -d bbb  && echo "ok"    # -o   OU lógico - "aaa ou bbb são diretórios"
 ~~~
 
 # Comandos de seleção:   
@@ -512,7 +521,7 @@ test -d aaa -o -d bbb  && echo "ok"    #-o   OU lógico - "aaa ou bbb são diret
 > if … else - em Shell Script o if testa um comando e não uma condição!
 
 ~~~shell
-if test "$media" -ge 6; then  #se colocar o then na outra linha pode-se suprimir o ';' 
+if test "$media" -ge 6; then  # se colocar o then na outra linha pode-se suprimir o ';' 
     echo aluno aprovado
 else 
     echo aluno reprovado   
@@ -522,7 +531,7 @@ fi
 # Comandos de seleção:   if … else
 
 ~~~shell
-if [ $media -ge 6 ]; then    #esses espaços são todos obrigatórios - o comando [ ... ] é um atalho para o comando test
+if [ $media -ge 6 ]; then    # esses espaços são todos obrigatórios - o comando [ ... ] é um atalho para o comando test
     echo aluno aprovado; 
 else   
     echo aluno reprovado;
@@ -534,7 +543,7 @@ fi
 > versão que suporta somente os operadores: <   >   <=   >=   !    ==   != 
 
 ~~~shell
-if(( $media >= 6 )); then          #dois parênteses são obrigatórios e não pode ter espaços entre o if e o (( 
+if(( $media >= 6 )); then          # dois parênteses são obrigatórios e não pode ter espaços entre o if e o (( 
     echo aluno aprovado;
 else
     echo aluno reprovado;
@@ -546,8 +555,8 @@ fi;
 
 ~~~shell
 x=0
-while test "$x" -le 10; do #se colocar o do na outra linha pode-se suprimir o ';' 
-    echo -n "$x "   #printa na mesma linha
+while test "$x" -le 10; do # se colocar o do na outra linha pode-se suprimir o ';' 
+    echo -n "$x "   # printa na mesma linha
     x=$((x+1))
 done
 ~~~
@@ -558,7 +567,7 @@ done
 i=0
 while [ $i -lt 10 ]; do
     echo $(( i * 5 ))
-    i=$(( i + 1 ))         #outra forma: x=$[ x + 1 ]
+    i=$(( i + 1 ))         # outra forma: x=$[ x + 1 ]
 done
 ~~~
 
@@ -593,7 +602,7 @@ done
 # Comandos de repetição:   for
 
 ~~~shell
-for i in {0..20}; do         #nao pode ter espaços
+for i in {0..20}; do         # nao pode ter espaços
     echo $i
 done
 ~~~
@@ -601,7 +610,7 @@ done
 # Comandos de repetição:   for
 
 ~~~shell
-for i in {0..10..2}; do       #pula de 2 em 2
+for i in {0..10..2}; do       # pula de 2 em 2
      echo $i
 done
 ~~~
@@ -621,7 +630,7 @@ done
 function funcao1() {
    echo "Sejam bem vindos."
 }
-funcao1      #chama a função - interessante: echo "ola amigos" $(funcao1)
+funcao1      # chama a função - interessante: echo "ola amigos" $(funcao1)
 ~~~
 
 # Função "com parâmetros" - por valor
@@ -701,25 +710,25 @@ echo "a = $a b = $b"
 
 ~~~shell
 
-nomes=("mauricio" "maria" "josé"); #declarando e inicializando um vetor
-echo ${nomes[0]};                  #usando elementos do vetor - sem espaços! não funciona isto: echo nomes[0];
-nomes[1]="joaquina";               #alterando um elemento do vetor
-echo ${nomes[*]};                  #exibe todos os elementos do vetor. outra forma: echo ${nomes[@]};
-echo ${#nomes[*]};                 #exibe o número de elementos do vetor ou numElementos=${#nomes[@]};
-echo ${#nomes[2]};                 #exibe o tamanho do segundo elemento do vetor
-echo ${!nomes[*]};                 #exibe todos os índices dos elementos do vetor, outra forma: echo ${!nomes[@]};
-echo ${nomes[*]:2};                #exibe elementos do vetor somente a partir do índice 2 ou echo ${vetor[@]:$i}
-echo ${nomes[*]:2:3};              #exibe somente os 3 elementos a partir do elemento 2 ou 
-echo ${nomes[0]:0:1};              #obtem primeira letra do elemento 0 do vetor
-unset nomes;                       #apaga vetor
-unset nomes[1];                    #apaga somente elemento de índice 1 do vetor
-nomes=("joaquina" ${nomes[*]});    #adiciona elemento no início do vetor. aceita variável: nomes=(${nomes[*]} $novoNome);
-nomes=(${nomes[*]} "joaquina");    #adiciona elemento no fim do vetor. aceita variável: nomes=($novoNome ${nomes[*]}); 
-frase=(${frase[*]});               #transforma a string frase em um vetor, usando os espaços como separador de elementos
+nomes=("mauricio" "maria" "josé"); # declarando e inicializando um vetor
+echo ${nomes[0]};                  # usando elementos do vetor - sem espaços! não funciona isto: echo nomes[0];
+nomes[1]="joaquina";               # alterando um elemento do vetor
+echo ${nomes[*]};                  # exibe todos os elementos do vetor. outra forma: echo ${nomes[@]};
+echo ${# nomes[*]};                 # exibe o número de elementos do vetor ou numElementos=${# nomes[@]};
+echo ${# nomes[2]};                 # exibe o tamanho do segundo elemento do vetor
+echo ${!nomes[*]};                 # exibe todos os índices dos elementos do vetor, outra forma: echo ${!nomes[@]};
+echo ${nomes[*]:2};                # exibe elementos do vetor somente a partir do índice 2 ou echo ${vetor[@]:$i}
+echo ${nomes[*]:2:3};              # exibe somente os 3 elementos a partir do elemento 2 ou 
+echo ${nomes[0]:0:1};              # obtem primeira letra do elemento 0 do vetor
+unset nomes;                       # apaga vetor
+unset nomes[1];                    # apaga somente elemento de índice 1 do vetor
+nomes=("joaquina" ${nomes[*]});    # adiciona elemento no início do vetor. aceita variável: nomes=(${nomes[*]} $novoNome);
+nomes=(${nomes[*]} "joaquina");    # adiciona elemento no fim do vetor. aceita variável: nomes=($novoNome ${nomes[*]}); 
+frase=(${frase[*]});               # transforma a string frase em um vetor, usando os espaços como separador de elementos
 
-nomes=${nomes[*]};                 #transforma o vetor nomes em uma string. outra forma: com @ no lugar do *;
-echo ${#nome};                     #exibe o número de caracteres de uma string
-echo ${nome:0:4};                  #exibe 4 letras a partir da posiçao 0
+nomes=${nomes[*]};                 # transforma o vetor nomes em uma string. outra forma: com @ no lugar do *;
+echo ${# nome};                     # exibe o número de caracteres de uma string
+echo ${nome:0:4};                  # exibe 4 letras a partir da posiçao 0
 
 ~~~
 
@@ -728,10 +737,10 @@ echo ${nome:0:4};                  #exibe 4 letras a partir da posiçao 0
 > IFS é uma variável que modifica o separador de elementos de um vetor (antes era o espaço)
 
 ~~~shell
-export IFS=:      #torna o separador do vetor o caractere ':'
+export IFS=:      # torna o separador do vetor o caractere ':'
 nomes="Mauricio Rocha : Joana Antunes"
 echo $nomes
-nomes=($nomes)    #converte string nomes em um vetor
+nomes=($nomes)    # converte string nomes em um vetor
 echo $nomes
 ~~~
 
@@ -739,11 +748,11 @@ echo $nomes
 # Comando chmod
 
 ~~~shell
-chmod -r a   #arquivo 'a' não pode ser lido
-chmod +r a   #arquivo 'a' pode ser lido
-chmod -w a   #arquivo 'a' não pode ser editado
-chmod -w a   #arquivo 'a' pode ser editado
-chmod +X a   #arquivo 'a' pode ser executado
+chmod -r a   # arquivo 'a' não pode ser lido
+chmod +r a   # arquivo 'a' pode ser lido
+chmod -w a   # arquivo 'a' não pode ser editado
+chmod -w a   # arquivo 'a' pode ser editado
+chmod +X a   # arquivo 'a' pode ser executado
 ~~~
 
 
@@ -790,12 +799,12 @@ done;
 i=1
 while test "$1"; do
    echo "Parâmetro $i: $1"
-   shift         #elimina argumento $1 fazendo com que o argumento $2 passe a ser o $1 e o $3 o $2
+   shift         # elimina argumento $1 fazendo com que o argumento $2 passe a ser o $1 e o $3 o $2
    i=$((i+1))
 done
 ~~~
 
-> Usando $0, $#, $1, $2   
+> Usando $0, $# , $1, $2   
 
 ~~~shell
 #!/bin/bash
@@ -803,7 +812,7 @@ echo "Nome do script $0"
 echo "Primeiro argumento: $1"
 echo "Segundo argumento $2"
 echo "Recebidos $# argumentos: $*"
-#chamando script: ./nomeScript.sh argumento1 argumento2
+# chamando script: ./nomeScript.sh argumento1 argumento2
 ~~~
 
 > escreve todos elementos do vetor cada um em uma linha
@@ -812,7 +821,7 @@ echo "Recebidos $# argumentos: $*"
 #!/bin/bash
 nomes=("mauricio" "maria" "josefa" "betina")
 x=0
-while test $x -lt ${#nomes[*]}; do
+while test $x -lt ${# nomes[*]}; do
     echo ${nomes[x]}
     x=$((x+1))
 done

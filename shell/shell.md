@@ -107,6 +107,10 @@ ls /opt/      # '/' é o diretório raíz
 # Comandos para arquivos
 
 ~~~shell
+find -type f -name "a"  # procura arquivos com a letra a
+find -type f -name ".*" # procura arquivos ocultos
+find -type d -name "a"  # procura diretorios com a letra a
+
 find -name nomeArq      # encontra arquivos nos dir e subdir opç: -name, -iname, -type f, -exec
 
 xdg-open nomeArquivo    # abre imagens, vídeos, músicas etc

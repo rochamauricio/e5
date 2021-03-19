@@ -110,8 +110,9 @@ ls /opt/      # '/' é o diretório raíz
 find -type f -name "a"  # procura arquivos com a letra a
 find -type f -name ".*" # procura arquivos ocultos
 find -type d -name "a"  # procura diretorios com a letra a
-
 find -name nomeArq      # encontra arquivos nos dir e subdir opç: -name, -iname, -type f, -exec
+
+diff arq1 arq2          # nao gera saida se arquivos forem identicos
 
 xdg-open nomeArquivo    # abre imagens, vídeos, músicas etc
 eog -f abreImagem.gif   # abre imagens
@@ -171,8 +172,9 @@ echo $PATH  # diretórios que estão no PATH
 # Comandos de rede - gerais
 
 ~~~shell
-ifconfig   # verificar ip da máquina
-hostname   # retorna nome do computador na rede
+ifconfig                # verificar ip da máquina
+hostname                # retorna nome do computador na rede
+ping www.google.com     # obtem IP do site, latência etc
 ~~~
 
 # Comandos de rede 

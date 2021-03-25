@@ -21,9 +21,7 @@ ctrl + windows + cima  # maximizar a janela
 ctrl + windows + baixo # restaurar tamanho da janela
 ctrl + alt + f1        # login via tty1
 ~~~
-
-    
-
+ 
 # Comandos gerais:
 
 - formato: comando opções parâmetros
@@ -181,6 +179,7 @@ ping www.google.com     # obtem IP do site, latência etc
 # Comandos de rede - wget:
 
 - wget - https://www.hostinger.com.br/tutoriais/wget-o-que-e-como-instalar-comandos-wget
+
 ~~~shell
 wget [link]   # downloads via FTP, SFTP, HTML e HTTPS 
 ~~~
@@ -422,7 +421,6 @@ nomeDir=nomeDir # cria variavel
 echo $nomeDir   # confere conteudo da variavel
 export nomeDir  # exporta para variável de ambiente
 env             # exibe todas variáveis de ambiente
-
 ~~~
 
 # Variáveis especiais:
@@ -486,9 +484,9 @@ test -n "$nome" && echo "String é não nula"                          # -n test
 
 # Comando [ ]: 
 
-- É equivalente ao comando test
+- É equivalente ao comando test.
 
-> operadores para NÚMEROS:  -lt      -gt      -le      -ge      -eq      -ne
+> Ex.: operadores para NÚMEROS:  -lt      -gt      -le      -ge      -eq      -ne
 ~~~shell
 [ $nota -ge 6 ] && echo good || echo bad        # se nota >= 6 imprime good, senão imprime bad
 [ $x -eq 2 ] && echo igual || echo diferente    # se x == 2 imprime igual, senão imprime diferente
@@ -498,7 +496,7 @@ test $x -eq 2  && echo igual || echo diferente  # comando test é equivalente ao
 
 # comando test em arquivos:
 
-> obs: aaa ==  nome do arquivo
+> Ex.: obs: aaa ==  nome do arquivo
 ~~~shell
 test -d aaa && echo "é um diretório"   # -d testa se $aaa é um diretório outra forma: [ -d aaa ] && echo "é" || echo "nao é"
 test -f aaa && echo "é um arquivo"     # -f testa se $aaa é um arquivo
@@ -515,8 +513,7 @@ test -d aaa -o -d bbb  && echo "ok"    # -o   OU lógico - "aaa ou bbb são dire
 
 # Comandos de seleção:   
 
-- if … else - em Shell Script o if testa um comando e não uma condição!
-
+> Ex.: if … else - em Shell Script o if testa um comando e não uma condição!
 ~~~shell
 if test "$media" -ge 6; then  # se colocar o then na outra linha pode-se suprimir o ';' 
     echo aluno aprovado
@@ -537,7 +534,7 @@ fi
 
 # Comandos de seleção: 
 
-> versão que suporta somente os operadores: <   >   <=   >=   !    ==   != 
+> Ex.: versão que suporta somente os operadores: <   >   <=   >=   !    ==   != 
 ~~~shell
 if(( $media >= 6 )); then          # dois parênteses são obrigatórios e não pode ter espaços entre o if e o (( 
     echo aluno aprovado;
@@ -754,14 +751,14 @@ chmod +X a   # arquivo 'a' pode ser executado
 
 # Exemplos de código:
 
-> testa se string passada como primeiro argumento está contida na string passada como segundo argumento
+> Ex.: testa se string passada como primeiro argumento está contida na string passada como segundo argumento
 ~~~shell
 #!/bin/bash
 test $# -ne 2 && exit   # sai se script não tiver 2 parâmetros
 echo $2 | grep -qs $1 && echo "$1 está contida em $2" || echo "$1 nao esta contida em $2"
 ~~~
 
-> Usando comandos read, test
+> Ex.: usando comandos read, test
 ~~~shell
 #!/bin/bash
 echo "quer continuar? s ou n?"
@@ -770,7 +767,7 @@ test "$resposta" = "n" && exit # se digitar n -> exit interrompe o script. O inv
 echo "disse sim"
 ~~~
 
-> Escreve números de 1 a 10 dizendo se são pares ou ímpares
+> Ex.: escreve números de 1 a 10 dizendo se são pares ou ímpares
 ~~~shell
 #!/bin/bash
 for(( i=1; i<=10; i++ )); do
@@ -782,7 +779,7 @@ for(( i=1; i<=10; i++ )); do
 done;
 ~~~
 
-> Escreve os parâmetros linha a linha enumerando-os.  
+> Ex.: escreve os parâmetros linha a linha enumerando-os.  
 ~~~shell
 #!/bin/bash
 i=1
@@ -793,7 +790,7 @@ while test "$1"; do
 done
 ~~~
 
-> Usando $0, $# , $1, $2   
+> Ex.: usando $0, $# , $1, $2   
 ~~~shell
 #!/bin/bash
 echo "Nome do script $0"
@@ -803,7 +800,7 @@ echo "Recebidos $# argumentos: $*"
 # chamando script: ./nomeScript.sh argumento1 argumento2
 ~~~
 
-> escreve todos elementos do vetor cada um em uma linha
+> Ex.: escreve todos elementos do vetor cada um em uma linha
 ~~~shell
 #!/bin/bash
 nomes=("mauricio" "maria" "josefa" "betina")
@@ -817,6 +814,9 @@ done
 
 - - -
 
+# Anotações gerais: 
+
+- A Canonial é a empresa que mantem a distribuição Linux Ubuntu.
 
 
 # Links:
@@ -855,6 +855,7 @@ done
 
 [bash avançado](https://www.vivaolinux.com.br/artigo/Prompt-Bash-avancado/)
 
+[canonical](https://canonical.com/)
 
 # Aprofundar:
 

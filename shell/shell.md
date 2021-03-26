@@ -27,10 +27,13 @@ ctrl + alt + f1        # login via tty1
 - formato: comando opções parâmetros
 
 ~~~shell
-algumComando --help     # exibe ajuda sobre o comando
 man algumComando        # chama página de manual do comando (q to quit)
+algumComando --help     # exibe ajuda em portugues sobre o comando
 info algumComando       # informações sobre o comando
 nomePrograma --version  # obter versão do programa ou
+history                 # lista ultimos comandos digitados
+!!                      # lista ultimos comandos digitados
+!a                      # executa ultimo comando iniciado com 'a'
 clear                   # limpa a tela (ctrl L)
 exit                    # fecha shell
 reboot                  # reinicia ou shutdown -r
@@ -48,7 +51,7 @@ sleep 1                 # faz sistema ficar parado por segundo
 # Diretórios:
 
 ~~~shell
-ls            # lista arquivos do diretório atual
+ls            # lista arquivos do diretório atual 
 ls nomePasta  # lista arquivos do diretório nomePasta
 ls -l         # mostra em forma de lista
 ls -a         # lista tudo (all) - arquivos que começam com '. e  mostra ocultos
@@ -95,12 +98,6 @@ du       # verifica tamanho dos arquivos do diretório e dos subdiretórios
 ~~~shell
 ls ~/cursos   # é o mesmo que ls $HOME/cursos
 ls /opt/      # '/' é o diretório raíz
-~~~
-
-# operador '!': 
-
-~~~shell
-!c + enter   # executa ultimo comando iniciado com 'c'
 ~~~
 
 # Comandos para arquivos:
@@ -817,6 +814,9 @@ done
 # Anotações gerais: 
 
 - A Canonial é a empresa que mantem a distribuição Linux Ubuntu.
+- Usuário root: super usuário - tem privilégios especiais.
+- ~ == diretório home/nomeUsuario.
+- / == diretório raiz.
 
 
 # Links:

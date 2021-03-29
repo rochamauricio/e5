@@ -79,9 +79,13 @@ aaa.*bbb  #pega tudo entre os literais "aaa" e "bbb"
 # Links:
 
 [aurelio](http://aurelio.net/regex/)
+
 [regex101](https://regex101.com/)
+
 [regexpal - casamento de texto com expressoes regulares](https://www.regexpal.com/)
+
 [gethifi - marca os grupos da ER com cor diferente](http://www.gethifi.com/tools/regex)
+
 [nregex - faz um replace de uma string](http://www.nregex.com/)
 
 

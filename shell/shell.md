@@ -11,6 +11,9 @@ cc -pthread programa.c -o programa   # compilar programa C com Threads
 arrasta ícone para prompt para obter seu caminho da pasta atual 
 ctrl + alt + t         # abre cmd
 ctrl + c               # cancela uma ação
+ctrl + z               # pausa comando atual
+ctrl + u               # apaga a linha inteira
+ctrl + w               # apaga ultima palavra
 ctrl + l               # limpa a tela
 ctrl + shift + v       # colar      
 ctrl + shift + c       # copiar
@@ -857,7 +860,7 @@ done
 
 [canonical](https://canonical.com/)
 
-# Aprofundar:
+# Continua:
 
 - como receber um argumento $1 contendo a string --version, por exemplo e exibir um texto ilustrativo sobre a versão e
 - caso nao seja passado nenhum argumento não realizar nenhuma ação. Como fazer isso de maneira "bonita"?
@@ -865,3 +868,5 @@ done
 - aspas simples (''), aspas duplas ("") e a contra-barra, ou barra inversa (\)
 - diretório do $PATH para inserir scripts
 - *** criar um link simbólico em /usr/local/bin
+- criar hard links e soft links
+- comandos de rede aprofundados

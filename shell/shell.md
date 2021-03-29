@@ -494,7 +494,7 @@ test $x -eq 2  && echo igual || echo diferente  # comando test é equivalente ao
 ~~~
 
 
-# comando test em arquivos:
+# Comando test em arquivos:
 
 > Ex.: obs: aaa ==  nome do arquivo
 ~~~shell
@@ -705,8 +705,8 @@ nomes=("mauricio" "maria" "josé"); # declarando e inicializando um vetor
 echo ${nomes[0]};                  # usando elementos do vetor - sem espaços! não funciona isto: echo nomes[0];
 nomes[1]="joaquina";               # alterando um elemento do vetor
 echo ${nomes[*]};                  # exibe todos os elementos do vetor. outra forma: echo ${nomes[@]};
-echo ${# nomes[*]};                 # exibe o número de elementos do vetor ou numElementos=${# nomes[@]};
-echo ${# nomes[2]};                 # exibe o tamanho do segundo elemento do vetor
+echo ${# nomes[*]};                # exibe o número de elementos do vetor ou numElementos=${# nomes[@]};
+echo ${# nomes[2]};                # exibe o tamanho do segundo elemento do vetor
 echo ${!nomes[*]};                 # exibe todos os índices dos elementos do vetor, outra forma: echo ${!nomes[@]};
 echo ${nomes[*]:2};                # exibe elementos do vetor somente a partir do índice 2 ou echo ${vetor[@]:$i}
 echo ${nomes[*]:2:3};              # exibe somente os 3 elementos a partir do elemento 2 ou 
@@ -718,7 +718,7 @@ nomes=(${nomes[*]} "joaquina");    # adiciona elemento no fim do vetor. aceita v
 frase=(${frase[*]});               # transforma a string frase em um vetor, usando os espaços como separador de elementos
 
 nomes=${nomes[*]};                 # transforma o vetor nomes em uma string. outra forma: com @ no lugar do *;
-echo ${# nome};                     # exibe o número de caracteres de uma string
+echo ${# nome};                    # exibe o número de caracteres de uma string
 echo ${nome:0:4};                  # exibe 4 letras a partir da posiçao 0
 ~~~
 
@@ -771,11 +771,11 @@ echo "disse sim"
 ~~~shell
 #!/bin/bash
 for(( i=1; i<=10; i++ )); do
-    if(( ($i % 2) == 0 )); then
-    echo $i "- par";
-    else
-    echo $i "- impar ";
-    fi;
+  if(( ($i % 2) == 0 )); then
+  echo $i "- par";
+  else
+  echo $i "- impar ";
+  fi;
 done;
 ~~~
 
@@ -784,9 +784,9 @@ done;
 #!/bin/bash
 i=1
 while test "$1"; do
-   echo "Parâmetro $i: $1"
-   shift         # elimina argumento $1 fazendo com que o argumento $2 passe a ser o $1 e o $3 o $2
-   i=$((i+1))
+  echo "Parâmetro $i: $1"
+  shift         # elimina argumento $1 fazendo com que o argumento $2 passe a ser o $1 e o $3 o $2
+  i=$((i+1))
 done
 ~~~
 
@@ -806,8 +806,8 @@ echo "Recebidos $# argumentos: $*"
 nomes=("mauricio" "maria" "josefa" "betina")
 x=0
 while test $x -lt ${# nomes[*]}; do
-    echo ${nomes[x]}
-    x=$((x+1))
+  echo ${nomes[x]}
+  x=$((x+1))
 done
 ~~~
 

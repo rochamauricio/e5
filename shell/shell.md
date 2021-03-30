@@ -12,6 +12,7 @@ arrasta ícone para prompt para obter seu caminho da pasta atual
 ctrl + alt + t         # abre cmd
 ctrl + c               # cancela uma ação
 ctrl + z               # pausa comando atual
+ctrl + d               # fecha terminal
 ctrl + u               # apaga a linha inteira
 ctrl + w               # apaga ultima palavra
 ctrl + l               # limpa a tela
@@ -35,7 +36,7 @@ algumComando --help     # exibe ajuda em portugues sobre o comando
 info algumComando       # informações sobre o comando
 nomePrograma --version  # obter versão do programa ou
 history                 # lista ultimos comandos digitados
-!!                      # lista ultimos comandos digitados
+!!                      # executa último comando executado
 !a                      # executa ultimo comando iniciado com 'a'
 clear                   # limpa a tela (ctrl L)
 exit                    # fecha shell

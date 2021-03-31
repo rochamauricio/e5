@@ -207,6 +207,7 @@ touch nomeArq    # cria rapidamente um arquivo de texto
 gedit nomeArq &  # abre arquivo de texto e não trava o prompt
 nano nomeArq     # Editor de texto 
 cat nomeArq      # imprime arquivos na tela
+tac nomeArq      # imprime arquivos na tela inverte linhas
 cat -n nomeArq   # imprime arquivos na tela com linhas 
 head nomeArq     # mostra início arquivo  opções -n -c
 tail nomeArq     # exibe últimas linhas

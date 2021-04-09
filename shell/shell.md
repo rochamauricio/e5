@@ -35,6 +35,8 @@ man algumComando        # chama página de manual do comando (q to quit)
 algumComando --help     # exibe ajuda em portugues sobre o comando
 info algumComando       # informações sobre o comando
 nomePrograma --version  # obter versão do programa ou
+whatis algumComando     # retorna o que o comando faz
+
 history                 # lista ultimos comandos digitados
 !!                      # executa último comando executado
 !a                      # executa ultimo comando iniciado com 'a'
@@ -44,7 +46,7 @@ reboot                  # reinicia ou shutdown -r
 shutdown -h 20:30       # (cancelar: ctrl C ou fechando o terminal)
 shutdown now            # ou -h now 
 date                    # exibe a data
-cal                     # mostra calendário do mês cal -m 12 == mostra dezembro
+cal                     # mostra calendário do mês cal -m 12 == mostra dezembro, cal 2021
 uptime                  # mostra há quanto tempo o sistema está ativo
 arch                    # mostra a arquitetura da maquina
 lsb_release -r          # desocobrir a versão do ubuntu
@@ -56,8 +58,9 @@ sleep 1                 # faz sistema ficar parado por segundo
 
 ~~~shell
 ls            # lista arquivos do diretório atual 
-ls nomePasta  # lista arquivos do diretório nomePasta
-ls -l         # mostra em forma de lista
+ls dir        # lista arquivos do diretório dir
+ls -l         # mostra em forma de lista com detalhes
+ls -1         # mostra em forma de lista sem detalhes
 ls -a         # lista tudo (all) - arquivos que começam com '. e  mostra ocultos
 ls -t         # lista na ordem de modificação
 ls -r         # lista arquivos na ordem reversa
@@ -104,35 +107,50 @@ ls ~/cursos   # é o mesmo que ls $HOME/cursos
 ls /opt/      # '/' é o diretório raíz
 ~~~
 
-# Comandos para arquivos:
-
-~~~shell
-find -type f -name "a"  # procura arquivos com a letra a
-find -type f -name ".*" # procura arquivos ocultos
-find -type d -name "a"  # procura diretorios com a letra a
-find -name nomeArq      # encontra arquivos nos dir e subdir opç: -name, -iname, -type f, -exec
-
-diff arq1 arq2          # nao gera saida se arquivos forem identicos
-
-xdg-open nomeArquivo    # abre imagens, vídeos, músicas etc
-eog -f abreImagem.gif   # abre imagens
-
-~~~
-
-# Operador pipe '|':
+# Operador '|' (pipe):
 
 ~~~shell
 ls  | more                                          # Saída de ls vira entrada de more (exibe os arquivos lentamente na tela)
 grep "mauricio" /etc/passwd | cut -d ":" -f 1,3,4   # exibe trechos 1,2,3 delimitados por : 
 ~~~
 
-# Redirecionamento '<' (entrada) e '>' (saída):
+# Comandos '<' (entrada), '>' (saída) e '>>':
 
 ~~~shell
 ./etapa1 < entrada.txt > saida.txt  # programa etapa1 recebe etrada.txt, e escreve saída em saida.txt
 ls > arquivo.txt                    # grava conteúdo do ls no arquivo.txt
-./script.sh > saida.txt             # grava saída do script.sh no arquivo saida.txt
+./script.sh > saida.txt             # grava saída script no arquivo saida.txt
+./script.sh >> saida.txt            # adiciona saida script ao fim do arquivo
 echo "$(comando com uma saída)" > textoTeste1.txt
+~~~
+
+# Operadores '?' e '??':
+
+~~~shell
+cat arq1 & cat arq2           # mostra os dois separados em 2 saídas
+cat arq1 && cat arq2          # mostra os dois juntos em uma saída
+mkdir treinos && cd treinos   # cria diretorio e entra nele
+~~~
+
+# Comandos para arquivos:
+
+- Comando find:
+    - Opções: -name, -iname, -type f, -exec
+    - O comando find não retorna nada se não tiver encontrado nada. 
+
+~~~shell
+file arq.txt                # retorna info do arquivo
+
+find ./ -name "a*"          # busca no dir atual e em seus sub os arq e dir que começam com a
+find ./ -name "nomeArq"     # busca no dir atual e em seus sub os arq chamados nomeArq
+find ./ -type f -name "a*"  # busca no dir atual e em seus sub os arq que começam com a
+find ./ -type d -name "a*"  # busca no dir atual e em seus sub os dir que começam com a
+find ./ -type f -name ".*"  # busca no dir atual e em seus sub os arq ocultos
+
+diff arq1 arq2              # nao gera saida se arquivos forem identicos
+
+xdg-open nomeArquivo        # abre imagens, vídeos, músicas etc
+eog -f abreImagem.gif       # abre imagens
 ~~~
 
 # Comandos para compactar arquivos:
@@ -209,8 +227,8 @@ nano nomeArq     # Editor de texto
 cat nomeArq      # imprime arquivos na tela
 tac nomeArq      # imprime arquivos na tela inverte linhas
 cat -n nomeArq   # imprime arquivos na tela com linhas 
-head nomeArq     # mostra início arquivo  opções -n -c
-tail nomeArq     # exibe últimas linhas
+head nomeArq     # mostra primeiras 10 linhas opções -n -c
+tail nomeArq     # exibe últimas 10 linhas
 more nomeArq     # exibe na tela e espera enter
 less nomeArq     # mostrar arquivos grandes na tela com rolagem pelas setas - q to quit
 ~~~
@@ -864,6 +882,7 @@ done
 
 # Continua:
 
+- Curso linux - pack 1 drive
 - como receber um argumento $1 contendo a string --version, por exemplo e exibir um texto ilustrativo sobre a versão e
 - caso nao seja passado nenhum argumento não realizar nenhuma ação. Como fazer isso de maneira "bonita"?
 - ***Há várias maneiras de protegermos comandos, que são: 

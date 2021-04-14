@@ -840,8 +840,27 @@ done
 
 - A Canonial é a empresa que mantem a distribuição Linux Ubuntu.
 - Usuário root: super usuário - tem privilégios especiais.
-- ~ == diretório home/nomeUsuario.
+- ~ == diretório home do usuário, ex.: home/nomeUsuario.
 - / == diretório raiz.
+
+### Diretórios principais:
+
+- /bin/ binários principais dos usuários. Ex.: cd, grep, ls, rm, mv, mkdir.
+- /boot/ arquivos do sistema de boot.
+- /dev/ arquivos de dispositivos. Ex.: drivers, bibliotecas rede, som.
+- /etc/ arquivos de configuração do sistema.
+- /home/ diretório dos usuários comuns do sistema.
+- /lib/ bibliotecas essenciais do sistema e módulos do kernel.
+- /media/ diretório de montagem e dispositivos. Ao plugar pendrive. 
+- /mnt/ diretório de montagem e dispositivo feito manualmente pelo usuário. 
+- /opt/ instalação de programas não oficiais da distribuição ou por conta do usuário.
+- /sbin/ guarda executáveis que realizam comandos administrativos, ex: shutdown.
+- /srv/ diretório para dados dos serviços oferecidos pelo sistema.
+- /tmp/ diretório para arquivos temporários. Ex.: área de transferência do SO.
+- /usr/ segunda hierarquia do sistema onde ficam os usuários comuns e programas.
+- /var/ variáveis geradas pelo sistema. Ex.: logs, histórico, 
+- /root/ diretório do usuário root (administrador do sistema).
+- /proc/ diretório virtual controlado pelo kernel. Processos do sistema.
 
 
 ## Links:

@@ -27,86 +27,31 @@ ctrl + windows + cima  # maximizar a janela
 ctrl + windows + baixo # restaurar tamanho da janela
 ctrl + alt + f1        # login via tty1
 ~~~
+
+## Diretórios principais:
+
+- /bin/ binários principais dos usuários. Ex.: cd, grep, ls, rm, mv, mkdir.
+- /boot/ arquivos do sistema de boot.
+- /dev/ arquivos de dispositivos. Ex.: drivers, bibliotecas rede, som.
+- /etc/ arquivos de configuração do sistema.
+- /home/ diretório dos usuários comuns do sistema.
+- /lib/ bibliotecas essenciais do sistema e módulos do kernel.
+- /media/ diretório de montagem e dispositivos. Ao plugar pendrive. 
+- /mnt/ diretório de montagem e dispositivo feito manualmente pelo usuário. 
+- /opt/ instalação de programas não oficiais da distribuição ou por conta do usuário.
+- /sbin/ guarda executáveis que realizam comandos administrativos, ex: shutdown.
+- /srv/ diretório para dados dos serviços oferecidos pelo sistema.
+- /tmp/ diretório para arquivos temporários. Ex.: área de transferência do SO.
+- /usr/ segunda hierarquia do sistema onde ficam os usuários comuns e programas.
+- /var/ variáveis geradas pelo sistema. Ex.: logs, histórico, 
+- /root/ diretório do usuário root (administrador do sistema).
+- /proc/ diretório virtual controlado pelo kernel. Processos do sistema.
  
-## Comandos gerais:
-
-- formato: comando opções parâmetros
-
-~~~shell
-man algumComando        # chama página de manual do comando (q to quit)
-algumComando --help     # exibe ajuda em portugues sobre o comando
-info algumComando       # informações sobre o comando
-nomePrograma --version  # obter versão do programa ou
-whatis algumComando     # retorna o que o comando faz
-
-history                 # lista ultimos comandos digitados
-!!                      # executa último comando executado
-!a                      # executa ultimo comando iniciado com 'a'
-clear                   # limpa a tela (ctrl L)
-exit                    # fecha shell
-reboot                  # reinicia ou shutdown -r
-shutdown -h 20:30       # (cancelar: ctrl C ou fechando o terminal)
-shutdown now            # ou -h now 
-date                    # exibe a data
-cal                     # mostra calendário do mês cal -m 12 == mostra dezembro, cal 2021
-uptime                  # mostra há quanto tempo o sistema está ativo
-arch                    # mostra a arquitetura da maquina
-lsb_release -r          # desocobrir a versão do ubuntu
-env                     # lista variáveis que o shell define por padrão
-sleep 1                 # faz sistema ficar parado por segundo
-~~~
-
-## Diretórios:
-
-~~~shell
-ls            # lista arquivos do diretório atual 
-ls dir        # lista arquivos do diretório dir
-ls -l         # mostra em forma de lista com detalhes
-ls -1         # mostra em forma de lista sem detalhes
-ls -a         # lista tudo (all) - arquivos que começam com '. e  mostra ocultos
-ls -t         # lista na ordem de modificação
-ls -r         # lista arquivos na ordem reversa
-ls -la        # combina -l e -a
-ls -ltr       # combina -l -t e -r
-ls -s         # mostra tamanhos de bloco
-
-cd ..         # volta um diretório
-cd ../..      # volta dois diretórios
-cd /home/dir  # vai de qualquer lugar para o diretório chamado dir :D
-
-cp nomeArq ./dir      # copia
-cp -r dir1 ./dir2     # copia recursivamente (-r) dir1 para dir2
-cp -i nomeArq ./dir   # confirma se arquivo existe
-cp -v nomeArq ./dir   # exibe status da copia (verbose)
-cp -l nomeArq ./dir   # cria hard link
-cp -s nomeArq ./dir   # cria link simbolico
-cp -u nomeArq ./dir   # copia somente se arquivo existir
-
-mv nomeArq ./dir            # move para dir
-mv nomeArq novoNome         # renomeia arquivo
-mv -i nomeArq  ./dir        # move arq para dir e pede confirmacao da substituicao, ver -n, -b, -u
-mv -n nomeArq1 nomeArq2     # copia sem substituir 
-
-mkdir nomeDir                                   # cria diretorio
-mkdir -pv dirPai/{dirFilho1,dirFilho2}          # cria árvore de diretórios (não pode ter espaços) 
-mkdir -pv dirPai/{filho/{neto1,neto2},filho2}   # cria árvore de diretórios (não pode ter espaços)
-
-rmdir    # apaga diretorio vazio
-rm -r    # remove arquivo ou diretorio e seu conteúdo
-rm -f    # remove arquivo sem fazer perguntas
-
-pwd      # mostra diretório atual
-du       # verifica tamanho dos arquivos do diretório e dos subdiretórios
-~~~
-
 ## Operadores '~' e '/':
 
-- ~ substitui a variável $HOME
-- / é o diretório raiz
-
 ~~~shell
-ls ~/cursos   # é o mesmo que ls $HOME/cursos
-ls /opt/      # '/' é o diretório raíz
+ls ~/cursos   # ~ == $HOME ==  home do user
+ls /opt/      # / == diretório raíz
 ~~~
 
 ## Operador '|' (pipe):
@@ -134,23 +79,102 @@ cat arq1 && cat arq2          # mostra os dois juntos em uma saída - só execut
 mkdir treinos && cd treinos   # cria diretorio e entra nele
 ~~~
 
-## Comandos para arquivos:
+## Comandos gerais:
 
-- Comando find:
-    - Opções: -name, -iname, -type f, -exec
-    - O comando find não retorna nada se não tiver encontrado nada. 
+- formato: comando opções parâmetros
+
+~~~shell
+man algumComando        # chama página de manual do comando (q to quit)
+algumComando --help     # exibe ajuda em portugues sobre o comando
+info algumComando       # informações sobre o comando
+nomePrograma --version  # obter versão do programa ou
+whatis algumComando     # retorna o que o comando faz
+history                 # lista ultimos comandos digitados
+!!                      # executa último comando executado
+!a                      # executa ultimo comando iniciado com 'a'
+clear                   # limpa a tela (ctrl L)
+exit                    # fecha shell
+cat /proc/cpuinfo       # info cpu
+cat /proc/meminfo       # info mem
+lspci                   # hw conect via pci
+lsusb                   # hw conect via usb
+lsb_release -r          # versão do ubuntu
+arch                    # arquit do sist
+uname                   # kernel do SO
+uneme -r                # versao do kernel
+uneme -r                # arquit do sist
+free                    # mem fis e mem swap (virtual)
+du -h ~/dir             # espaco usado por dir
+reboot                  # reinicia ou shutdown -r
+shutdown -h 20:30       # (cancelar: ctrl C ou fechando o terminal)
+shutdown now            # ou -h now 
+date                    # exibe a data
+cal                     # mostra calendário do mês cal -m 12 == mostra dezembro, cal 2021
+uptime                  # mostra há quanto tempo o sistema está ativo
+env                     # lista variáveis que o shell define por padrão
+sleep 1                 # faz sistema ficar parado por segundo
+ps                      # mostra processos rodando ex.: ps aux PID é o número do processo
+ps aux | grep bash      # mostra processos relacionados ao bash
+top                     # mostra processos rodando em tempo real + info (q to quit)
+kill -9 8731            # parar a exec de um programa -9 matar processos, 2315 num processo
+whoami                  # retorna usuário logado
+who                     # retorna usuários logados no sistema
+su                      # muda para root ou outro usuário
+w                       # mostra usuários conectados
+df                      # mostra disponibilidade das partições ou df -h 
+free                    # mostra quanto de ram temos disponível 
+mount                   # monta (ativa) devices
+umount                  # desmonta (desativa) devices
+echo $PATH              # diretórios que estão no PATH
+~~~
+
+## Comandos para diretórios:
+
+~~~shell
+ls                          # lista arquivos do diretório atual 
+ls dir                      # lista arquivos do diretório dir
+ls -l                       # mostra em forma de lista com detalhes
+ls -1                       # mostra em forma de lista sem detalhes
+ls -a                       # lista tudo (all) - arquivos que começam com '. e  mostra ocultos
+ls -t                       # lista na ordem de modificação
+ls -r                       # lista arquivos na ordem reversa
+ls -la                      # combina -l e -a
+ls -ltr                     # combina -l -t e -r
+ls -s                       # mostra tamanhos de bloco
+cd ..                       # volta um diretório
+cd ../..                    # volta dois diretórios
+cd /home/dir                # vai de qualquer lugar para o diretório chamado dir :D
+cp nomeArq ./dir            # copia
+cp -r dir1 ./dir2           # copia recursivamente (-r) dir1 para dir2
+cp -i nomeArq ./dir         # confirma se arquivo existe
+cp -v nomeArq ./dir         # exibe status da copia (verbose)
+cp -l nomeArq ./dir         # cria hard link
+cp -s nomeArq ./dir         # cria link simbolico
+cp -u nomeArq ./dir         # copia somente se arquivo existir
+mv nomeArq ./dir            # move para dir
+mv nomeArq novoNome         # renomeia arquivo
+mv -i nomeArq  ./dir        # move arq para dir e pede confirmacao da substituicao, ver -n, -b, -u
+mv -n nomeArq1 nomeArq2     # copia sem substituir 
+mkdir nomeDir                                   # cria diretorio
+mkdir -pv dirPai/{dirFilho1,dirFilho2}          # cria árvore de diretórios (não pode ter espaços) 
+mkdir -pv dirPai/{filho/{neto1,neto2},filho2}   # cria árvore de diretórios (não pode ter espaços)
+rmdir    # apaga diretorio vazio
+rm -r    # remove arquivo ou diretorio e seu conteúdo
+rm -f    # remove arquivo sem fazer perguntas
+pwd      # mostra diretório atual
+du       # verifica tamanho dos arquivos do diretório e dos subdiretórios
+~~~
+
+## Comandos para arquivos:
 
 ~~~shell
 file arq.txt                # retorna info do arquivo
-
 find ./ -name "a*"          # busca no dir atual e em seus sub os arq e dir que começam com a
 find ./ -name "nomeArq"     # busca no dir atual e em seus sub os arq chamados nomeArq
 find ./ -type f -name "a*"  # busca no dir atual e em seus sub os arq que começam com a
 find ./ -type d -name "a*"  # busca no dir atual e em seus sub os dir que começam com a
 find ./ -type f -name ".*"  # busca no dir atual e em seus sub os arq ocultos
-
 diff arq1 arq2              # nao gera saida se arquivos forem identicos
-
 xdg-open nomeArquivo        # abre imagens, vídeos, músicas etc
 eog -f abreImagem.gif       # abre imagens
 ~~~
@@ -175,19 +199,6 @@ unrar x nomedoarquivo.rar      # para descompactar rar
 bunzip nomedoarquivo.bz2       # para descompactar bz2
 ~~~
 
-## Comandos usuários e disco:
-
-~~~shell
-whoami      # retorna usuário logado
-who         # retorna usuários logados no sistema
-su          # muda para root ou outro usuário
-w           # mostra usuários conectados
-df          # mostra disponibilidade das partições ou df -h 
-free        # mostra quanto de ram temos disponível 
-mount       # monta (ativa) devices
-umount      # desmonta (desativa) devices
-echo $PATH  # diretórios que estão no PATH
-~~~
 
 ## Comandos de rede:
 
@@ -195,49 +206,24 @@ echo $PATH  # diretórios que estão no PATH
 ifconfig                # verificar ip da máquina
 hostname                # retorna nome do computador na rede
 ping www.google.com     # obtem IP do site, latência etc
-~~~
-
-## Comandos de rede - wget:
-
-- wget - https://www.hostinger.com.br/tutoriais/wget-o-que-e-como-instalar-comandos-wget
-
-~~~shell
-wget [link]   # downloads via FTP, SFTP, HTML e HTTPS 
-~~~
-
-## Comandos de rede - ssh:
-
-~~~shell
+wget [link]             # downloads via FTP, SFTP, HTML e HTTPS 
 ssh
 ~~~
 
-## Comandos sobre processos:
+
+## Comandos para arquivos de texto:
 
 ~~~shell
-ps                  # mostra processos rodando ex.: ps aux PID é o número do processo
-ps aux | grep bash  # mostra processos relacionados ao bash
-top                 # mostra processos rodando em tempo real + info (q to quit)
-kill -9 8731        # parar a exec de um programa -9 matar processos, 2315 num processo
-~~~
-
-## Arquivos de texto - criar / visualizar arquivos:
-
-~~~shell
-touch nomeArq    # cria rapidamente um arquivo de texto
-gedit nomeArq &  # abre arquivo de texto e não trava o prompt
-nano nomeArq     # Editor de texto 
-cat nomeArq      # imprime arquivos na tela
-tac nomeArq      # imprime arquivos na tela inverte linhas
-cat -n nomeArq   # imprime arquivos na tela com linhas 
-head nomeArq     # mostra primeiras 10 linhas opções -n -c
-tail nomeArq     # exibe últimas 10 linhas
-more nomeArq     # exibe na tela e espera enter
-less nomeArq     # mostrar arquivos grandes na tela com rolagem pelas setas - q to quit
-~~~
-
-## Arquivos de texto - geral:
-
-~~~shell
+touch nomeArq              # cria rapidamente um arquivo de texto
+gedit nomeArq &            # abre arquivo de texto e não trava o prompt
+nano nomeArq               # Editor de texto 
+cat nomeArq                # imprime arquivos na tela
+tac nomeArq                # imprime arquivos na tela inverte linhas
+cat -n nomeArq             # imprime arquivos na tela com linhas 
+head nomeArq               # mostra primeiras 10 linhas opções -n -c
+tail nomeArq               # exibe últimas 10 linhas
+more nomeArq               # exibe na tela e espera enter
+less nomeArq               # mostrar arquivos grandes na tela com rolagem pelas setas - q to quit
 rev nomeArquivo            # inverter texto do arquivo
 wc texto.txt               # conta letras
 uniq texto.txt             # remove as linhas duplicadas e consecutivas do arquivo
@@ -248,9 +234,7 @@ sort texto.txt | uniq      # ordena arquivo e remove linhas duplicatas
 echo "oi" > texto.txt      # escreve "oi" no arquivo texto.txt (sobreescreve arquivo)
 echo "oi2" >> texto.txt    # escreve "oi2" no arquivo texto.txt (faz append - adiciona no final do arquivo sem sobrescrevê-lo)
 cat texto.txt >> t2.txt    # escreve texto.txt no final do arquivo t2.txt (faz append)
-
 echo $(( RANDOM % 101 ));  # Gerando números aleatórios de 0 a 100 - usando a variável $RANDOM
-
 seq 0 10 100;  # gera números de 10 em 10 até 100. 
 seq 5;         # gera numeros 1 2 3 4 5
 seq -10 10;    # gera do número -10 ao 10
@@ -258,7 +242,7 @@ seq -10 10;    # gera do número -10 ao 10
 ~~~
 
 
-## Arquivos de texto - comando tr:
+## Comando tr:
 
 ~~~shell
 tr -d ' ' < texto.txt         # (-d == delete) remove espaços do arquivo. outra forma echo "mauricio rocha" | tr -d ' ' 
@@ -271,7 +255,7 @@ tr -s '\n' ' ' < texto.txt    # substitui quebras de linha por espaços
 tr -s ' ' ' ' < texto.txt     # substitui espaços repetidos por um único espaço
 ~~~
 
-## Arquivos de texto - comando grep:
+## Comando grep:
 
 - grep [opções] padrão [ARQUIVO] Opções -n -i -v -qs -w -x (podemos combiná-las)
 
@@ -288,7 +272,7 @@ grep a$ texto.txt           # mostra todas as linhas que terminam com a
 grep -qs alegria texto.txt && echo "contido" || echo "não contido" # -qs == retorna true or false and quit without message
 ~~~
 
-## Arquivos de texto - comando  cut:
+## Comando cut:
 
 - opções: -c (caractere) -d (delimitador) -f (intervalo) 
 
@@ -306,7 +290,7 @@ cut -d "." -f 2- texto.txt        # imprime do campo 2 em diante
 cut -s -d "." -f 1- texto.txt --output-delimiter="$"    # substitui na tela o delimitador . pelo $
 ~~~
 
-## Arquivos de texto - programa sed:
+## Programa sed:
 
 - O sed lê um arquivo, linha por linha, e aplica a expressão do parâmetro a cada uma delas.
 - caracteres especiais: espaço (\ ), ponto (\.) Funcionamento: sed 'expressão regular' arquivo
@@ -324,7 +308,6 @@ sed -i 's/aaa/bbb/g' texto.txt        # troca aaa por bbb DIRETAMENTE no arquivo
 sed '/aaa/ s/bbb/ccc/g'  texto.txt    # nas linhas que contem "aaa" subst "bbb" por "ccc" 
 sed '/aaa/! s/bbb/ccc/g' texto.txt    # nas linhas que não contem "aaa" substitui "bbb" por "ccc"
 sed 's/[aeiou]/X/g' texto.txt         # substitui todas vogais por X 
-
 sed '5q' texto1.txt               # Imprime 5 primeiras linhas e q=quit
 sed -n '44p' texto.txt            # p=print, imprime SÓ linha 44
 sed -n '6,9p' arquivo.txt         # imprime da sexta até a nona
@@ -334,39 +317,11 @@ sed -n '/aaa$/p' texto.txt        # imprime todas as linhas que terminam com "aa
 sed -n '/aaa/p' texto.txt         # imprime todas as linhas que contém "aaa"
 sed -n '/aaa/!p' texto.txt        # imprime todas as linhas que NÃO contém "aaa"
 sed -n '/aaa/{p;q;}' arquivo.txt  # imprime somente primeira linha que contém a string "aaa"
-
 sed '1,5d' texto.txt              # d=deleta as linhas 1 até a 5
 sed '/^aaa/d' texto.txt           # d=deleta todas linhas que começam com a string "aaa"
 sed '/aaa/d' texto.txt            # d=deleta todas as linhas que contem a string "aaa"
 sed '/^$/d' texto.txt             # d=deleta linhas em branco
-
 ~~~
-
-- - - 
-
-
-## Shell:
-
-- Shell é um programa que permite ao usuário interagir com o sistema operacional através de comandos digitados pelo teclado. 
-- O shell mais famoso do linux é o Bash (o bash é um interpretador de comandos do sh). 
-- A Extensão do é arquivo: .sh e a Primeira linha do arquivo precisa ser: #!/bin/bash
-- Cada comando digitado é lido, verificado, interpretado e enviado ao sistema operacional para ser de fato executado.
-    
-## Bash:
-
-- O nome Bash significa Bourne Again Shell, um produto GNU. 
-- Ele é a interface padrão de linha de comando utilizada praticamente em todas as distribuições GNU/Linux.
-- A aparência do prompt é controlada pela variável PS1.
-
-
-
-- ***variáveis de ambiente
-https://devcontent.com.br/artigos/windows/o-que-sao-como-alterar-criar-excluir-variaveis-de-ambiente
-
-
-
-- - - 
-
 
 ## Comandos a partir de arquivo.sh':
 
@@ -843,24 +798,22 @@ done
 - ~ == diretório home do usuário, ex.: home/nomeUsuario.
 - / == diretório raiz.
 
-### Diretórios principais:
+### Shell:
 
-- /bin/ binários principais dos usuários. Ex.: cd, grep, ls, rm, mv, mkdir.
-- /boot/ arquivos do sistema de boot.
-- /dev/ arquivos de dispositivos. Ex.: drivers, bibliotecas rede, som.
-- /etc/ arquivos de configuração do sistema.
-- /home/ diretório dos usuários comuns do sistema.
-- /lib/ bibliotecas essenciais do sistema e módulos do kernel.
-- /media/ diretório de montagem e dispositivos. Ao plugar pendrive. 
-- /mnt/ diretório de montagem e dispositivo feito manualmente pelo usuário. 
-- /opt/ instalação de programas não oficiais da distribuição ou por conta do usuário.
-- /sbin/ guarda executáveis que realizam comandos administrativos, ex: shutdown.
-- /srv/ diretório para dados dos serviços oferecidos pelo sistema.
-- /tmp/ diretório para arquivos temporários. Ex.: área de transferência do SO.
-- /usr/ segunda hierarquia do sistema onde ficam os usuários comuns e programas.
-- /var/ variáveis geradas pelo sistema. Ex.: logs, histórico, 
-- /root/ diretório do usuário root (administrador do sistema).
-- /proc/ diretório virtual controlado pelo kernel. Processos do sistema.
+- Shell é um programa que permite ao usuário interagir com o sistema operacional através de comandos digitados pelo teclado. 
+- O shell mais famoso do linux é o Bash (o bash é um interpretador de comandos do sh). 
+- A Extensão do é arquivo: .sh e a Primeira linha do arquivo precisa ser: #!/bin/bash
+- Cada comando digitado é lido, verificado, interpretado e enviado ao sistema operacional para ser de fato executado.
+    
+### Bash:
+
+- O nome Bash significa Bourne Again Shell, um produto GNU. 
+- Ele é a interface padrão de linha de comando utilizada praticamente em todas as distribuições GNU/Linux.
+- A aparência do prompt é controlada pela variável PS1.
+
+- ***variáveis de ambiente
+https://devcontent.com.br/artigos/windows/o-que-sao-como-alterar-criar-excluir-variaveis-de-ambiente
+
 
 
 ## Links:

@@ -1,12 +1,5 @@
 # Shell Script:
 
-## Compilar um programa em C:
-
-~~~shell
-gcc prog.c -o prog
-cc -pthread programa.c -o programa   # compilar programa C com Threads
-~~~
-
 ## Atalhos:
 
 ~~~shell
@@ -32,7 +25,7 @@ ctrl + alt + f1        # login via tty1
 
 - /bin/ binários principais dos usuários. Ex.: cd, grep, ls, rm, mv, mkdir.
 - /boot/ arquivos do sistema de boot.
-- /dev/ arquivos de dispositivos. Ex.: drivers, bibliotecas rede, som.
+- /dev/ arquivos de dispositivos. Ex.: drivers, bibliotecas, interfaces de rede, som.
 - /etc/ arquivos de configuração do sistema.
 - /home/ diretório dos usuários comuns do sistema.
 - /lib/ bibliotecas essenciais do sistema e módulos do kernel.
@@ -71,7 +64,7 @@ ls > arquivo.txt                    # grava conteúdo do ls no arquivo.txt
 echo "$(comando com uma saída)" > textoTeste1.txt
 ~~~
 
-## Operadores '?' e '??':
+## Operadores '&' e '&&':
 
 ~~~shell
 cat arq1 & cat arq2           # mostra os dois separados em 2 saídas
@@ -89,20 +82,24 @@ algumComando --help     # exibe ajuda em portugues sobre o comando
 info algumComando       # informações sobre o comando
 nomePrograma --version  # obter versão do programa ou
 whatis algumComando     # retorna o que o comando faz
+which algumComando      # locate a command
 history                 # lista ultimos comandos digitados
 !!                      # executa último comando executado
 !a                      # executa ultimo comando iniciado com 'a'
 clear                   # limpa a tela (ctrl L)
 exit                    # fecha shell
-cat /proc/cpuinfo       # info cpu
+cat /proc/cpuinfo       # info processamentos
 cat /proc/meminfo       # info mem
+lscpu                   # info cpu
 lspci                   # hw conect via pci
 lsusb                   # hw conect via usb
+lshw                    # todos hw
+lshw -short             # caminhos hw
 lsb_release -r          # versão do ubuntu
 arch                    # arquit do sist
 uname                   # kernel do SO
-uneme -r                # versao do kernel
-uneme -r                # arquit do sist
+uname -r                # versao do kernel
+uname -r                # arquit do sist
 free                    # mem fis e mem swap (virtual)
 du -h ~/dir             # espaco usado por dir
 reboot                  # reinicia ou shutdown -r

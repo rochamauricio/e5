@@ -87,6 +87,7 @@ whatis algumComando     # retorna o que o comando faz
 which algumComando      # locate a command
 whereis myCommand    # locate the binary, source, and manual page files
 history                 # lista ultimos comandos digitados
+history -c              # apaga histórico de comandos
 !!                      # executa último comando executado
 !a                      # executa ultimo comando iniciado com 'a'
 clear                   # limpa a tela (ctrl L)
@@ -106,8 +107,12 @@ uname -r                # arquit do sist
 free                    # mem fis e mem swap (virtual)
 du -h ~/dir             # espaco usado por dir
 reboot                  # reinicia ou shutdown -r
+last reboot             # informacoes da ultima reinicialização
 shutdown -h 20:30       # (cancelar: ctrl C ou fechando o terminal)
 shutdown now            # ou -h now 
+init 0                  # desliga pc
+telinit 0               # desliga pc
+halt                    # pede autenticação para desligar a máquina
 date                    # exibe a data
 cal                     # mostra calendário do mês cal -m 12 == mostra dezembro, cal 2021
 uptime                  # mostra há quanto tempo o sistema está ativo
@@ -117,6 +122,7 @@ ps                      # mostra processos rodando ex.: ps aux PID é o número 
 ps aux | grep bash      # mostra processos relacionados ao bash
 top                     # mostra processos rodando em tempo real + info (q to quit)
 kill -9 8731            # parar a exec de um programa -9 matar processos, 2315 num processo
+time traceroute www.google.com # tempo que comando demora
 whoami                  # retorna usuário logado
 who                     # retorna usuários logados no sistema
 su                      # muda para root ou outro usuário
@@ -126,6 +132,7 @@ free                    # mostra quanto de ram temos disponível
 mount                   # monta (ativa) devices
 umount                  # desmonta (desativa) devices
 echo $PATH              # diretórios que estão no PATH
+alias myAlias='history' # cria 'atalho' para o comando history
 ~~~
 
 ## Comandos para diretórios
@@ -165,7 +172,7 @@ pwd      # mostra diretório atual
 du       # verifica tamanho dos arquivos do diretório e dos subdiretórios
 ~~~
 
-## Comandos para arquivos
+## Comandos gerais para arquivos
 
 ~~~shell
 file arq.txt                # retorna info do arquivo
@@ -174,7 +181,6 @@ find ./ -name "nomeArq"     # busca no dir atual e em seus sub os arq chamados n
 find ./ -type f -name "a*"  # busca no dir atual e em seus sub os arq que começam com a
 find ./ -type d -name "a*"  # busca no dir atual e em seus sub os dir que começam com a
 find ./ -type f -name ".*"  # busca no dir atual e em seus sub os arq ocultos
-diff arq1 arq2              # nao gera saida se arquivos forem identicos
 xdg-open nomeArquivo        # abre imagens, vídeos, músicas etc
 eog -f abreImagem.gif       # abre imagens
 ~~~
@@ -221,9 +227,11 @@ dig www.google.com +short # ip
 wget [link]             # downloads via FTP, SFTP, HTML e HTTPS 
 ssh
 
+rout -n
+
 tracerout               # sudo apt install tracerout - nodes to access a site
 whois                   # sudo apt install whois - info about domain
-finger                  # sudo apt install finger - info user in host
+finger                  # sudo apt install finger - user info in host
 ~~~
 
 
@@ -241,11 +249,17 @@ tail nomeArq               # exibe últimas 10 linhas
 more nomeArq               # exibe na tela e espera enter
 less nomeArq               # mostrar arquivos grandes na tela com rolagem pelas setas - q to quit
 rev nomeArquivo            # inverter texto do arquivo
-wc texto.txt               # conta letras
+wc -w file.txt             # number of words
+wc -c file.txt             # number of bytes
+wc -m file.txt             # number of characteres
+wc -l file.txt             # number of lines of a file
+nl file.txt                # number of lines of a file
 uniq texto.txt             # remove as linhas duplicadas e consecutivas do arquivo
 sort texto.txt             # ordena as linhas do arquivo de acordo com o primeiro caractere
 sort -n texto.txt          # ordena as linhas do arquivo de acordo com o o caractere numérico do início da linha
 sort texto.txt | uniq      # ordena arquivo e remove linhas duplicatas
+diff file1 file2           # nao gera saida se arquivos forem identicos
+cmp file1 file2
 > texto.txt                # apaga conteúdo do arquivo texto.txt
 echo "oi" > texto.txt      # escreve "oi" no arquivo texto.txt (sobreescreve arquivo)
 echo "oi2" >> texto.txt    # escreve "oi2" no arquivo texto.txt (faz append - adiciona no final do arquivo sem sobrescrevê-lo)
@@ -886,6 +900,8 @@ https://devcontent.com.br/artigos/windows/o-que-sao-como-alterar-criar-excluir-v
 [Bash avançado](https://www.vivaolinux.com.br/artigo/Prompt-Bash-avancado/)
 
 [Canonical](https://canonical.com/)
+
+[Rodando Linux no Brownser!](https://bellard.org/jslinux/)
 
 ## Continua
 

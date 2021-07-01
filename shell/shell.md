@@ -42,36 +42,62 @@ ctrl + alt + f1        # login via tty1
 
 > Se você colocar seu script em /usr/local/bin ele poderá ser acessado em todo o sistema e para todos os usuários. Nesse caso, qualquer usuário pode executar seu executável como (sujeito a ter permissões apropriadas)
  
-## Operadores '~' e '/'
+## Comandos para usuários e grupos
 
 ~~~shell
-ls ~/cursos   # ~ == $HOME ==  home do user
-ls /opt/      # / == diretório raíz
+### comandos para usuários
+sudo adduser userName
+sudo userdel -r userName # deleta o usuario e sua pasta
+su userName # troca de usuario
+passwd userName # troca senha do usuario
+last
+lastlog
+logname
+id # usuarios e grupos
+cat /etc/passwd # exibe todos usuarios
+
+### comandos para grupos
+cat /etc/group # grupos do sistema
+groups # grupos que o usuario pertence
+sudo addgroup # cria grupo
+sudo k userName groupName # add usuario ao grupo
+sudo gpasswd -a userName groupName # add usuario ao grupo
+sudo gpasswd -d userName groupName # remove usuario ao grupo
+sudo groupdel groupName # remove grupo
 ~~~
 
-## Operador '|' (pipe)
+## Permissões
+
+- Para arquivos e diretórios
+- d:diretorio, -: arquivo, rwx: leitura, escrita, execução
+- Ex.: *drwxr-xr-x rwx*: 
+    - d == é um diretório
+    - permissões de dono (owner): rwx
+    - permissões do grupo: r-x == não pode escrever
+    - permissões de outros fora do grupo: r-x == não pode escrever
+
+### Modo octal (máscara octal)
+
+- Primeiro dígito: User, segundo dígito: group, terceiro: other
+- User (owner): r==4, w==2, x==1, nada==0
+- Group: r==4, w==2, x==1, nada==0
+- Other: r==4, w==2, x==1, nada==0
 
 ~~~shell
-ls  | more                                          # Saída de ls vira entrada de more (exibe os arquivos lentamente na tela)
-grep "mauricio" /etc/passwd | cut -d ":" -f 1,3,4   # exibe trechos 1,2,3 delimitados por : 
-~~~
+# controle de permissoes - modo octal
+chmod 100 file.txt # permissao apenas para dono e apenas para executar. outros nao podem nada
+chmod 200 file.txt # permissão apenas para dono e apenas escrita
+chmod 400 file.txt # permissão apenas para dono e apenas leitura
+chmod 300 file.txt # permissão apenas para dono e apenas escrita e execução (soma 2 + 1)
+chmod 700 file.txt # permissão apenas para dono e apenas leitura, escrita e execução (soma 2 + 1 + 4)
+chmod 555 file.txt # permissao para todos - leitura e execuçao
 
-## Comandos '<' (entrada), '>' (saída) e '>>'
-
-~~~shell
-./etapa1 < entrada.txt > saida.txt  # programa etapa1 recebe etrada.txt, e escreve saída em saida.txt
-ls > arquivo.txt                    # grava conteúdo do ls no arquivo.txt
-./script.sh > saida.txt             # grava saída script no arquivo saida.txt
-./script.sh >> saida.txt            # adiciona saida script ao fim do arquivo
-echo "$(comando com uma saída)" > textoTeste1.txt
-~~~
-
-## Operadores '&' e '&&'
-
-~~~shell
-cat arq1 & cat arq2           # mostra os dois separados em 2 saídas
-cat arq1 && cat arq2          # mostra os dois juntos em uma saída - só executa o segundo se o primeiro for executado
-mkdir treinos && cd treinos   # cria diretorio e entra nele
+# controle de permissoes
+chmod -r a   # arquivo 'a' não pode ser lido
+chmod +r a   # arquivo 'a' pode ser lido
+chmod -w a   # arquivo 'a' não pode ser editado
+chmod -w a   # arquivo 'a' pode ser editado
+chmod +X a   # arquivo 'a' pode ser executado
 ~~~
 
 ## Comandos gerais
@@ -188,6 +214,14 @@ eog -f abreImagem.gif       # abre imagens
 ## Comandos para compactar arquivos
 
 ~~~shell
+gzip file.txt
+gzip -9 file.txt # taxa de compactação máxima
+
+zip file.zip file.txt
+zip file.zip file1.txt file2.txt 
+
+bzip2 file.txt
+
 tar cvfz nomeArq.tar.gz [arquivos|diretório]   # para compactar .tar.gz 
 tar cvzf nomeArq.tgz arquivo1 arquivo2         # para compactar .tgz - aprendi em compiladores
 ~~~
@@ -195,17 +229,20 @@ tar cvzf nomeArq.tgz arquivo1 arquivo2         # para compactar .tgz - aprendi e
 ## Comandos para descompactar arquivos
 
 ~~~shell
+gunzip file.txt.gz
+unzip file.zip
+bzip2 -d file.txt.bz2
+
 tar -xvf nameFile.tar     
 tar -vzxf nameFile.tar.gz 
 tar -xvfz nomeArq.tar.gz  
 tar -jxvf nameFile        
 tar -xvzf nameFile.tgz    
-unzip nameFile.zip        
+
 unrar x nameFile.rar      
 bunzip nameFile.bz2       
 gzip -d arquivo.gz
 ~~~
-
 
 ## Comandos de rede
 
@@ -270,7 +307,6 @@ seq 5;         # gera numeros 1 2 3 4 5
 seq -10 10;    # gera do número -10 ao 10
 
 ~~~
-
 
 ## Comando tr
 
@@ -351,6 +387,38 @@ sed '1,5d' texto.txt              # d=deleta as linhas 1 até a 5
 sed '/^aaa/d' texto.txt           # d=deleta todas linhas que começam com a string "aaa"
 sed '/aaa/d' texto.txt            # d=deleta todas as linhas que contem a string "aaa"
 sed '/^$/d' texto.txt             # d=deleta linhas em branco
+~~~
+
+## Operadores '~' e '/'
+
+~~~shell
+ls ~/cursos   # ~ == $HOME ==  home do user
+ls /opt/      # / == diretório raíz
+~~~
+
+## Operador '|' (pipe)
+
+~~~shell
+ls  | more                                          # Saída de ls vira entrada de more (exibe os arquivos lentamente na tela)
+grep "mauricio" /etc/passwd | cut -d ":" -f 1,3,4   # exibe trechos 1,2,3 delimitados por : 
+~~~
+
+## Comandos '<' (entrada), '>' (saída) e '>>'
+
+~~~shell
+./etapa1 < entrada.txt > saida.txt  # programa etapa1 recebe etrada.txt, e escreve saída em saida.txt
+ls > arquivo.txt                    # grava conteúdo do ls no arquivo.txt
+./script.sh > saida.txt             # grava saída script no arquivo saida.txt
+./script.sh >> saida.txt            # adiciona saida script ao fim do arquivo
+echo "$(comando com uma saída)" > textoTeste1.txt
+~~~
+
+## Operadores '&' e '&&'
+
+~~~shell
+cat arq1 & cat arq2           # mostra os dois separados em 2 saídas
+cat arq1 && cat arq2          # mostra os dois juntos em uma saída - só executa o segundo se o primeiro for executado
+mkdir treinos && cd treinos   # cria diretorio e entra nele
 ~~~
 
 ## Comandos a partir de arquivo.sh'
@@ -717,7 +785,6 @@ swap a b
 echo "a = $a b = $b"
 ~~~
 
-
 ## Vetores
 
 - elementos são separados por espaços e começam com índice zero
@@ -754,17 +821,6 @@ nomes="Mauricio Rocha : Joana Antunes"
 echo $nomes
 nomes=($nomes)    # converte string nomes em um vetor
 echo $nomes
-~~~
-
-
-## Comando chmod
-
-~~~shell
-chmod -r a   # arquivo 'a' não pode ser lido
-chmod +r a   # arquivo 'a' pode ser lido
-chmod -w a   # arquivo 'a' não pode ser editado
-chmod -w a   # arquivo 'a' pode ser editado
-chmod +X a   # arquivo 'a' pode ser executado
 ~~~
 
 
@@ -863,45 +919,26 @@ https://devcontent.com.br/artigos/windows/o-que-sao-como-alterar-criar-excluir-v
 
 ## Links
 
-[Aurelio](https://aurelio.net/sed/sed-howto/)
-
-[Guia foca](https://guiafoca.org/)
-
-[Diolinux](https://www.diolinux.com.br/)
-
-[Dicas](https://pt.wikipedia.org/wiki/Utilit%C3%A1rios_Unix )
-
-[Guia comandos](https://pt.wikipedia.org/wiki/Uniq )
-
-[Diolinux - diretorios](http://www.diolinux.com.br/2011/05/os-diretotios-do-linux.html)
-
-[Sed página oficial](https://www.gnu.org/software/sed/)
-
-[Regex](http://terminalroot.com.br/2015/07/30-exemplos-do-comando-sed-com-regex.html )
-
-[Sed](http://rberaldo.com.br/o-comando-sed-do-linux/ )
-
-[Tr](http://www.dltec.com.br/blog/linux/exemplos-de-uso-do-comando-tr-no-linux/)
-
-[Cut](http://cleitonbueno.com/linux-o-comando-cut/)
-
-[Awk](http://rberaldo.com.br/tutorial-awk/)
-
-[Codeacademy](https://www.codecademy.com/articles/command-line-commands)
-
-[Riberaldo](http://rberaldo.com.br/curso-de-shell-script-modulo-1-scripts-shell-estruturas/) 
-
-[Vivaolinux](https://www.vivaolinux.com.br/topico/Comandos/Como-alterar-o-conteudo-de-um-arquivo-sem-abrilo.)
-
-[Linuxpro](http://www.linuxpro.com.br/dl/guia_500_comandos_Linux.pdf)
-
-[Guia 500 comandos](http://computeirodadepressao.com/guia-com-mais-de-500-comandos-do-linux-explicados/ )
-
-[Bash avançado](https://www.vivaolinux.com.br/artigo/Prompt-Bash-avancado/)
-
-[Canonical](https://canonical.com/)
-
-[Rodando Linux no Brownser!](https://bellard.org/jslinux/)
+- [Aurelio](https://aurelio.net/sed/sed-howto/)
+- [Guia foca](https://guiafoca.org/)
+- [Diolinux](https://www.diolinux.com.br/)
+- [Dicas](https://pt.wikipedia.org/wiki/Utilit%C3%A1rios_Unix )
+- [Guia comandos](https://pt.wikipedia.org/wiki/Uniq )
+- [Diolinux - diretorios](http://www.diolinux.com.br/2011/05/os-diretotios-do-linux.html)
+- [Sed página oficial](https://www.gnu.org/software/sed/)
+- [Regex](http://terminalroot.com.br/2015/07/30-exemplos-do-comando-sed-com-regex.html )
+- [Sed](http://rberaldo.com.br/o-comando-sed-do-linux/ )
+- [Tr](http://www.dltec.com.br/blog/linux/exemplos-de-uso-do-comando-tr-no-linux/)
+- [Cut](http://cleitonbueno.com/linux-o-comando-cut/)
+- [Awk](http://rberaldo.com.br/tutorial-awk/)
+- [Codeacademy](https://www.codecademy.com/articles/command-line-commands)
+- [Riberaldo](http://rberaldo.com.br/curso-de-shell-script-modulo-1-scripts-shell-estruturas/) 
+- [Vivaolinux](https://www.vivaolinux.com.br/topico/Comandos/Como-alterar-o-conteudo-de-um-arquivo-sem-abrilo.)
+- [Linuxpro](http://www.linuxpro.com.br/dl/guia_500_comandos_Linux.pdf)
+- [Guia 500 comandos](http://computeirodadepressao.com/guia-com-mais-de-500-comandos-do-linux-explicados/ )
+- [Bash avançado](https://www.vivaolinux.com.br/artigo/Prompt-Bash-avancado/)
+- [Canonical](https://canonical.com/)
+- [Rodando Linux no Brownser!](https://bellard.org/jslinux/)
 
 ## Continua
 

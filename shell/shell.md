@@ -3,7 +3,7 @@
 ## Atalhos
 
 ~~~shell
-arrasta ícone para prompt para obter seu caminho da pasta atual 
+# arraste o ícone para prompt para obter seu caminho da pasta atual 
 ctrl + alt + t         # abre cmd
 ctrl + c               # cancela uma ação
 ctrl + z               # pausa comando atual
@@ -40,7 +40,7 @@ ctrl + alt + f1        # login via tty1
 - /root/ diretório do usuário root (administrador do sistema).
 - /proc/ diretório virtual controlado pelo kernel. Processos do sistema.
 
-> Se você colocar seu script em /usr/local/bin ele poderá ser acessado em todo o sistema e para todos os usuários. Nesse caso, qualquer usuário pode executar seu executável como (sujeito a ter permissões apropriadas)
+> Se você colocar seu script em /usr/local/bin ele poderá ser acessado de qualquer local. 
  
 ## Comandos para usuários e grupos
 
@@ -222,7 +222,13 @@ zip file.zip file1.txt file2.txt
 
 bzip2 file.txt
 
-tar cvfz nomeArq.tar.gz [arquivos|diretório]   # para compactar .tar.gz 
+rar a file.rar file.txt # sudo apt install rar
+
+# Arquivadores - tar é um arquivador
+tar -cf file.tar file.txt # apos para compactar gzip file.tar
+tar -cf files.tar file1.txt file2.txt
+
+tar cvfz nomeArq.tar.gz [arquivos|dir etório]   # para compactar .tar.gz 
 tar cvzf nomeArq.tgz arquivo1 arquivo2         # para compactar .tgz - aprendi em compiladores
 ~~~
 
@@ -232,17 +238,22 @@ tar cvzf nomeArq.tgz arquivo1 arquivo2         # para compactar .tgz - aprendi e
 gunzip file.txt.gz
 unzip file.zip
 bzip2 -d file.txt.bz2
+rar x file.rar
 
-tar -xvf nameFile.tar     
-tar -vzxf nameFile.tar.gz 
-tar -xvfz nomeArq.tar.gz  
-tar -jxvf nameFile        
-tar -xvzf nameFile.tgz    
-
-unrar x nameFile.rar      
-bunzip nameFile.bz2       
+unrar x file.rar      
+bunzip file.bz2       
 gzip -d arquivo.gz
+
+# Arquivadores
+tar -xvf file.tar.gz # tar é um arquivador
+tar -xvf file.tar.gz -C ~/myDir # tar é um arquivador
+
+tar -vzxf file.tar.gz 
+tar -xvfz nomeArq.tar.gz  
+tar -jxvf file        
+tar -xvzf file.tgz    
 ~~~
+
 
 ## Comandos de rede
 

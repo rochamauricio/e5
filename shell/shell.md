@@ -953,18 +953,9 @@ https://devcontent.com.br/artigos/windows/o-que-sao-como-alterar-criar-excluir-v
 
 ## Continua
 
-- Terminar curso DIO
+- Terminar cursos DIO
 - Revisar todo e5
+- docker
+- [drive ecp - curso linux](https://drive.google.com/drive/u/0/folders/0B-ZM1anwyh0BcUpJdTFHekdzZFk)
+- [curso shell script](https://www.youtube.com/playlist?app=desktop&list=PLucm8g_ezqNrYgjXC8_CgbvHbvI7dDfhs)
 - Tutorial Guia foca
-
-### Continua - Outros
-
-- Curso linux - pack 1 drive
-- como receber um argumento $1 contendo a string --version, por exemplo e exibir um texto ilustrativo sobre a versão e
-- caso nao seja passado nenhum argumento não realizar nenhuma ação. Como fazer isso de maneira "bonita"?
-- ***Há várias maneiras de protegermos comandos, que são: 
-- aspas simples (''), aspas duplas ("") e a contra-barra, ou barra inversa (\)
-- diretório do $PATH para inserir scripts
-- *** criar um link simbólico em /usr/local/bin
-- criar hard links e soft links
-- comandos de rede aprofundados
